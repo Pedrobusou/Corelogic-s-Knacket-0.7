@@ -1,0 +1,198 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.FilterFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:background="#D8D8D8">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:id="@+id/llMain"
+            android:background="#ffffff">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Reset"
+                    android:id="@+id/btnReset"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Filter"
+                    android:id="@+id/textView"
+                    android:gravity="center"
+                    android:layout_toEndOf="@+id/btnReset"
+                    android:layout_toStartOf="@+id/btnDone"
+                    android:layout_toRightOf="@+id/btnReset"
+                    android:layout_toLeftOf="@+id/btnDone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Done"
+                    android:id="@+id/btnDone"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:baselineAligned="false"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="CATEGORY"
+                    android:id="@+id/textView4"
+                    android:layout_gravity="center_vertical" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinnerCategory" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:baselineAligned="false"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="NAR"
+                    android:id="@+id/textView6"
+                    android:layout_gravity="center_vertical" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinnerTime" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:baselineAligned="false"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="OMRADE"
+                    android:id="@+id/textView8"
+                    android:layout_gravity="center_vertical" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/tvMinKm"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentEnd="false"
+                    android:text="1km"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="false" />
+
+                <SeekBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/seekBar"
+                    android:max="100"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignParentStart="false"
+                    android:layout_toEndOf="@id/tvMinKm"
+                    android:layout_toStartOf="@+id/tvMaxKm"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="false"
+                    android:layout_alignParentLeft="false"
+                    android:layout_toRightOf="@id/tvMinKm"
+                    android:layout_toLeftOf="@+id/tvMaxKm" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="km"
+                    android:id="@+id/tvMaxKm"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
