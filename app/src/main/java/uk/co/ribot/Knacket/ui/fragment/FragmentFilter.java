@@ -23,10 +23,10 @@ import butterknife.OnItemSelected;
 
 /**
  * Activities that contain this fragment must implement the
- * {@link FilterFragment.OnFragmentInteractionListener} interface
+ * {@link FragmentFilter.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class FilterFragment extends Fragment {
+public class FragmentFilter extends Fragment {
     @Bind((R.id.tvMaxKm)) TextView tvMaxKm;
     @Bind(R.id.seekBar) SeekBar seekBar;
     @Bind(R.id.spinnerCategory) Spinner spinnerCategory;
@@ -36,7 +36,7 @@ public class FilterFragment extends Fragment {
     public String category;
     public String time;
 
-    public FilterFragment() {}
+    public FragmentFilter() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

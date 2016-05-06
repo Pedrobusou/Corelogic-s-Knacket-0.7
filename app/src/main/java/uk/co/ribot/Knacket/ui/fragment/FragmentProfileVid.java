@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import uk.co.ribot.Knacket.R;
 
-public class ProfilePicFragment extends Fragment {
+public class FragmentProfileVid extends Fragment {
     private OnFragmentInteractionListener mListener;
 
 
@@ -21,7 +21,7 @@ public class ProfilePicFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_seller_profile_pic, container, false);
+        return inflater.inflate(R.layout.fragment_seller_profile_vid, container, false);
     }
 
     @Override

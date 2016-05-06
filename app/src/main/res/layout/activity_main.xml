@@ -20,7 +20,7 @@
         android:layout_gravity="right" > <!--Start to be shown here. Right to work in app-->
 
         <fragment
-            android:name="uk.co.ribot.Knacket.ui.fragment.FilterFragment"
+            android:name="uk.co.ribot.Knacket.ui.fragment.FragmentFilter"
             android:id="@+id/fragmentFilter"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -13,9 +13,9 @@ import android.view.ViewGroup;;import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.data.model.Buyer;
 import uk.co.ribot.Knacket.ui.main.BuyersAdapter;
 
-public class BuyerListFiller extends Fragment {
+public class BuyerList extends Fragment {
 
-    public BuyerListFiller() {}
+    public BuyerList() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -29,18 +29,18 @@ import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.data.SyncService;
 import uk.co.ribot.Knacket.data.model.Buyer;
 import uk.co.ribot.Knacket.ui.base.BaseActivity;
-import uk.co.ribot.Knacket.ui.fragment.BuyerListFiller;
-import uk.co.ribot.Knacket.ui.fragment.FilterFragment;
-import uk.co.ribot.Knacket.ui.fragment.NavigationButtonsFragment;
+import uk.co.ribot.Knacket.ui.fragment.BuyerList;
+import uk.co.ribot.Knacket.ui.fragment.FragmentFilter;
+import uk.co.ribot.Knacket.ui.fragment.FragmentNavigationButtons;
 import uk.co.ribot.Knacket.util.DialogFactory;
 
-public class MainActivity extends BaseActivity implements MainMvpView, NavigationButtonsFragment.OnFragmentInteractionListener, FilterFragment.OnFragmentInteractionListener {
+public class MainActivity extends BaseActivity implements MainMvpView, FragmentNavigationButtons.OnFragmentInteractionListener, FragmentFilter.OnFragmentInteractionListener {
 
     private static final String EXTRA_TRIGGER_SYNC_FLAG =
             "uk.co.ribot.androidboilerplate.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
 
     @Inject MainPresenter mMainPresenter;
-    @Inject  BuyersAdapter mBuyersAdapter;
+    @Inject BuyersAdapter mBuyersAdapter;
 
     @Bind(R.id.container) ViewPager mViewPager;
     @Bind(R.id.toolbar) Toolbar toolbar;
@@ -155,9 +155,9 @@ public class MainActivity extends BaseActivity implements MainMvpView, Navigatio
 
             switch (position) {
                 case 0:
-                    return new BuyerListFiller();
+                    return new BuyerList();
                 case 1:
-                    return new BuyerListFiller(); //Here call diferent class to inflate sellers list
+                    return new BuyerList(); //Here call diferent class to inflate sellers list
             }
             return null;
         }
