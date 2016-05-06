@@ -24,7 +24,7 @@ import uk.co.ribot.Knacket.ui.fragment.FragmentProfilePic;
 import uk.co.ribot.Knacket.ui.fragment.FragmentProfileVid;
 import uk.co.ribot.Knacket.ui.fragment.FragmentThingsICanDo;
 
-public class BuyerProfile extends AppCompatActivity implements FragmentNavigationButtons.OnFragmentInteractionListener, FragmentProfilePic.OnFragmentInteractionListener, FragmentProfileVid.OnFragmentInteractionListener, FragmentThingsICanDo.OnFragmentInteractionListener{
+public class SellerProfile extends AppCompatActivity implements FragmentNavigationButtons.OnFragmentInteractionListener, FragmentProfilePic.OnFragmentInteractionListener, FragmentProfileVid.OnFragmentInteractionListener, FragmentThingsICanDo.OnFragmentInteractionListener{
     @Bind(R.id.pageIndicator) CirclePageIndicator pageIndicator;
     @Bind(R.id.containerHeader) ViewPager headerView;
     @Bind(R.id.containerFooter) ViewPager footerView;

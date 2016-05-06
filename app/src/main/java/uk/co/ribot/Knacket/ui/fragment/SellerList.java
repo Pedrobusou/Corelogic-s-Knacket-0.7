@@ -11,12 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import uk.co.ribot.Knacket.R;
-import uk.co.ribot.Knacket.data.model.Buyer;
-import uk.co.ribot.Knacket.ui.main.BuyersAdapter;
+import uk.co.ribot.Knacket.data.model.Seller;
+import uk.co.ribot.Knacket.ui.main.SellersAdapter;
 
-public class BuyerList extends Fragment {
+public class SellerList extends Fragment {
 
-    public BuyerList() {}
+    public SellerList() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,8 +31,8 @@ public class BuyerList extends Fragment {
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view);
         rv.setHasFixedSize(true);
 
-        BuyersAdapter adapter = new BuyersAdapter();
-        adapter.setBuyers(new Buyer().add3Buyers());
+        SellersAdapter adapter = new SellersAdapter();
+        adapter.setBuyers(new Seller().add6Seller());
         rv.setAdapter(adapter);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());

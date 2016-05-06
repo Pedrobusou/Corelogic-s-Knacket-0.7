@@ -52,32 +52,10 @@ public class BuyersAdapter extends RecyclerView.Adapter<BuyersAdapter.BuyerViewH
         holder.rbBuyerRating.setProgress(buyer.getRating());
         holder.tvBuyerPrice.setText(buyer.getPrice());
 
-        /*holder.touchArea.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(final View v) {
-                AlertDialog.Builder adb = new AlertDialog.Builder(v.getContext());
-                adb.setTitle("Eliminar");
-                adb.setMessage("Se borrará el contacto seleccionado");
-                //final int user_id = Integer.parseInt(v.getTag().toString());
-                adb.setNegativeButton("Cancelar", null);
-                adb.setPositiveButton("Aceptar",
-                        new AlertDialog.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                DatabaseHandler dBHandler = new DatabaseHandler(
-                                        activity.getApplicationContext());
-                                dBHandler.Delete_Contact(user_id);
-                                Main_Screen.this.onResume();
-                            }
-                        });
-                adb.show();
-                return true;
-            }
-        });*/
         holder.touchArea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), BuyerProfile.class);
+                Intent intent = new Intent(v.getContext(), SellerProfile.class); //TO BUYER PROFILE
                 v.getContext().startActivity(intent);
             }
         });

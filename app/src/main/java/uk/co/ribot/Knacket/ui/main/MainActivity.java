@@ -32,6 +32,7 @@ import uk.co.ribot.Knacket.ui.base.BaseActivity;
 import uk.co.ribot.Knacket.ui.fragment.BuyerList;
 import uk.co.ribot.Knacket.ui.fragment.FragmentFilter;
 import uk.co.ribot.Knacket.ui.fragment.FragmentNavigationButtons;
+import uk.co.ribot.Knacket.ui.fragment.SellerList;
 import uk.co.ribot.Knacket.util.DialogFactory;
 
 public class MainActivity extends BaseActivity implements MainMvpView, FragmentNavigationButtons.OnFragmentInteractionListener, FragmentFilter.OnFragmentInteractionListener {
@@ -157,7 +158,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, FragmentN
                 case 0:
                     return new BuyerList();
                 case 1:
-                    return new BuyerList(); //Here call diferent class to inflate sellers list
+                    return new SellerList();
             }
             return null;
         }

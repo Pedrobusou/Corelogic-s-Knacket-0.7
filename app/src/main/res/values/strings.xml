@@ -9,7 +9,7 @@
 
     <string name="empty_buyers">There aren\'t any buyers</string>
     <string name="error_loading_buyers">There was a problem loading the buyers</string>
-    <string name="title_activity_buyer_profile">BuyerProfile</string>
+    <string name="title_activity_seller_profile">SellerProfile</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
