@@ -11,11 +11,11 @@ public class Seller {
 
     public Seller(){}
 
-    public Seller(Buyer buyer){
-        this.name = buyer.getName();
-        this.description = buyer.getDescription();
-        this.price = buyer.getPrice();
-        this.rating = buyer.getRating();
+    public Seller(Ad ad){
+        this.name = ad.getName();
+        this.description = ad.getDescription();
+        this.price = ad.getPrice();
+        this.rating = ad.getRating();
     }
 
     public ArrayList<Seller> add6Seller(){

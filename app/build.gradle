@@ -152,6 +152,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.jakewharton.timber:timber:4.1.0'
     compile 'com.android.support:support-v4:23.3.0'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
 }
 
 // Log out test results to console

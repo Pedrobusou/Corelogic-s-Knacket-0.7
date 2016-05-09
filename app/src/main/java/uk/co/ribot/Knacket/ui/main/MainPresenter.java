@@ -10,7 +10,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 import uk.co.ribot.Knacket.data.DataManager;
-import uk.co.ribot.Knacket.data.model.Buyer;
+import uk.co.ribot.Knacket.data.model.Ad;
 import uk.co.ribot.Knacket.ui.base.BasePresenter;
 
 public class MainPresenter extends BasePresenter<MainMvpView> {
@@ -39,7 +39,7 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
         mSubscription = mDataManager.getBuyers()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<List<Buyer>>() {
+                .subscribe(new Subscriber<List<Ad>>() {
                     @Override
                     public void onCompleted() {
                     }
@@ -51,11 +51,11 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
                     }
 
                     @Override
-                    public void onNext(List<Buyer> buyers) {
-                        if (buyers.isEmpty()) {
+                    public void onNext(List<Ad> ads) {
+                        if (ads.isEmpty()) {
                             getMvpView().showBuyersEmpty();
                         } else {
-                            getMvpView().showBuyers(buyers);
+                            getMvpView().showBuyers(ads);
                         }
                     }
                 });

@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.data.model.Seller;
-import uk.co.ribot.Knacket.ui.main.SellersAdapter;
+import uk.co.ribot.Knacket.ui.adapter.SellersAdapter;
 
 public class SellerList extends Fragment {
 

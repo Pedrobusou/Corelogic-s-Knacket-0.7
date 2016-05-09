@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.main.AdInfo"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="393dp"
+        android:id="@+id/scrollView2"
+        android:background="#E6E6E6">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_white_background"
+                android:layout_marginBottom="15dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:mipmap/sym_def_app_icon"
+                    android:layout_margin="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="testing@test.com"
+                    android:id="@+id/textView17"
+                    android:layout_gravity="center_vertical" />
+
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText4"
+                android:background="@drawable/border_white_background"
+                android:padding="15dp"
+                android:hint="Name"
+                android:maxLines="1" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText3"
+                android:background="#FFFFFF"
+                android:padding="15dp"
+                android:hint="E-mail"
+                android:maxLines="1"
+                android:layout_marginBottom="15dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:maxLength="300"
+                android:ems="10"
+                android:padding="15dp"
+                android:background="@drawable/border_white_background"
+                android:hint="About me"
+                android:id="@+id/etAboutMe"
+                android:layout_marginBottom="15dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText5"
+                android:background="@drawable/border_white_background"
+                android:padding="15dp"
+                android:hint="Adress"
+                android:maxLines="1"
+                android:layout_marginBottom="15dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText6"
+                android:background="@drawable/border_white_background"
+                android:padding="15dp"
+                android:hint="Credit card"
+                android:maxLines="1" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText7"
+                android:background="#FFFFFF"
+                android:padding="15dp"
+                android:hint="Bank account"
+                android:maxLines="1"
+                android:layout_marginBottom="15dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:padding="10dp"
+                android:background="@drawable/border_white_background"
+                android:id="@+id/rl">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="Change pic"
+                    android:id="@+id/btnChangePic"
+                    android:textColor="#FFFFFF"
+                    android:background="?attr/colorPrimary"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="Change vid"
+                    android:id="@+id/btnChangeVid"
+                    android:textColor="#FFFFFF"
+                    android:background="?attr/colorPrimary"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <fragment
+        android:name="uk.co.ribot.Knacket.ui.fragment.FragmentNavigationButtons"
+        android:id="@+id/fragmentNav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_navigation_buttons" />
+</LinearLayout>

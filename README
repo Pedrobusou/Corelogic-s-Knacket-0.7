@@ -1,0 +1,23 @@
+Creating basic UI.
+
+Done:
+Tabbed main activity
+Fragment navigation buttons
+Filter menu design (seekbar ready)
+Implementing filter menu (as custom navigation view)
+Improving code, filter menu design & functionality
+Fixed small issues
+Buyers list design completed (must implement)
+Dagger added to the proyect.
+Butterknife updated to 8.0.1
+Buyer List
+Butterknife downgraded to 7.0.1 due to problems
+Improve NavButtons
+Created seller profile interface
+Sellers list
+Created buyer profile and ad information interface
+
+Working on:
+Send Request
+Your own profile
+Change title of the activity depending on the current tab.

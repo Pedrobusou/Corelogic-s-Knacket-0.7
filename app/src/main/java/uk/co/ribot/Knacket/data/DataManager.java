@@ -10,7 +10,7 @@ import rx.functions.Action0;
 import rx.functions.Func1;
 import uk.co.ribot.Knacket.data.local.DatabaseHelper;
 import uk.co.ribot.Knacket.data.local.PreferencesHelper;
-import uk.co.ribot.Knacket.data.model.Buyer;
+import uk.co.ribot.Knacket.data.model.Ad;
 import uk.co.ribot.Knacket.data.remote.BuyersService;
 import uk.co.ribot.Knacket.util.EventPosterHelper;
 
@@ -35,17 +35,17 @@ public class DataManager {
         return mPreferencesHelper;
     }
 
-    public Observable<Buyer> syncBuyers() {
+    public Observable<Ad> syncBuyers() {
         return mBuyersService.getBuyers()
-                .concatMap(new Func1<List <Buyer>, Observable<Buyer>>() {
+                .concatMap(new Func1<List <Ad>, Observable<Ad>>() {
                     @Override
-                    public Observable<Buyer> call(List<Buyer> buyers) {
-                        return mDatabaseHelper.setBuyers(buyers);
+                    public Observable<Ad> call(List<Ad> ads) {
+                        return mDatabaseHelper.setBuyers(ads);
                     }
                 });
     }
 
-    public Observable<List<Buyer>> getBuyers() {
+    public Observable<List<Ad>> getBuyers() {
         return mDatabaseHelper.getBuyers().distinct();
     }
 

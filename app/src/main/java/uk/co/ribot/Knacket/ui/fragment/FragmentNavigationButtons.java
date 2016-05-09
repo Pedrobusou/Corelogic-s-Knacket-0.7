@@ -15,6 +15,7 @@ import uk.co.ribot.Knacket.ui.main.MainActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.ribot.Knacket.ui.main.MyProfile;
 
 public class FragmentNavigationButtons extends Fragment {
     private OnFragmentInteractionListener mListener;
@@ -55,7 +56,11 @@ public class FragmentNavigationButtons extends Fragment {
     }
 
     @OnClick(R.id.btnProfile) void clickProfile(){
-        Toast.makeText(getContext(), "Work in progress", Toast.LENGTH_SHORT).show();
+        if(!getActivity().getLocalClassName().contains("MyProfile")){
+            intent = new Intent(getContext(), MyProfile.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
     }
 
     @Override

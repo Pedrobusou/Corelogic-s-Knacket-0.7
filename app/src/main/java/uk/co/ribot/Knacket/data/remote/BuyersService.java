@@ -10,14 +10,14 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.http.GET;
 import rx.Observable;
-import uk.co.ribot.Knacket.data.model.Buyer;
+import uk.co.ribot.Knacket.data.model.Ad;
 
 public interface BuyersService {
 
     String ENDPOINT = "https://api.ribot.io/";
 
     @GET("ribots")
-    Observable<List<Buyer>> getBuyers();
+    Observable<List<Ad>> getBuyers();
 
     /******** Helper class that sets up a new services *******/
     class Creator {

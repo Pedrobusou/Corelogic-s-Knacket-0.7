@@ -1,6 +1,7 @@
 package uk.co.ribot.Knacket.ui.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -11,7 +12,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -64,7 +64,8 @@ public class SellerProfile extends AppCompatActivity implements FragmentNavigati
     }
 
     @OnClick(R.id.btnSendRequest) void sendRequest(){
-        Toast.makeText(this, "Work in progress", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Request.class);
+        startActivity(intent);
     }
 
     @Override

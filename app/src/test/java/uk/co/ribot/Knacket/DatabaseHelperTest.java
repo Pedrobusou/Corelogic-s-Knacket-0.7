@@ -16,8 +16,7 @@ import rx.observers.TestSubscriber;
 import uk.co.ribot.Knacket.data.local.DatabaseHelper;
 import uk.co.ribot.Knacket.data.local.Db;
 import uk.co.ribot.Knacket.data.local.DbOpenHelper;
-import uk.co.ribot.Knacket.data.model.Buyer;
-import uk.co.ribot.Knacket.data.model.Ribot;
+import uk.co.ribot.Knacket.data.model.Ad;
 import uk.co.ribot.Knacket.test.common.TestDataFactory;
 import uk.co.ribot.Knacket.util.DefaultConfig;
 
@@ -40,35 +39,35 @@ public class DatabaseHelperTest {
 
     @Test
     public void setRibots() {
-        Buyer buyer1 = TestDataFactory.makeBuyer();
-        Buyer buyer2 = TestDataFactory.makeBuyer();
-        List<Buyer> buyers = Arrays.asList(buyer1, buyer2);
+        Ad ad1 = TestDataFactory.makeBuyer();
+        Ad ad2 = TestDataFactory.makeBuyer();
+        List<Ad> ads = Arrays.asList(ad1, ad2);
 
-        TestSubscriber<Buyer> result = new TestSubscriber<>();
-        mDatabaseHelper.setBuyers(buyers).subscribe(result);
+        TestSubscriber<Ad> result = new TestSubscriber<>();
+        mDatabaseHelper.setBuyers(ads).subscribe(result);
         result.assertNoErrors();
-        result.assertReceivedOnNext(buyers);
+        result.assertReceivedOnNext(ads);
 
         Cursor cursor = mDatabaseHelper.getBriteDb()
                 .query("SELECT * FROM " + Db.BuyerTable.TABLE_NAME);
         assertEquals(2, cursor.getCount());
-        for (Buyer buyer : buyers) {
+        for (Ad ad : ads) {
             cursor.moveToNext();
-            assertEquals(buyer, Db.BuyerTable.parseCursor(cursor));
+            assertEquals(ad, Db.BuyerTable.parseCursor(cursor));
         }
     }
 
     @Test
     public void getRibots() {
-        Buyer buyer1 = TestDataFactory.makeBuyer();
-        Buyer buyer2 = TestDataFactory.makeBuyer();
-        List<Buyer> buyers = Arrays.asList(buyer1, buyer2);
+        Ad ad1 = TestDataFactory.makeBuyer();
+        Ad ad2 = TestDataFactory.makeBuyer();
+        List<Ad> ads = Arrays.asList(ad1, ad2);
 
-        mDatabaseHelper.setBuyers(buyers).subscribe();
+        mDatabaseHelper.setBuyers(ads).subscribe();
 
-        TestSubscriber<List<Buyer>> result = new TestSubscriber<>();
+        TestSubscriber<List<Ad>> result = new TestSubscriber<>();
         mDatabaseHelper.getBuyers().subscribe(result);
         result.assertNoErrors();
-        result.assertValue(buyers);
+        result.assertValue(ads);
     }
 }

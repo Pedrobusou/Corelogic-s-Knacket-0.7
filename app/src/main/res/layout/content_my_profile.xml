@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.main.MyProfile"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="393dp"
+        android:id="@+id/scrollView2"
+        android:background="#E6E6E6">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/containerHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+                <com.viewpagerindicator.CirclePageIndicator
+                    android:id="@+id/pageIndicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="96dp"
+                    app:fillColor="#73000000"
+                    app:pageColor="#736E6E6E"
+                    app:strokeColor="#736E6E6E"
+                    app:radius="5dp" />
+
+            </android.support.design.widget.CoordinatorLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="#FFFFFF">
+
+                <include
+                    layout="@layout/fragment_profile_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/border_white_background"
+                app:tabTextAppearance="@style/Customtab2"
+                app:tabSelectedTextColor="#000000"
+                app:tabTextColor="#ff5a595b" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/containerFooter"
+                android:layout_margin="20dp"
+                android:padding="20dp"
+                android:background="@drawable/border_white_background"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <fragment
+        android:name="uk.co.ribot.Knacket.ui.fragment.FragmentNavigationButtons"
+        android:id="@+id/fragmentNav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_navigation_buttons" />
+</LinearLayout>

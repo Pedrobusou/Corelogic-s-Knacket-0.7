@@ -3,7 +3,7 @@ package uk.co.ribot.Knacket.data.local;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import uk.co.ribot.Knacket.data.model.Buyer;
+import uk.co.ribot.Knacket.data.model.Ad;
 
 public class Db {
 
@@ -31,26 +31,26 @@ public class Db {
                         COLUMN_RATING + " TEXT" +
                 " ); ";
 
-        public static ContentValues toContentValues(Buyer buyer) {
+        public static ContentValues toContentValues(Ad ad) {
             ContentValues values = new ContentValues();
-            values.put(COLUMN_NAME, buyer.getName());
-            values.put(COLUMN_CATEGORY, buyer.getCategory());
-            values.put(COLUMN_DATE, buyer.getDate());
-            values.put(COLUMN_DESC, buyer.getDescription());
-            values.put(COLUMN_PRICE, buyer.getPrice());
-            values.put(COLUMN_RATING, buyer.getRating());
+            values.put(COLUMN_NAME, ad.getName());
+            values.put(COLUMN_CATEGORY, ad.getCategory());
+            values.put(COLUMN_DATE, ad.getDate());
+            values.put(COLUMN_DESC, ad.getDescription());
+            values.put(COLUMN_PRICE, ad.getPrice());
+            values.put(COLUMN_RATING, ad.getRating());
             return values;
         }
 
-        public static Buyer parseCursor(Cursor cursor) {
-            Buyer buyer = new Buyer();
-            buyer.setName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)));
-            buyer.setCategory(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CATEGORY)));
-            buyer.setDate(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE)));
-            buyer.setDescription(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DESC)));
-            buyer.setPrice(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PRICE)));
-            buyer.setRating(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_RATING)));
-            return buyer;
+        public static Ad parseCursor(Cursor cursor) {
+            Ad ad = new Ad();
+            ad.setName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)));
+            ad.setCategory(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CATEGORY)));
+            ad.setDate(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE)));
+            ad.setDescription(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DESC)));
+            ad.setPrice(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PRICE)));
+            ad.setRating(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_RATING)));
+            return ad;
         }
     }
 }

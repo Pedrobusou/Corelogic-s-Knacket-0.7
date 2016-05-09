@@ -2,7 +2,6 @@ package uk.co.ribot.Knacket;
 
 import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
-import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -15,15 +14,11 @@ import org.junit.runner.RunWith;
 import java.util.List;
 
 import rx.Observable;
-import uk.co.ribot.Knacket.data.model.Buyer;
-import uk.co.ribot.Knacket.data.model.Ribot;
+import uk.co.ribot.Knacket.data.model.Ad;
 import uk.co.ribot.Knacket.test.common.TestDataFactory;
 import uk.co.ribot.Knacket.test.common.rules.TestComponentRule;
 import uk.co.ribot.Knacket.ui.main.MainActivity;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.mockito.Mockito.when;
@@ -52,13 +47,13 @@ public class MainActivityTest {
 
     @Test
     public void listOfBuyersShows() {
-        List<Buyer> testDataBuyers = TestDataFactory.makeListBuyers(20);
-        when(component.getMockDataManager().getBuyers()).thenReturn(Observable.just(testDataBuyers));
+        List<Ad> testDataAds = TestDataFactory.makeListBuyers(20);
+        when(component.getMockDataManager().getBuyers()).thenReturn(Observable.just(testDataAds));
 
         main.launchActivity(null);
 
         int position = 0;
-        /*for (Buyer buyer : testDataBuyers) {
+        /*for (Ad buyer : testDataAds) {
             onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(position));
 
             String name = buyer.getName();

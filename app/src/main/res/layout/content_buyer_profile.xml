@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.main.SellerProfile"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="393dp"
+        android:id="@+id/scrollView2"
+        android:background="#E6E6E6">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/containerHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+                <com.viewpagerindicator.CirclePageIndicator
+                    android:id="@+id/pageIndicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="96dp"
+                    app:fillColor="#73000000"
+                    app:pageColor="#736E6E6E"
+                    app:strokeColor="#736E6E6E"
+                    app:radius="5dp" />
+
+            </android.support.design.widget.CoordinatorLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="#FFFFFF">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:id="@+id/imageView3"
+                        android:src="@drawable/ic_location_on_white_48dp"
+                        android:tint="#736E6E6E"
+                        android:layout_gravity="center_vertical"
+                        android:adjustViewBounds="false"
+                        android:contentDescription="asdas" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editText3"
+                        android:enabled="false"
+                        android:text="Example location"
+                        android:textColor="#6E6E6E"
+                        android:textSize="15sp"
+                        android:inputType="text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:id="@+id/imageView2"
+                        android:src="@drawable/ic_star_border_white_48dp"
+                        android:tint="#736E6E6E"
+                        android:layout_gravity="center_vertical"
+                        android:contentDescription="asdasd" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editText2"
+                        android:enabled="false"
+                        android:text="Example rating"
+                        android:textColor="#6E6E6E"
+                        android:gravity="center_vertical"
+                        android:textSize="15sp"
+                        android:inputType="text" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Profile desc."
+                    android:id="@+id/textView3"
+                    android:maxLines="3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description "
+                    android:id="@+id/textView2"
+                    android:maxLines="3"
+                    android:lineSpacingExtra="5dp"
+                    android:ellipsize="end"
+                    android:layout_marginBottom="10dp" />
+
+            </LinearLayout>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:tabTextAppearance="@style/Customtab"
+                android:background="@drawable/border_white_background"
+                app:tabSelectedTextColor="#000000"
+                app:tabTextColor="#ff5a595b" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/containerFooter"
+                android:layout_margin="20dp"
+                android:padding="20dp"
+                android:background="@drawable/border_white_background"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <fragment
+        android:name="uk.co.ribot.Knacket.ui.fragment.FragmentNavigationButtons"
+        android:id="@+id/fragmentNav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_navigation_buttons" />
+</LinearLayout>

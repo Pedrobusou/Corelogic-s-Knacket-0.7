@@ -27,7 +27,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.data.SyncService;
-import uk.co.ribot.Knacket.data.model.Buyer;
+import uk.co.ribot.Knacket.data.model.Ad;
+import uk.co.ribot.Knacket.ui.adapter.AdAdapter;
 import uk.co.ribot.Knacket.ui.base.BaseActivity;
 import uk.co.ribot.Knacket.ui.fragment.BuyerList;
 import uk.co.ribot.Knacket.ui.fragment.FragmentFilter;
@@ -41,7 +42,8 @@ public class MainActivity extends BaseActivity implements MainMvpView, FragmentN
             "uk.co.ribot.androidboilerplate.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
 
     @Inject MainPresenter mMainPresenter;
-    @Inject BuyersAdapter mBuyersAdapter;
+    @Inject
+    AdAdapter mAdAdapter;
 
     @Bind(R.id.container) ViewPager mViewPager;
     @Bind(R.id.toolbar) Toolbar toolbar;
@@ -49,7 +51,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, FragmentN
     @Bind(R.id.drawer_layout) DrawerLayout drawer;
     @Bind(R.id.toolbar_title) TextView toolbar_title;
 
-    public String[] titles = {"Buyers", "Sellers"};
+    public String[] titles = {"Ads", "Sellers"};
 
     /**
      * Return an Intent to start this Activity.
@@ -103,7 +105,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, FragmentN
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds FILTER ICON, which pops up FILTER MENU (navigationDrawer).
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_filter, menu);
         return true;
     }
 
@@ -122,9 +124,9 @@ public class MainActivity extends BaseActivity implements MainMvpView, FragmentN
     /***** MVP View methods implementation *****/
 
     @Override
-    public void showBuyers(List<Buyer> buyers) {
-        mBuyersAdapter.setBuyers(buyers);
-        mBuyersAdapter.notifyDataSetChanged();
+    public void showBuyers(List<Ad> ads) {
+        mAdAdapter.setBuyers(ads);
+        mAdAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -134,8 +136,8 @@ public class MainActivity extends BaseActivity implements MainMvpView, FragmentN
 
     @Override
     public void showBuyersEmpty() {
-        mBuyersAdapter.setBuyers(Collections.<Buyer>emptyList());
-        mBuyersAdapter.notifyDataSetChanged();
+        mAdAdapter.setBuyers(Collections.<Ad>emptyList());
+        mAdAdapter.notifyDataSetChanged();
         Toast.makeText(this, R.string.empty_buyers, Toast.LENGTH_LONG).show();
     }
 
@@ -143,7 +145,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, FragmentN
     public void onFragmentInteraction(Uri uri) {}
 
     public class TabsAdapter extends FragmentPagerAdapter {
-        String[] tabTitles = new String[] { "Buyers", "Sellers"};
+        String[] tabTitles = new String[] { "Ads", "Sellers"};
         Context context;
 
         public TabsAdapter(FragmentManager fm, Context context) {

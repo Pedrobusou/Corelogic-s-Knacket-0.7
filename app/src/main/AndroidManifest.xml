@@ -34,6 +34,34 @@
         <activity
             android:name=".ui.main.SellerProfile"
             android:label="@string/title_activity_seller_profile"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.main.AdInfo"
+            android:label="@string/title_activity_ad_info"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.main.BuyerProfile"
+            android:label="@string/title_activity_buyer_profile"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.main.Request"
+            android:label="@string/title_activity_request"
+            android:theme="@style/AppTheme" />
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".ui.main.MyProfile"
+            android:label="@string/title_activity_my_profile"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.main.EditProfile"
+            android:label="@string/title_activity_edit_profile"
             android:theme="@style/AppTheme"></activity>
     </application>
 

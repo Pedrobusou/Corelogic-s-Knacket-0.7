@@ -13,7 +13,7 @@ import java.util.List;
 
 import rx.Observable;
 import uk.co.ribot.Knacket.data.DataManager;
-import uk.co.ribot.Knacket.data.model.Buyer;
+import uk.co.ribot.Knacket.data.model.Ad;
 import uk.co.ribot.Knacket.test.common.TestDataFactory;
 import uk.co.ribot.Knacket.ui.main.MainMvpView;
 import uk.co.ribot.Knacket.ui.main.MainPresenter;
@@ -47,13 +47,13 @@ public class MainPresenterTest {
 
     @Test
     public void loadRibotsReturnsRibots() {
-        List<Buyer> buyers = TestDataFactory.makeListBuyers(10);
-        doReturn(Observable.just(buyers))
+        List<Ad> ads = TestDataFactory.makeListBuyers(10);
+        doReturn(Observable.just(ads))
                 .when(mMockDataManager)
                 .getBuyers();
 
         mMainPresenter.loadBuyers();
-        verify(mMockMainMvpView).showBuyers(buyers);
+        verify(mMockMainMvpView).showBuyers(ads);
         verify(mMockMainMvpView, never()).showBuyersEmpty();
         verify(mMockMainMvpView, never()).showError();
     }
@@ -66,7 +66,7 @@ public class MainPresenterTest {
 
         mMainPresenter.loadBuyers();
         verify(mMockMainMvpView).showBuyersEmpty();
-        verify(mMockMainMvpView, never()).showBuyers(anyListOf(Buyer.class));
+        verify(mMockMainMvpView, never()).showBuyers(anyListOf(Ad.class));
         verify(mMockMainMvpView, never()).showError();
     }
 
@@ -79,6 +79,6 @@ public class MainPresenterTest {
         mMainPresenter.loadBuyers();
         verify(mMockMainMvpView).showError();
         verify(mMockMainMvpView, never()).showBuyersEmpty();
-        verify(mMockMainMvpView, never()).showBuyers(anyListOf(Buyer.class));
+        verify(mMockMainMvpView, never()).showBuyers(anyListOf(Ad.class));
     }
 }

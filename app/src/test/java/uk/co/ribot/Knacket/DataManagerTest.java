@@ -14,7 +14,7 @@ import rx.observers.TestSubscriber;
 import uk.co.ribot.Knacket.data.DataManager;
 import uk.co.ribot.Knacket.data.local.DatabaseHelper;
 import uk.co.ribot.Knacket.data.local.PreferencesHelper;
-import uk.co.ribot.Knacket.data.model.Buyer;
+import uk.co.ribot.Knacket.data.model.Ad;
 import uk.co.ribot.Knacket.data.remote.BuyersService;
 import uk.co.ribot.Knacket.test.common.TestDataFactory;
 import uk.co.ribot.Knacket.util.EventPosterHelper;
@@ -50,44 +50,44 @@ public class DataManagerTest {
 
     @Test
     public void syncBuyersEmitsValues() {
-        List<Buyer> buyers = Arrays.asList(TestDataFactory.makeBuyer(),
+        List<Ad> ads = Arrays.asList(TestDataFactory.makeBuyer(),
                 TestDataFactory.makeBuyer());
-        stubSyncBuyersHelperCalls(buyers);
+        stubSyncBuyersHelperCalls(ads);
 
-        TestSubscriber<Buyer> result = new TestSubscriber<>();
+        TestSubscriber<Ad> result = new TestSubscriber<>();
         mDataManager.syncBuyers().subscribe(result);
         result.assertNoErrors();
-        result.assertReceivedOnNext(buyers);
+        result.assertReceivedOnNext(ads);
     }
 
     @Test
     public void syncBuyersCallsApiAndDatabase() {
-        List<Buyer> buyers = Arrays.asList(TestDataFactory.makeBuyer(),
+        List<Ad> ads = Arrays.asList(TestDataFactory.makeBuyer(),
                 TestDataFactory.makeBuyer());
-        stubSyncBuyersHelperCalls(buyers);
+        stubSyncBuyersHelperCalls(ads);
 
         mDataManager.syncBuyers().subscribe();
         // Verify right calls to helper methods
         verify(mMockBuyersService).getBuyers();
-        verify(mMockDatabaseHelper).setBuyers(buyers);
+        verify(mMockDatabaseHelper).setBuyers(ads);
     }
 
     @Test
     public void syncBuyersDoesNotCallDatabaseWhenApiFails() {
         when(mMockBuyersService.getBuyers())
-                .thenReturn(Observable.<List<Buyer>>error(new RuntimeException()));
+                .thenReturn(Observable.<List<Ad>>error(new RuntimeException()));
 
-        mDataManager.syncBuyers().subscribe(new TestSubscriber<Buyer>());
+        mDataManager.syncBuyers().subscribe(new TestSubscriber<Ad>());
         // Verify right calls to helper methods
         verify(mMockBuyersService).getBuyers();
-        verify(mMockDatabaseHelper, never()).setBuyers(anyListOf(Buyer.class));
+        verify(mMockDatabaseHelper, never()).setBuyers(anyListOf(Ad.class));
     }
 
-    private void stubSyncBuyersHelperCalls(List<Buyer> buyers) {
+    private void stubSyncBuyersHelperCalls(List<Ad> ads) {
         // Stub calls to the ribot service and database helper.
         when(mMockBuyersService.getBuyers())
-                .thenReturn(Observable.just(buyers));
-        when(mMockDatabaseHelper.setBuyers(buyers))
-                .thenReturn(Observable.from(buyers));
+                .thenReturn(Observable.just(ads));
+        when(mMockDatabaseHelper.setBuyers(ads))
+                .thenReturn(Observable.from(ads));
     }
 }

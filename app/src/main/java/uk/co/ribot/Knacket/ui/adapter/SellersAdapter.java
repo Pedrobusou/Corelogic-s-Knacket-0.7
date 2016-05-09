@@ -1,4 +1,4 @@
-package uk.co.ribot.Knacket.ui.main;
+package uk.co.ribot.Knacket.ui.adapter;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.data.model.Seller;
+import uk.co.ribot.Knacket.ui.main.SellerProfile;
 
 public class SellersAdapter extends RecyclerView.Adapter<SellersAdapter.SellerViewHolder> {
     private List<Seller> mSeller;

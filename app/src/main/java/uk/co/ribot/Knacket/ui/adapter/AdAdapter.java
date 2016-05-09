@@ -1,4 +1,4 @@
-package uk.co.ribot.Knacket.ui.main;
+package uk.co.ribot.Knacket.ui.adapter;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -18,44 +18,45 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import uk.co.ribot.Knacket.R;
-import uk.co.ribot.Knacket.data.model.Buyer;
+import uk.co.ribot.Knacket.data.model.Ad;
+import uk.co.ribot.Knacket.ui.main.AdInfo;
 
-public class BuyersAdapter extends RecyclerView.Adapter<BuyersAdapter.BuyerViewHolder> {
-    private List<Buyer> mbuyer;
+public class AdAdapter extends RecyclerView.Adapter<AdAdapter.BuyerViewHolder> {
+    private List<Ad> mbuyer;
 
     @Inject
-    public BuyersAdapter() {
+    public AdAdapter() {
         mbuyer = new ArrayList<>();
     }
 
-    public void setBuyers(List<Buyer> buyers) {
-        mbuyer = buyers;
+    public void setBuyers(List<Ad> ads) {
+        mbuyer = ads;
     }
 
     @Override
     public BuyerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_buyer, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ad, parent, false);
         return new BuyerViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(BuyerViewHolder holder, int position) {
-        Buyer buyer = mbuyer.get(position);
+        Ad ad = mbuyer.get(position);
 
-        holder.touchArea.setTag(buyer.getId());
+        holder.touchArea.setTag(ad.getId());
 
-        //holder.ivProfilePic.setImageBitmap(buyer.setProfilePic);
-        holder.tvBuyerName.setText(buyer.getName());
-        holder.tvBuyerCategory.setText(buyer.getCategory());
-        holder.tvBuyerDate.setText(buyer.getDate());
-        holder.tvBuyerDesc.setText(buyer.getDescription());
-        holder.rbBuyerRating.setProgress(buyer.getRating());
-        holder.tvBuyerPrice.setText(buyer.getPrice());
+        //holder.ivProfilePic.setImageBitmap(ad.setProfilePic);
+        holder.tvBuyerName.setText(ad.getName());
+        holder.tvBuyerCategory.setText(ad.getCategory());
+        holder.tvBuyerDate.setText(ad.getDate());
+        holder.tvBuyerDesc.setText(ad.getDescription());
+        holder.rbBuyerRating.setProgress(ad.getRating());
+        holder.tvBuyerPrice.setText(ad.getPrice());
 
         holder.touchArea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), SellerProfile.class); //TO BUYER PROFILE
+                Intent intent = new Intent(v.getContext(), AdInfo.class);
                 v.getContext().startActivity(intent);
             }
         });

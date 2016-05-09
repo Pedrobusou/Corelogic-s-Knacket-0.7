@@ -14,7 +14,7 @@ import javax.inject.Singleton;
 import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Func1;
-import uk.co.ribot.Knacket.data.model.Buyer;
+import uk.co.ribot.Knacket.data.model.Ad;
 
 @Singleton
 public class DatabaseHelper {
@@ -54,17 +54,17 @@ public class DatabaseHelper {
         });
     }
 
-    public Observable<Buyer> setBuyers(final Collection<Buyer> newBuyers) {
-        return Observable.create(new Observable.OnSubscribe<Buyer>() {
+    public Observable<Ad> setBuyers(final Collection<Ad> newAds) {
+        return Observable.create(new Observable.OnSubscribe<Ad>() {
             @Override
-            public void call(Subscriber<? super Buyer> subscriber) {
+            public void call(Subscriber<? super Ad> subscriber) {
                 if (subscriber.isUnsubscribed()) return;
                 BriteDatabase.Transaction transaction = mDb.newTransaction();
                 try {
                     mDb.delete(Db.BuyerTable.TABLE_NAME, null);
-                    for (Buyer buyer : newBuyers) { //INSERT DATA IN DATABASE
-                        //long result = mDb.insert(Db.BuyerTable.TABLE_NAME, Db.BuyerTable.toContentValues(buyer), SQLiteDatabase.CONFLICT_REPLACE);
-                        //if (result >= 0) subscriber.onNext(buyer);
+                    for (Ad ad : newAds) { //INSERT DATA IN DATABASE
+                        //long result = mDb.insert(Db.BuyerTable.TABLE_NAME, Db.BuyerTable.toContentValues(ad), SQLiteDatabase.CONFLICT_REPLACE);
+                        //if (result >= 0) subscriber.onNext(ad);
                     }
                     transaction.markSuccessful();
                     subscriber.onCompleted();
@@ -75,13 +75,13 @@ public class DatabaseHelper {
         });
     }
 
-    public Observable<List<Buyer>> getBuyers() {
+    public Observable<List<Ad>> getBuyers() {
         return mDb.createQuery(Db.BuyerTable.TABLE_NAME,
                 "SELECT * FROM " + Db.BuyerTable.TABLE_NAME)
-                .mapToList(new Func1<Cursor, Buyer>() {
+                .mapToList(new Func1<Cursor, Ad>() {
                     @Override
-                    public Buyer call(Cursor cursor) {
-                        return new Buyer(Db.BuyerTable.parseCursor(cursor));
+                    public Ad call(Cursor cursor) {
+                        return new Ad(Db.BuyerTable.parseCursor(cursor));
                     }
                 });
     }

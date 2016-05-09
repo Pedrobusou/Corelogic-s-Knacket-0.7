@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Adds"
+                android:text="Explore"
                 android:id="@+id/tvExplore"
                 android:layout_gravity="center_horizontal"
                 android:textSize="10sp" />
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Mina jobb"
+                android:text="My jobs"
                 android:id="@+id/tvJobs"
                 android:layout_gravity="center_horizontal"
                 android:textSize="10sp" />
@@ -93,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Ny annons"
+                android:text="New ad"
                 android:id="@+id/tvAdd"
                 android:layout_gravity="center_horizontal"
                 android:textSize="10sp"
@@ -150,7 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Jag"
+                android:text="My profile"
                 android:id="@+id/tvProfile"
                 android:layout_gravity="center_horizontal"
                 android:textSize="10sp" />
