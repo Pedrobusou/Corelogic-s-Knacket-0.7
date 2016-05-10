@@ -25,6 +25,7 @@ public class EditProfile extends AppCompatActivity implements FragmentNavigation
     @Bind(R.id.rlProfileVid) RelativeLayout rlProfileVid;
     @Bind(R.id.tvProfilePic) TextView tvProfilePic;
     @Bind(R.id.tvProfileVid) TextView tvProfileVid;
+    @Bind(R.id.toolbar_title) TextView toolbar_title;
     @Bind(R.id.toolbar) Toolbar toolbar;
 
     private int SELECT_IMAGE = 23748;
@@ -38,6 +39,7 @@ public class EditProfile extends AppCompatActivity implements FragmentNavigation
         setContentView(R.layout.activity_edit_profile);
         ButterKnife.bind(this);
 
+        toolbar_title.setText(R.string.title_activity_edit_profile);
         setUpContent();
 
         rlProfilePic.setOnTouchListener(new View.OnTouchListener() {

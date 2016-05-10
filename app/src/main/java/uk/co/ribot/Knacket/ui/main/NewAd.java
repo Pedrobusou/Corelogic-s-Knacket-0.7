@@ -35,6 +35,7 @@ public class NewAd extends AppCompatActivity implements FragmentNavigationButton
     @Bind(R.id.tvProfilePic) TextView tvProfilePic;
     @Bind(R.id.tvProfileVid) TextView tvProfileVid;
     @Bind(R.id.etDateTime) TextView dateTime;
+    @Bind(R.id.toolbar_title) TextView toolbar_title;
     @Bind(R.id.toolbar) Toolbar toolbar;
 
     private int SELECT_IMAGE = 23748;
@@ -50,6 +51,7 @@ public class NewAd extends AppCompatActivity implements FragmentNavigationButton
         setContentView(R.layout.activity_new_ad);
         ButterKnife.bind(this);
 
+        toolbar_title.setText(R.string.title_activity_new_ad);
         setUpContent();
 
         rlProfilePic.setOnTouchListener(new View.OnTouchListener() {

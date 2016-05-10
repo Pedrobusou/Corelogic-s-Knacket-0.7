@@ -37,21 +37,16 @@ import uk.co.ribot.Knacket.ui.fragment.SellerList;
 import uk.co.ribot.Knacket.util.DialogFactory;
 
 public class MainActivity extends BaseActivity implements MainMvpView, FragmentNavigationButtons.OnFragmentInteractionListener, FragmentFilter.OnFragmentInteractionListener {
-
-    private static final String EXTRA_TRIGGER_SYNC_FLAG =
-            "uk.co.ribot.androidboilerplate.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
+    private static final String EXTRA_TRIGGER_SYNC_FLAG = "uk.co.ribot.androidboilerplate.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
 
     @Inject MainPresenter mMainPresenter;
-    @Inject
-    AdAdapter mAdAdapter;
+    @Inject AdAdapter mAdAdapter;
 
     @Bind(R.id.container) ViewPager mViewPager;
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.tabs) TabLayout tabLayout;
     @Bind(R.id.drawer_layout) DrawerLayout drawer;
     @Bind(R.id.toolbar_title) TextView toolbar_title;
-
-    public String[] titles = {"Ads", "Sellers"};
 
     /**
      * Return an Intent to start this Activity.
@@ -88,7 +83,20 @@ public class MainActivity extends BaseActivity implements MainMvpView, FragmentN
         mViewPager.setAdapter(tabsAdapter);
         tabLayout.setupWithViewPager(mViewPager);
 
-        toolbar_title.setText(titles[mViewPager.getCurrentItem()]);
+        toolbar_title.setText("Ads");
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+                toolbar_title.setText(tab.getText());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
     }
 
     @OnClick(R.id.btnDone) void doneClicked(){

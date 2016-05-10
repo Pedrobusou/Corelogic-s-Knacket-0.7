@@ -18,6 +18,7 @@ import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.ui.fragment.FragmentNavigationButtons;
 
 public class Request extends AppCompatActivity implements FragmentNavigationButtons.OnFragmentInteractionListener {
+    @Bind(R.id.toolbar_title) TextView toolbar_title;
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.etDateTime) TextView dateTime;
 
@@ -28,6 +29,7 @@ public class Request extends AppCompatActivity implements FragmentNavigationButt
         setContentView(R.layout.activity_request);
         ButterKnife.bind(this);
 
+        toolbar_title.setText(R.string.title_activity_request);
         setUpContent();
     }
 

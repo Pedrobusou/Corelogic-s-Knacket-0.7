@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 
 import butterknife.Bind;
@@ -15,14 +16,16 @@ import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.ui.fragment.FragmentNavigationButtons;
 
 public class AdInfo extends AppCompatActivity implements FragmentNavigationButtons.OnFragmentInteractionListener{
+    @Bind(R.id.toolbar_title) TextView toolbar_title;
     @Bind(R.id.toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ad);
+        setContentView(R.layout.activity_ad_info);
         ButterKnife.bind(this);
 
+        toolbar_title.setText(R.string.title_activity_ad_info);
         setUpContent();
     }
 

@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -27,6 +28,7 @@ public class BuyerProfile extends AppCompatActivity implements FragmentNavigatio
     @Bind(R.id.containerHeader) ViewPager headerView;
     @Bind(R.id.containerFooter) ViewPager footerView;
     @Bind(R.id.tabs) TabLayout tabLayout;
+    @Bind(R.id.toolbar_title) TextView toolbar_title;
     @Bind(R.id.toolbar) Toolbar toolbar;
 
     @Override
@@ -35,6 +37,7 @@ public class BuyerProfile extends AppCompatActivity implements FragmentNavigatio
         setContentView(R.layout.activity_buyer_profile);
         ButterKnife.bind(this);
 
+        toolbar_title.setText(R.string.title_activity_buyer_profile);
         setUpContent();
     }
 

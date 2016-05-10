@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -29,6 +30,7 @@ public class MyProfile extends AppCompatActivity implements FragmentNavigationBu
     @Bind(R.id.containerHeader) ViewPager headerView;
     @Bind(R.id.containerFooter) ViewPager footerView;
     @Bind(R.id.tabs) TabLayout tabLayout;
+    @Bind(R.id.toolbar_title) TextView toolbar_title;
     @Bind(R.id.toolbar) Toolbar toolbar;
 
     @Override
@@ -37,6 +39,7 @@ public class MyProfile extends AppCompatActivity implements FragmentNavigationBu
         setContentView(R.layout.activity_my_profile);
         ButterKnife.bind(this);
 
+        toolbar_title.setText(R.string.title_activity_my_profile);
         setUpContent();
     }
 
