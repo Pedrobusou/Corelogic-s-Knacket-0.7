@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.main.AdInfo"
+    tools:context=".ui.main.NewAd"
     android:orientation="vertical">
 
     <ScrollView
@@ -19,47 +19,35 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:orientation="horizontal"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_white_background"
-                android:layout_marginBottom="15dp">
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="CATEGORY"
+                android:id="@+id/textView11"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/border"
+                android:padding="5dp"/>
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF">
+                <Spinner
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@android:mipmap/sym_def_app_icon"
-                    android:layout_margin="10dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="testing@test.com"
-                    android:id="@+id/textView17"
-                    android:layout_gravity="center_vertical" />
-
+                    android:id="@+id/spinnerCategory" />
             </LinearLayout>
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText4"
-                android:background="@drawable/border_white_background"
-                android:padding="15dp"
-                android:hint="Name"
-                android:maxLines="1" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText3"
-                android:background="#FFFFFF"
-                android:padding="15dp"
-                android:hint="E-mail"
-                android:maxLines="1"
-                android:layout_marginBottom="15dp" />
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="DESCRIPTION"
+                android:id="@+id/textView12"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/border"
+                android:padding="5dp" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -68,53 +56,112 @@
                 android:maxLength="300"
                 android:ems="10"
                 android:padding="15dp"
-                android:background="@drawable/border_white_background"
-                android:hint="About me"
-                android:id="@+id/etAboutMe"
-                android:layout_marginBottom="15dp" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText5"
-                android:background="@drawable/border_white_background"
-                android:padding="15dp"
-                android:hint="Adress"
-                android:maxLines="1"
-                android:layout_marginBottom="15dp" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText6"
-                android:background="@drawable/border_white_background"
-                android:padding="15dp"
-                android:hint="Credit card"
-                android:maxLines="1" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText7"
                 android:background="#FFFFFF"
-                android:padding="15dp"
-                android:hint="Bank account"
-                android:maxLines="1"
-                android:layout_marginBottom="15dp" />
+                android:hint="Max 300 chars"
+                android:id="@+id/etMessage" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="DATE"
+                android:id="@+id/textView13"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/border"
+                android:padding="5dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/border_white_background"
-                android:id="@+id/rlProfilePic"
-                android:focusableInTouchMode="true"
-                android:layout_marginBottom="15dp">
+                android:background="#FFFFFF"
+                android:id="@+id/rlDateTime"
+                android:focusableInTouchMode="true">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Select new profile pic"
+                    android:text="DateTime"
+                    android:id="@+id/etDateTime"
+                    android:padding="15dp"
+                    android:textSize="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView5"
+                    android:tint="#736E6E6E"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_expand_more_white_48dp"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="ADRESS"
+                android:id="@+id/textView14"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/border"
+                android:padding="5dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:maxLength="300"
+                android:ems="10"
+                android:padding="15dp"
+                android:background="#FFFFFF"
+                android:hint="Max 300 chars"
+                android:id="@+id/etAdress" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="PRICE"
+                android:id="@+id/textView15"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/border"
+                android:padding="5dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:background="#FFFFFF"
+                android:hint="Max 300 chars"
+                android:maxLines="1"
+                android:id="@+id/etPrice" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="PROFILE PIC"
+                android:id="@+id/textView16"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/border"
+                android:padding="5dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:id="@+id/rlProfilePic"
+                android:focusableInTouchMode="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Select profile pic"
                     android:id="@+id/tvProfilePic"
                     android:padding="15dp"
                     android:textSize="20dp"
@@ -133,10 +180,20 @@
                     android:layout_alignParentRight="true" />
             </RelativeLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="PROFILE PIC"
+                android:id="@+id/textView17"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/border"
+                android:padding="5dp" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/border_white_background"
+                android:background="#FFFFFF"
                 android:id="@+id/rlProfileVid"
                 android:focusableInTouchMode="true">
 
@@ -144,7 +201,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Select new profile vid"
+                    android:text="Select profile vid"
                     android:id="@+id/tvProfileVid"
                     android:padding="15dp"
                     android:textSize="20dp"

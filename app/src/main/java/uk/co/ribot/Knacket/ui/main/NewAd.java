@@ -11,31 +11,43 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+import butterknife.OnItemSelected;
 import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.ui.fragment.FragmentNavigationButtons;
 
-public class EditProfile extends AppCompatActivity implements FragmentNavigationButtons.OnFragmentInteractionListener {
+public class NewAd extends AppCompatActivity implements FragmentNavigationButtons.OnFragmentInteractionListener {
+    @Bind(R.id.spinnerCategory) Spinner spinnerCategory;
+    @Bind(R.id.rlDateTime) RelativeLayout rlDateTime;
     @Bind(R.id.rlProfilePic) RelativeLayout rlProfilePic;
     @Bind(R.id.rlProfileVid) RelativeLayout rlProfileVid;
     @Bind(R.id.tvProfilePic) TextView tvProfilePic;
     @Bind(R.id.tvProfileVid) TextView tvProfileVid;
+    @Bind(R.id.etDateTime) TextView dateTime;
     @Bind(R.id.toolbar) Toolbar toolbar;
 
     private int SELECT_IMAGE = 23748;
     private int SELECT_VIDEO = 23749;
     private int TAKE_PICTURE = 29038;
     private int TAKE_VIDEO = 29039;
+    public String category;
+    public String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+        setContentView(R.layout.activity_new_ad);
         ButterKnife.bind(this);
 
         setUpContent();
@@ -55,19 +67,49 @@ public class EditProfile extends AppCompatActivity implements FragmentNavigation
                 return false;
             }
         });
+
+        rlDateTime.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                dateTimePicker();
+                return false;
+            }
+        });
+    }
+
+    @OnItemSelected(R.id.spinnerCategory) void setCategory(){
+        category = spinnerCategory.getSelectedItem().toString();
     }
 
     public void setUpContent() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        List<String> spinnerArray = new ArrayList<String>() {{
+            add("To Get From Server");
+        }};
+
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
+        spinnerCategory.setAdapter(spinnerArrayAdapter);
+    }
+
+    public void dateTimePicker() {
+        final View dialogView = View.inflate(this, R.layout.dialog_date_time_picker, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+        dialogView.findViewById(R.id.date_time_set).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                finish();
+            public void onClick(View view) {
+
+                DatePicker datePicker = (DatePicker) dialogView.findViewById(R.id.date_picker);
+                TimePicker timePicker = (TimePicker) dialogView.findViewById(R.id.time_picker);
+
+                date = datePicker.getYear() + "-" + datePicker.getMonth() + "-" + datePicker.getDayOfMonth() + " " + timePicker.getCurrentHour() + ":" + timePicker.getCurrentMinute();
+                dateTime.setText(date);
+                alertDialog.dismiss();
             }
         });
+        alertDialog.setView(dialogView);
+        alertDialog.show();
     }
 
     public void takePic(){
@@ -156,7 +198,9 @@ public class EditProfile extends AppCompatActivity implements FragmentNavigation
                     tvProfileVid.setText(getPathVid(selectedVideo));
                     //imgPhoto.setImageURI(selectedImage);
                 }
-        } catch(Exception e){}
+        } catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     private String getPathImage(Uri uri) {

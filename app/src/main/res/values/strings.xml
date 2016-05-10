@@ -18,4 +18,5 @@
     <string name="title_activity_request">Request</string>
     <string name="title_activity_my_profile">MyProfile</string>
     <string name="title_activity_edit_profile">EditProfile</string>
+    <string name="title_activity_new_ad">NewAd</string>
 </resources>
