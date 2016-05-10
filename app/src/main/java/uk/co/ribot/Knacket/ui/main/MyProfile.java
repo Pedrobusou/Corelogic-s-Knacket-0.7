@@ -24,6 +24,7 @@ import uk.co.ribot.Knacket.ui.fragment.FragmentNavigationButtons;
 import uk.co.ribot.Knacket.ui.fragment.FragmentProfilePic;
 import uk.co.ribot.Knacket.ui.fragment.FragmentProfileVid;
 import uk.co.ribot.Knacket.ui.fragment.FragmentThingsICanDo;
+import uk.co.ribot.Knacket.ui.fragment.MyAdList;
 
 public class MyProfile extends AppCompatActivity implements FragmentNavigationButtons.OnFragmentInteractionListener, FragmentProfilePic.OnFragmentInteractionListener, FragmentProfileVid.OnFragmentInteractionListener, FragmentThingsICanDo.OnFragmentInteractionListener{
     @Bind(R.id.pageIndicator) CirclePageIndicator pageIndicator;
@@ -112,7 +113,7 @@ public class MyProfile extends AppCompatActivity implements FragmentNavigationBu
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new FragmentThingsICanDo();
+                    return new MyAdList();
                 case 1:
                     return new FragmentThingsICanDo();
                 case 2:

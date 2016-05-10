@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".BoilerplateApplication"
@@ -48,7 +48,7 @@
             android:name=".ui.main.Request"
             android:label=""
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -65,9 +65,18 @@
             android:name=".ui.main.EditProfile"
             android:label=""
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".ui.main.NewAd"
+            android:label=""
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ui.main.MyJobs"
+            android:label=""
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.main.BookingInfo"
             android:label=""
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden"/>

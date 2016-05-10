@@ -1,5 +1,8 @@
 package uk.co.ribot.Knacket.ui.adapter;
 
+/**
+ * Created by pedroramos on 10.05.16.
+ */
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -21,15 +25,15 @@ import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.data.model.Ad;
 import uk.co.ribot.Knacket.ui.main.AdInfo;
 
-public class AdAdapter extends RecyclerView.Adapter<AdAdapter.BuyerViewHolder> {
+public class MyAdAdapter extends RecyclerView.Adapter<MyAdAdapter.BuyerViewHolder> {
     private List<Ad> mAd;
 
     @Inject
-    public AdAdapter() {
+    public MyAdAdapter() {
         mAd = new ArrayList<>();
     }
 
-    public void setBuyers(List<Ad> ads) {
+    public void setAds(List<Ad> ads) {
         mAd = ads;
     }
 
@@ -45,8 +49,7 @@ public class AdAdapter extends RecyclerView.Adapter<AdAdapter.BuyerViewHolder> {
 
         holder.touchArea.setTag(ad.getId());
 
-        //holder.ivProfilePic.setImageBitmap(ad.setProfilePic);
-        holder.tvBuyerName.setText(ad.getName());
+        holder.rlProfilePic.setVisibility(View.GONE);
         holder.tvAdCategory.setText(ad.getCategory());
         holder.tvAdDate.setText(ad.getDate());
         holder.tvAdDesc.setText(ad.getDescription());
@@ -68,8 +71,7 @@ public class AdAdapter extends RecyclerView.Adapter<AdAdapter.BuyerViewHolder> {
     }
 
     class BuyerViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.ivProfilePic) CircleImageView ivProfilePic;
-        @Bind(R.id.tvBuyerName) TextView tvBuyerName;
+        @Bind(R.id.rlProfilePic) RelativeLayout rlProfilePic;
         @Bind(R.id.tvAdCategory) TextView tvAdCategory;
         @Bind(R.id.tvAdDate) TextView tvAdDate;
         @Bind(R.id.tvAdDesc) TextView tvAdDesc;

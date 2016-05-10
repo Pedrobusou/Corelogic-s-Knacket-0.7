@@ -30,7 +30,7 @@ import uk.co.ribot.Knacket.data.SyncService;
 import uk.co.ribot.Knacket.data.model.Ad;
 import uk.co.ribot.Knacket.ui.adapter.AdAdapter;
 import uk.co.ribot.Knacket.ui.base.BaseActivity;
-import uk.co.ribot.Knacket.ui.fragment.BuyerList;
+import uk.co.ribot.Knacket.ui.fragment.AdList;
 import uk.co.ribot.Knacket.ui.fragment.FragmentFilter;
 import uk.co.ribot.Knacket.ui.fragment.FragmentNavigationButtons;
 import uk.co.ribot.Knacket.ui.fragment.SellerList;
@@ -166,7 +166,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, FragmentN
 
             switch (position) {
                 case 0:
-                    return new BuyerList();
+                    return new AdList();
                 case 1:
                     return new SellerList();
             }

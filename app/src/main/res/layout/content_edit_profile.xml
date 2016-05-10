@@ -45,7 +45,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText4"
+                android:id="@+id/etName"
                 android:background="@drawable/border_white_background"
                 android:padding="15dp"
                 android:hint="Name"
@@ -54,7 +54,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText3"
+                android:id="@+id/etMail"
                 android:background="#FFFFFF"
                 android:padding="15dp"
                 android:hint="E-mail"
@@ -76,7 +76,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText5"
+                android:id="@+id/etAdress"
                 android:background="@drawable/border_white_background"
                 android:padding="15dp"
                 android:hint="Adress"
@@ -86,7 +86,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText6"
+                android:id="@+id/etCreditCard"
                 android:background="@drawable/border_white_background"
                 android:padding="15dp"
                 android:hint="Credit card"
@@ -95,10 +95,20 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText7"
+                android:id="@+id/etBankAccount"
                 android:background="#FFFFFF"
                 android:padding="15dp"
                 android:hint="Bank account"
+                android:maxLines="1"
+                android:layout_marginBottom="15dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etActivateSeller"
+                android:background="#FFFFFF"
+                android:padding="15dp"
+                android:hint="Activate as seller"
                 android:maxLines="1"
                 android:layout_marginBottom="15dp" />
 
@@ -175,7 +185,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:text="Done"
-                    android:id="@+id/btnSendRequest"
+                    android:id="@+id/btnDone"
                     android:textColor="#FFFFFF"
                     android:background="?attr/colorPrimary" />
             </LinearLayout>

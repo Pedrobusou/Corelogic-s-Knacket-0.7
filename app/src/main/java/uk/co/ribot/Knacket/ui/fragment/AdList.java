@@ -14,9 +14,9 @@ import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.data.model.Ad;
 import uk.co.ribot.Knacket.ui.adapter.AdAdapter;
 
-public class BuyerList extends Fragment {
+public class AdList extends Fragment {
 
-    public BuyerList() {}
+    public AdList() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class BuyerList extends Fragment {
         rv.setHasFixedSize(true);
 
         AdAdapter adapter = new AdAdapter();
-        adapter.setBuyers(new Ad().add3Buyers());
+        adapter.setBuyers(new Ad().add6Ads());
         rv.setAdapter(adapter);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());

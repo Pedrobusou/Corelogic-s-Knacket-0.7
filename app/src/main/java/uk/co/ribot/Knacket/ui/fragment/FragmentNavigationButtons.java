@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.Toast;
 
 import uk.co.ribot.Knacket.R;
@@ -15,6 +16,7 @@ import uk.co.ribot.Knacket.ui.main.MainActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.ribot.Knacket.ui.main.MyJobs;
 import uk.co.ribot.Knacket.ui.main.MyProfile;
 import uk.co.ribot.Knacket.ui.main.NewAd;
 
@@ -45,7 +47,11 @@ public class FragmentNavigationButtons extends Fragment {
     }
 
     @OnClick(R.id.btnJobs) void clickJobs(){
-        Toast.makeText(getContext(), "Work in progress", Toast.LENGTH_SHORT).show();
+        if(!getActivity().getLocalClassName().contains("MyJobs")){
+            intent = new Intent(getContext(), MyJobs.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
     }
 
     @OnClick(R.id.btnAdd) void clickNewAd(){

@@ -38,10 +38,10 @@ public class NewAd extends AppCompatActivity implements FragmentNavigationButton
     @Bind(R.id.toolbar_title) TextView toolbar_title;
     @Bind(R.id.toolbar) Toolbar toolbar;
 
-    private int SELECT_IMAGE = 23748;
-    private int SELECT_VIDEO = 23749;
-    private int TAKE_PICTURE = 29038;
-    private int TAKE_VIDEO = 29039;
+    private int SELECT_PICTURE = 1;
+    private int SELECT_VIDEO = 3;
+    private int TAKE_PICTURE = 2;
+    private int TAKE_VIDEO = 4;
     public String category;
     public String date;
 
@@ -126,7 +126,7 @@ public class NewAd extends AppCompatActivity implements FragmentNavigationButton
                         case 0:
                             Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                             intent.setType("image/*");
-                            startActivityForResult(intent, SELECT_IMAGE);
+                            startActivityForResult(intent, SELECT_PICTURE);
                             break;
                         case 1:
                             startActivityForResult(new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE), TAKE_PICTURE);
@@ -175,7 +175,7 @@ public class NewAd extends AppCompatActivity implements FragmentNavigationButton
         super.onActivityResult(requestCode, resultCode, data);
 
         try{
-            if (requestCode == SELECT_IMAGE)
+            if (requestCode == SELECT_PICTURE)
                 if (resultCode == Activity.RESULT_OK) {
                     Uri selectedImage = data.getData();
                     tvProfilePic.setText(getPathImage(selectedImage));

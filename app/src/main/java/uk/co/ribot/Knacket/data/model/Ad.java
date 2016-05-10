@@ -21,7 +21,7 @@ public class Ad {
         this.rating = ad.getRating();
     }
 
-    public ArrayList<Ad> add3Buyers(){
+    public ArrayList<Ad> add6Ads(){
         ArrayList<Ad> ads = new ArrayList<>();
         ads.add(new Ad("Andreas", "Hardcoded Ad", "3-mar 17:05", "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "300kr", 3));
         ads.add(new Ad("Pedro", "Hardcoded Ad", "3-mar 17:05", "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "3000kr", 10));

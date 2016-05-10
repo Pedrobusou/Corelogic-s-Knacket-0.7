@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/ContactRow">
+        android:id="@+id/BookingRow">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +27,8 @@
             android:layout_height="match_parent"
             android:paddingLeft="5dp"
             android:paddingBottom="5dp"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:id="@+id/rlProfilePic">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="wrap_content"
@@ -56,7 +57,7 @@
             android:padding="5dp">
 
             <TextView
-                android:id="@+id/tvBuyerCategory"
+                android:id="@+id/tvAdCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hundpassning"
@@ -69,13 +70,13 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="3-mar 17:05"
-                android:id="@+id/tvBuyerDate"
+                android:id="@+id/tvAdDate"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:textSize="13dp" />
 
             <TextView
-                android:id="@+id/tvBuyerDesc"
+                android:id="@+id/tvAdDesc"
                 android:textColor="#6E6E6E"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,7 +89,7 @@
             <RatingBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rbBuyerRating"
+                android:id="@+id/rbAdRating"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
                 style="@android:style/Widget.DeviceDefault.RatingBar.Small"
@@ -96,7 +97,7 @@
                 android:layout_alignParentLeft="true" />
 
             <TextView
-                android:id="@+id/tvBuyerPrice"
+                android:id="@+id/tvAdPrice"
                 android:textColor="#6E6E6E"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
