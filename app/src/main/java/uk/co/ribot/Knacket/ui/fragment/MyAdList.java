@@ -12,11 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.data.model.Ad;
-import uk.co.ribot.Knacket.ui.adapter.AdAdapter;
 import uk.co.ribot.Knacket.ui.adapter.MyAdAdapter;
 
 public class MyAdList extends Fragment {
-
     public MyAdList() {}
 
     @Override

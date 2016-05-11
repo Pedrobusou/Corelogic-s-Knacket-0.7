@@ -38,9 +38,7 @@
                     app:pageColor="#736E6E6E"
                     app:strokeColor="#736E6E6E"
                     app:radius="5dp" />
-
             </android.support.design.widget.CoordinatorLayout>
-
 
             <LinearLayout
                 android:orientation="vertical"
@@ -54,7 +52,6 @@
                     layout="@layout/fragment_profile_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-
             </LinearLayout>
 
             <android.support.design.widget.TabLayout
@@ -69,9 +66,8 @@
             <android.support.v4.view.ViewPager
                 android:id="@+id/containerFooter"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-
+                android:layout_height="475dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
         </LinearLayout>
     </ScrollView>
 
