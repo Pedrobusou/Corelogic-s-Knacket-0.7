@@ -1,4 +1,4 @@
-package uk.co.ribot.Knacket.injection;
+package uk.co.ribot.Knacket.injection.scope;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

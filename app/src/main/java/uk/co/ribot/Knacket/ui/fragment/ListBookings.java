@@ -16,9 +16,9 @@ import uk.co.ribot.Knacket.data.model.Seller;
 import uk.co.ribot.Knacket.ui.adapter.BookingsAdapter;
 import uk.co.ribot.Knacket.ui.adapter.SellersAdapter;
 
-public class BookingList extends Fragment {
+public class ListBookings extends Fragment {
 
-    public BookingList() {}
+    public ListBookings() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -14,9 +14,9 @@ import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.data.model.Ad;
 import uk.co.ribot.Knacket.ui.adapter.AdAdapter;
 
-public class AdList extends Fragment {
+public class ListAds extends Fragment {
 
-    public AdList() {}
+    public ListAds() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
