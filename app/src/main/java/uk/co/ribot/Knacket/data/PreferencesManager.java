@@ -1,16 +1,11 @@
 package uk.co.ribot.Knacket.data;
 
-/**
- * Created by pedroramos on 11.05.16.
- */
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 import javax.inject.Inject;
 
 import uk.co.ribot.Knacket.injection.scope.PerApplication;
-
 
 @PerApplication
 public class PreferencesManager {

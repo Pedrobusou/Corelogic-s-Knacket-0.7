@@ -1,6 +1,5 @@
 package uk.co.ribot.Knacket.ui.adapter;
 
-
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,7 +19,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.data.model.Booking;
 import uk.co.ribot.Knacket.ui.main.BookingInfo;
-import uk.co.ribot.Knacket.ui.main.SellerProfile;
 
 public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.BookingViewHolder> {
     private List<Booking> mBooking;

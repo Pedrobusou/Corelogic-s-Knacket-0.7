@@ -15,7 +15,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.ui.base.BaseActivity;
-import uk.co.ribot.Knacket.ui.fragment.BookingList;
+import uk.co.ribot.Knacket.ui.fragment.ListBookings;
 import uk.co.ribot.Knacket.ui.fragment.FragmentNavigationButtons;
 
 public class MyJobs extends BaseActivity implements FragmentNavigationButtons.OnFragmentInteractionListener{
@@ -33,7 +33,7 @@ public class MyJobs extends BaseActivity implements FragmentNavigationButtons.On
         setUpTabs();
     }
 
-    public void setUpTabs(){
+    private void setUpTabs(){
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -49,8 +49,8 @@ public class MyJobs extends BaseActivity implements FragmentNavigationButtons.On
     public void onFragmentInteraction(Uri uri) {}
 
     public class TabsAdapter extends FragmentPagerAdapter {
-        String[] tabTitles = new String[] {"Bookings", "Requests", "Historic"};
-        Context context;
+        final String[] tabTitles = new String[] {"Bookings", "Requests", "Historic"};
+        final Context context;
 
         public TabsAdapter(FragmentManager fm, Context context) {
             super(fm);
@@ -62,11 +62,11 @@ public class MyJobs extends BaseActivity implements FragmentNavigationButtons.On
 
             switch (position) {
                 case 0:
-                    return new BookingList();
+                    return new ListBookings();
                 case 1:
-                    return new BookingList();
+                    return new ListBookings();
                 case 2:
-                    return new BookingList();
+                    return new ListBookings();
             }
             return null;
         }

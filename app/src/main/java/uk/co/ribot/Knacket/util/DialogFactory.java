@@ -5,11 +5,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AlertDialog;
-
 import uk.co.ribot.Knacket.R;
 
 public final class DialogFactory {
-
     public static Dialog createSimpleOkErrorDialog(Context context, String title, String message) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context)
                 .setTitle(title)
@@ -49,5 +47,4 @@ public final class DialogFactory {
                                                       @StringRes int messageResource) {
         return createProgressDialog(context, context.getString(messageResource));
     }
-
 }

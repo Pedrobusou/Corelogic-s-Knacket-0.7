@@ -30,6 +30,7 @@ public class BuyerProfile extends AppCompatActivity implements FragmentNavigatio
     @Bind(R.id.tabs) TabLayout tabLayout;
     @Bind(R.id.toolbar_title) TextView toolbar_title;
     @Bind(R.id.toolbar) Toolbar toolbar;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class BuyerProfile extends AppCompatActivity implements FragmentNavigatio
         setUpContent();
     }
 
-    public void setUpContent(){
+    private void setUpContent(){
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -68,11 +69,10 @@ public class BuyerProfile extends AppCompatActivity implements FragmentNavigatio
     public void onFragmentInteraction(Uri uri) {}
 
     public class TabsAdapterHeader extends FragmentPagerAdapter {
-        Context context;
 
-        public TabsAdapterHeader(FragmentManager fm, Context context) {
+        public TabsAdapterHeader(FragmentManager fm, Context contextHeader) {
             super(fm);
-            this.context = context;
+            context = contextHeader;
         }
 
         @Override
@@ -93,12 +93,11 @@ public class BuyerProfile extends AppCompatActivity implements FragmentNavigatio
     }
 
     public class TabsAdapterFooter extends FragmentPagerAdapter {
-        String[] tabTitles = new String[] { "My ads", "Reviews"};
-        Context context;
+        final String[] tabTitles = new String[] { "My ads", "Reviews"};
 
-        public TabsAdapterFooter(FragmentManager fm, Context context) {
+        public TabsAdapterFooter(FragmentManager fm, Context contextFooter) {
             super(fm);
-            this.context = context;
+            context = contextFooter;
         }
 
         @Override

@@ -2,12 +2,10 @@ package uk.co.ribot.Knacket.data.local;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-
 import uk.co.ribot.Knacket.data.model.Ad;
 
 public class Db {
-
-    public Db() { }
+    public Db() {}
 
     public abstract static class BuyerTable {  //HAVENT WORKED THIS
         public static final String TABLE_NAME = "buyer";

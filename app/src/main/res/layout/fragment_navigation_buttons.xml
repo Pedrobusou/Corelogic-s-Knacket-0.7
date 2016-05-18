@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/llAll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/border"
@@ -24,6 +25,7 @@
             android:paddingTop="5dp">
 
             <ImageView
+                android:contentDescription="icExploreView"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/btnExplore"
@@ -52,6 +54,7 @@
             android:paddingTop="5dp">
 
             <ImageView
+                android:contentDescription="icClock"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/btnJobs"
@@ -81,6 +84,7 @@
             android:paddingTop="5dp">
 
             <ImageView
+                android:contentDescription="icPlus"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/btnAdd"
@@ -109,6 +113,7 @@
             android:paddingTop="5dp">
 
             <ImageView
+                android:contentDescription="icChat"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/btnChat"
@@ -137,6 +142,7 @@
             android:paddingTop="5dp">
 
             <ImageView
+                android:contentDescription="icMyProfile"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/btnProfile"

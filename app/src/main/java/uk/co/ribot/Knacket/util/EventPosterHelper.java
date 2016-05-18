@@ -2,9 +2,7 @@ package uk.co.ribot.Knacket.util;
 
 import android.os.Handler;
 import android.os.Looper;
-
 import com.squareup.otto.Bus;
-
 import javax.inject.Inject;
 
 /**

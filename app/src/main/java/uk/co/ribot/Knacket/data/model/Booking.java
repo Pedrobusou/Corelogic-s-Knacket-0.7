@@ -1,8 +1,5 @@
 package uk.co.ribot.Knacket.data.model;
 
-/**
- * Created by pedroramos on 10.05.16.
- */
 import java.util.ArrayList;
 
 public class Booking {
@@ -11,10 +8,10 @@ public class Booking {
 
     public Booking(){}
 
-    public Booking(Ad ad){
-        this.name = ad.getName();
-        this.date = ad.getDate();
-        this.description = ad.getDescription();
+    public Booking(Booking booking){
+        this.name = booking.getName();
+        this.date = booking.getDate();
+        this.description = booking.getDescription();
     }
 
     public ArrayList<Booking> add6Bookings(){

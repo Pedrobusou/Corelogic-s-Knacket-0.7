@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -31,7 +31,7 @@ public class BookingInfo extends AppCompatActivity implements FragmentNavigation
         setUpContent();
     }
 
-    public void setUpContent(){
+    private void setUpContent(){
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -58,6 +58,7 @@ public class BookingInfo extends AppCompatActivity implements FragmentNavigation
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Toast.makeText(this, "Work in progress", Toast.LENGTH_SHORT).show();
         /*Intent intent = new Intent(this, EditProfile.class);
         startActivity(intent);*/
         return super.onOptionsItemSelected(item);

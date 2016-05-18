@@ -43,7 +43,7 @@ public class SellerProfile extends AppCompatActivity implements FragmentNavigati
         setUpContent();
     }
 
-    public void setUpContent(){
+    private void setUpContent(){
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -75,7 +75,7 @@ public class SellerProfile extends AppCompatActivity implements FragmentNavigati
     public void onFragmentInteraction(Uri uri) {}
 
     public class TabsAdapterHeader extends FragmentPagerAdapter {
-        Context context;
+        final Context context;
 
         public TabsAdapterHeader(FragmentManager fm, Context context) {
             super(fm);
@@ -100,8 +100,8 @@ public class SellerProfile extends AppCompatActivity implements FragmentNavigati
     }
 
     public class TabsAdapterFooter extends FragmentPagerAdapter {
-        String[] tabTitles = new String[] { "ThingsICanDo", "Reviews"};
-        Context context;
+        final String[] tabTitles = new String[] { "ThingsICanDo", "Reviews"};
+        final Context context;
 
         public TabsAdapterFooter(FragmentManager fm, Context context) {
             super(fm);

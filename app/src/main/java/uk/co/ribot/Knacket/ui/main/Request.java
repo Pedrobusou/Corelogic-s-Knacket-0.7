@@ -22,7 +22,6 @@ public class Request extends AppCompatActivity implements FragmentNavigationButt
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.etDateTime) TextView dateTime;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +32,7 @@ public class Request extends AppCompatActivity implements FragmentNavigationButt
         setUpContent();
     }
 
-    public void setUpContent() {
+    private void setUpContent() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

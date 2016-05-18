@@ -1,11 +1,7 @@
 package uk.co.ribot.Knacket.data.model;
 
-
 import java.util.ArrayList;
 
-/**
- * Created by pedroramos on 28.04.16.
- */
 public class Ad {
     String name, category, date, description, price;
     int id, rating;

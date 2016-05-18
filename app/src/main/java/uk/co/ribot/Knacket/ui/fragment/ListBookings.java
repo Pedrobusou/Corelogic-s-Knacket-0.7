@@ -1,8 +1,5 @@
 package uk.co.ribot.Knacket.ui.fragment;
 
-/**
- * Created by pedroramos on 05.05.16.
- */
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,18 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.data.model.Booking;
-import uk.co.ribot.Knacket.data.model.Seller;
 import uk.co.ribot.Knacket.ui.adapter.BookingsAdapter;
-import uk.co.ribot.Knacket.ui.adapter.SellersAdapter;
 
 public class ListBookings extends Fragment {
-
     public ListBookings() {}
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

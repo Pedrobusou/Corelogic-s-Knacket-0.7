@@ -1,49 +1,54 @@
 package uk.co.ribot.Knacket.injection.module;
 
-import android.app.Application;
 import android.content.Context;
-
-import com.squareup.otto.Bus;
-
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
-import uk.co.ribot.Knacket.data.remote.BuyersService;
-import uk.co.ribot.Knacket.injection.ApplicationContext;
+import retrofit2.Retrofit;
+import uk.co.ribot.Knacket.BoilerplateApplication;
+import uk.co.ribot.Knacket.data.api.RestAdapterFactory;
+import uk.co.ribot.Knacket.data.api.RestService;
+import uk.co.ribot.Knacket.injection.scope.PerApplication;
 
 /**
  * Provide application-level dependencies.
  */
+
 @Module
 public class ApplicationModule {
-    protected final Application mApplication;
+    private final BoilerplateApplication app;
 
-    public ApplicationModule(Application application) {
-        mApplication = application;
+    public ApplicationModule(BoilerplateApplication app) {
+        this.app = app;
     }
 
     @Provides
-    Application provideApplication() {
-        return mApplication;
+    @PerApplication
+    BoilerplateApplication provideApplication() {
+        return app;
     }
 
     @Provides
-    @ApplicationContext
-    Context provideContext() {
-        return mApplication;
+    @PerApplication
+    Context provideApplicationContext() {
+        return app.getApplicationContext();
     }
 
     @Provides
-    @Singleton
-    Bus provideEventBus() {
-        return new Bus();
+    @PerApplication
+    RestService provideRestService() {
+        Retrofit retrofit = RestAdapterFactory.create(app.getApplicationContext());
+        return retrofit.create(RestService.class);
     }
 
-    @Provides
-    @Singleton
-    BuyersService provideRibotsService() {
-        return BuyersService.Creator.newRibotsService();
-    }
-
+   /* @Provides
+    @PerApplication
+    DataManager provideDataManager() {
+        DataManager dm = new DataManager(new PreferencesManager(app.getApplicationContext()), new DatabaseHelper(new DbOpenHelper(app.getApplicationContext())), new EventPosterHelper(new Bus()), new RestService() {
+            @Override
+            public Observable<RegisterRequest> register(@Body RegisterRequest request) {
+                return null;
+            }
+        });
+        return dm;
+    }*/
 }

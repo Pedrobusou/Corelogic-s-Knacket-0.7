@@ -1,8 +1,5 @@
 package uk.co.ribot.Knacket.ui.fragment;
 
-/**
- * Created by pedroramos on 05.05.16.
- */
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,11 +14,6 @@ import uk.co.ribot.Knacket.ui.adapter.AdAdapter;
 public class ListAds extends Fragment {
 
     public ListAds() {}
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

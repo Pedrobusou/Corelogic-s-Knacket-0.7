@@ -1,26 +1,29 @@
 package uk.co.ribot.Knacket.injection.component;
 
-
 import dagger.Component;
-import de.toliart.babbler.injection.module.FragmentModule;
-import de.toliart.babbler.injection.scope.PerFragment;
-import de.toliart.babbler.ui.fragment.ContactsFragment;
-import de.toliart.babbler.ui.fragment.CreateGroupFragment;
-import de.toliart.babbler.ui.fragment.GroupControlFragment;
-import de.toliart.babbler.ui.fragment.RecordingFragment;
-import de.toliart.babbler.ui.fragment.RegistrationFragment;
+import uk.co.ribot.Knacket.injection.module.FragmentModule;
+import uk.co.ribot.Knacket.injection.scope.PerFragment;
+import uk.co.ribot.Knacket.ui.fragment.*;
 
 @PerFragment
-@Component(modules = FragmentModule.class, dependencies = ActivityComponent.class)
+@Component(modules = FragmentModule.class, dependencies = ActivityComponent.class) //No NavButtons, Filter
 public interface FragmentComponent {
 
-    void inject(ContactsFragment contactsFragment);
+    void inject(ListAds listAds);
 
-    void inject(RecordingFragment recordingFragment);
+    void inject(ListMyAds listMyAds);
 
-    void inject(RegistrationFragment registrationFragment);
+    void inject(ListBookings listBookings);
 
-    void inject(GroupControlFragment groupControlFragment);
+    void inject(ListSellers listSellers);
 
-    void inject(CreateGroupFragment createGroupFragment);
+    void inject(Login login);
+
+    void inject(Register register);
+
+    void inject(FragmentProfilePic fragmentProfilePic);
+
+    void inject(FragmentProfileVid fragmentProfileVid);
+
+    void inject(FragmentThingsICanDo fragmentThingsICanDo);
 }

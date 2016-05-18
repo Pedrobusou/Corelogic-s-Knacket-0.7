@@ -1,8 +1,5 @@
 package uk.co.ribot.Knacket.ui.adapter;
 
-/**
- * Created by pedroramos on 10.05.16.
- */
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,7 +17,6 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import de.hdodenhof.circleimageview.CircleImageView;
 import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.data.model.Ad;
 import uk.co.ribot.Knacket.ui.main.AdInfo;

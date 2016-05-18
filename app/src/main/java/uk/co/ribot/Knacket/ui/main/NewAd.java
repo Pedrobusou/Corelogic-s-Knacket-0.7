@@ -38,12 +38,8 @@ public class NewAd extends AppCompatActivity implements FragmentNavigationButton
     @Bind(R.id.toolbar_title) TextView toolbar_title;
     @Bind(R.id.toolbar) Toolbar toolbar;
 
-    private int SELECT_PICTURE = 1;
-    private int SELECT_VIDEO = 3;
-    private int TAKE_PICTURE = 2;
-    private int TAKE_VIDEO = 4;
-    public String category;
-    public String date;
+    private final int SELECT_PICTURE = 1, SELECT_VIDEO = 3, TAKE_PICTURE = 2, TAKE_VIDEO = 4;
+    private String category, date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +79,7 @@ public class NewAd extends AppCompatActivity implements FragmentNavigationButton
         category = spinnerCategory.getSelectedItem().toString();
     }
 
-    public void setUpContent() {
+    private void setUpContent() {
         setSupportActionBar(toolbar);
 
         List<String> spinnerArray = new ArrayList<String>() {{
@@ -94,7 +90,7 @@ public class NewAd extends AppCompatActivity implements FragmentNavigationButton
         spinnerCategory.setAdapter(spinnerArrayAdapter);
     }
 
-    public void dateTimePicker() {
+    private void dateTimePicker() {
         final View dialogView = View.inflate(this, R.layout.dialog_date_time_picker, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
@@ -114,7 +110,7 @@ public class NewAd extends AppCompatActivity implements FragmentNavigationButton
         alertDialog.show();
     }
 
-    public void takePic(){
+    private void takePic(){
         try{
             final CharSequence[] items = {"Select from gallery", "Take pic"};
 
@@ -142,7 +138,7 @@ public class NewAd extends AppCompatActivity implements FragmentNavigationButton
         }
     }
 
-    public void takeVid(){
+    private void takeVid(){
         try{
             final CharSequence[] items = {"Select from gallery", "Take vid"};
 
@@ -187,7 +183,6 @@ public class NewAd extends AppCompatActivity implements FragmentNavigationButton
                     tvProfilePic.setText(getPathImage(selectedImage));
                     //imgPhoto.setImageURI(selectedImage);
                 }
-
             if (requestCode == SELECT_VIDEO)
                 if (resultCode == Activity.RESULT_OK) {
                     Uri selectedVideo = data.getData();

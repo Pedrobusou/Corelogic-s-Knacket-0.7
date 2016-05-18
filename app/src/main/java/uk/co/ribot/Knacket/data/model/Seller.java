@@ -2,20 +2,17 @@ package uk.co.ribot.Knacket.data.model;
 
 import java.util.ArrayList;
 
-/**
- * Created by pedroramos on 06.05.16.
- */
 public class Seller {
     String name, description, price;
     int id, rating;
 
     public Seller(){}
 
-    public Seller(Ad ad){
-        this.name = ad.getName();
-        this.description = ad.getDescription();
-        this.price = ad.getPrice();
-        this.rating = ad.getRating();
+    public Seller(Seller seller){
+        this.name = seller.getName();
+        this.description = seller.getDescription();
+        this.price = seller.getPrice();
+        this.rating = seller.getRating();
     }
 
     public ArrayList<Seller> add6Seller(){

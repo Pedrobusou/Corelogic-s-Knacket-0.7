@@ -27,10 +27,7 @@ public class EditProfile extends AppCompatActivity implements FragmentNavigation
     @Bind(R.id.toolbar_title) TextView toolbar_title;
     @Bind(R.id.toolbar) Toolbar toolbar;
 
-    private int SELECT_PICTURE = 1;
-    private int SELECT_VIDEO = 3;
-    private int TAKE_PICTURE = 2;
-    private int TAKE_VIDEO = 4;
+    private final int SELECT_PICTURE = 1, SELECT_VIDEO = 3, TAKE_PICTURE = 2, TAKE_VIDEO = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +55,7 @@ public class EditProfile extends AppCompatActivity implements FragmentNavigation
         });
     }
 
-    public void setUpContent() {
+    private void setUpContent() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -71,7 +68,7 @@ public class EditProfile extends AppCompatActivity implements FragmentNavigation
         });
     }
 
-    public void takePic(){
+    private void takePic(){
         try{
             final CharSequence[] items = {"Select from gallery", "Take pic"};
 
@@ -99,7 +96,7 @@ public class EditProfile extends AppCompatActivity implements FragmentNavigation
         }
     }
 
-    public void takeVid(){
+    private void takeVid(){
         try{
             final CharSequence[] items = {"Select from gallery", "Take vid"};
 
@@ -144,7 +141,6 @@ public class EditProfile extends AppCompatActivity implements FragmentNavigation
                     tvProfilePic.setText(getPathImage(selectedImage));
                     //imgPhoto.setImageURI(selectedImage);
                 }
-
             if (requestCode == SELECT_VIDEO)
                 if (resultCode == Activity.RESULT_OK) {
                     Uri selectedVideo = data.getData();
@@ -157,7 +153,7 @@ public class EditProfile extends AppCompatActivity implements FragmentNavigation
                     tvProfileVid.setText(getPathVid(selectedVideo));
                     //imgPhoto.setImageURI(selectedImage);
                 }
-        } catch(Exception e){}
+        } catch(Exception e){ e.printStackTrace();}
     }
 
     private String getPathImage(Uri uri) {
@@ -165,6 +161,7 @@ public class EditProfile extends AppCompatActivity implements FragmentNavigation
         Cursor cursor = managedQuery(uri, projection, null, null, null);
         int column_index = cursor.getColumnIndexOrThrow(android.provider.MediaStore.Video.Media.DATA);
         cursor.moveToFirst();
+
         return cursor.getString(column_index);
     }
 
@@ -173,6 +170,7 @@ public class EditProfile extends AppCompatActivity implements FragmentNavigation
         Cursor cursor = managedQuery(uri, projection, null, null, null);
         int column_index = cursor.getColumnIndexOrThrow(android.provider.MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
+
         return cursor.getString(column_index);
     }
 

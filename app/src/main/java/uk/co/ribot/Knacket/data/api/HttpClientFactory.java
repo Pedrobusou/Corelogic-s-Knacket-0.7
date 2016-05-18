@@ -2,7 +2,7 @@ package uk.co.ribot.Knacket.data.api;
 
 import android.content.Context;
 
-import de.toliart.babbler.BuildConfig;
+import uk.co.ribot.Knacket.BuildConfig;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -17,7 +17,6 @@ public class HttpClientFactory {
                 .addInterceptor(loggingInterceptor())
                 .cache(cache)
                 .build();
-
     }
 
     private static HttpLoggingInterceptor loggingInterceptor() {

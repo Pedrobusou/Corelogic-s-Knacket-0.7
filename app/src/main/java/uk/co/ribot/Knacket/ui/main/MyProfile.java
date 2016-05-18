@@ -24,7 +24,7 @@ import uk.co.ribot.Knacket.ui.fragment.FragmentNavigationButtons;
 import uk.co.ribot.Knacket.ui.fragment.FragmentProfilePic;
 import uk.co.ribot.Knacket.ui.fragment.FragmentProfileVid;
 import uk.co.ribot.Knacket.ui.fragment.FragmentThingsICanDo;
-import uk.co.ribot.Knacket.ui.fragment.MyAdList;
+import uk.co.ribot.Knacket.ui.fragment.ListMyAds;
 
 public class MyProfile extends AppCompatActivity implements FragmentNavigationButtons.OnFragmentInteractionListener, FragmentProfilePic.OnFragmentInteractionListener, FragmentProfileVid.OnFragmentInteractionListener, FragmentThingsICanDo.OnFragmentInteractionListener{
     @Bind(R.id.pageIndicator) CirclePageIndicator pageIndicator;
@@ -44,7 +44,7 @@ public class MyProfile extends AppCompatActivity implements FragmentNavigationBu
         setUpContent();
     }
 
-    public void setUpContent(){
+    private void setUpContent(){
         setSupportActionBar(toolbar);
 
         TabsAdapterHeader tabsAdapterHeader = new TabsAdapterHeader(getSupportFragmentManager(), this);
@@ -76,7 +76,7 @@ public class MyProfile extends AppCompatActivity implements FragmentNavigationBu
     public void onFragmentInteraction(Uri uri) {}
 
     public class TabsAdapterHeader extends FragmentPagerAdapter {
-        Context context;
+        final Context context;
 
         public TabsAdapterHeader(FragmentManager fm, Context context) {
             super(fm);
@@ -101,8 +101,8 @@ public class MyProfile extends AppCompatActivity implements FragmentNavigationBu
     }
 
     public class TabsAdapterFooter extends FragmentPagerAdapter {
-        String[] tabTitles = new String[] { "My ads", "Reviews", "ThingsICanDo"};
-        Context context;
+        final String[] tabTitles = new String[] { "My ads", "Reviews", "ThingsICanDo"};
+        final Context context;
 
         public TabsAdapterFooter(FragmentManager fm, Context context) {
             super(fm);
@@ -113,7 +113,7 @@ public class MyProfile extends AppCompatActivity implements FragmentNavigationBu
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new MyAdList();
+                    return new ListMyAds();
                 case 1:
                     return new FragmentThingsICanDo();
                 case 2:

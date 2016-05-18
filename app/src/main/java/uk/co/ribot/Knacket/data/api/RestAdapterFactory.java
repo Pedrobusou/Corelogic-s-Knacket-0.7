@@ -2,15 +2,13 @@ package uk.co.ribot.Knacket.data.api;
 
 import android.content.Context;
 
-import de.toliart.babbler.BuildConfig;
+import uk.co.ribot.Knacket.BuildConfig;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestAdapterFactory {
-
-    private RestAdapterFactory() {
-    }
+    private RestAdapterFactory() {}
 
     public static Retrofit create(Context context) {
         return new Retrofit.Builder()
@@ -20,5 +18,4 @@ public class RestAdapterFactory {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
     }
-
 }

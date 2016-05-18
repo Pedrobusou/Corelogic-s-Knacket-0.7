@@ -17,7 +17,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <android.support.design.widget.CoordinatorLayout
                 android:layout_width="match_parent"
@@ -58,6 +58,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
+                    android:textAllCaps="false"
                     android:text="Send request"
                     android:id="@+id/btnSendRequest"
                     android:textColor="#FFFFFF"

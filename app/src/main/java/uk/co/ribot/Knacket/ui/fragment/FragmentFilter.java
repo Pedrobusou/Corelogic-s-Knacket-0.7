@@ -32,16 +32,10 @@ public class FragmentFilter extends Fragment {
     @Bind(R.id.spinnerCategory) Spinner spinnerCategory;
     @Bind(R.id.spinnerTime) Spinner spinnerTime;
 
-    public int distance;
-    public String category;
-    public String time;
+    private int distance;
+    private String category, time;
 
     public FragmentFilter() {}
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,7 +60,7 @@ public class FragmentFilter extends Fragment {
         category = spinnerCategory.getSelectedItem().toString();
     }
 
-    public void setUpSpinners(){
+    private void setUpSpinners(){
         List<String> spinnerArray = new ArrayList<String>() {{
             add("Evening");
             add("Weekday");
@@ -83,7 +77,7 @@ public class FragmentFilter extends Fragment {
 
     }
 
-    public void setUpSeekBar(){
+    private void setUpSeekBar(){
         seekBar.setProgress(seekBar.getMax() / 2);
 
         tvMaxKm.setText(seekBar.getProgress() + "km");

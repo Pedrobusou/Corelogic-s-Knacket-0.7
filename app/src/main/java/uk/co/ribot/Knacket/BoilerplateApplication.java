@@ -12,11 +12,11 @@ import uk.co.ribot.Knacket.injection.component.DaggerApplicationComponent;
 import uk.co.ribot.Knacket.injection.module.ApplicationModule;
 
 public class BoilerplateApplication extends Application  {
-
-    ApplicationComponent mApplicationComponent;
+    private static ApplicationComponent mApplicationComponent;
 
     @Override
     public void onCreate() {
+        initializeDagger();
         super.onCreate();
 
         if (BuildConfig.DEBUG) {
@@ -29,13 +29,14 @@ public class BoilerplateApplication extends Application  {
         return (BoilerplateApplication) context.getApplicationContext();
     }
 
-    public ApplicationComponent getComponent() {
-        if (mApplicationComponent == null) {
-            mApplicationComponent = DaggerApplicationComponent.builder()
-                    .applicationModule(new ApplicationModule(this))
-                    .build();
-        }
+    public static ApplicationComponent getComponent() {
         return mApplicationComponent;
+    }
+
+    private void initializeDagger() {
+        mApplicationComponent = DaggerApplicationComponent.builder()
+                .applicationModule(new ApplicationModule(this))
+                .build();
     }
 
     // Needed to replace the component with a test specific one

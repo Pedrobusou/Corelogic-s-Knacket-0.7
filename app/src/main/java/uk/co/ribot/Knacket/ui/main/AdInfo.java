@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -29,12 +28,12 @@ public class AdInfo extends AppCompatActivity implements FragmentNavigationButto
         setUpContent();
     }
 
-    @OnClick(R.id.llBuyerProfile) void toBuyerProfile(){
+    @OnClick(R.id.rlBuyerProfile) void toBuyerProfile(){
         Intent intent = new Intent(this, BuyerProfile.class);
         startActivity(intent);
     }
 
-    public void setUpContent(){
+    private void setUpContent(){
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

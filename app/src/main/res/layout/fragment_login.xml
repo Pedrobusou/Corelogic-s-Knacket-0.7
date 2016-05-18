@@ -1,13 +1,68 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.fragment.Login">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:padding="5dp"
+        android:paddingStart="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="EMAIL"
+        android:id="@+id/tvLogMail"
+        android:paddingLeft="5dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/etLogMail"
+        android:hint="Enter email"
+        android:background="#FFFFFF"
+        android:padding="10dp" />
+
+    <TextView
+        android:padding="5dp"
+        android:paddingStart="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="PASSWORD"
+        android:id="@+id/tvLogPass"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="5dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/etLogPass"
+        android:hint="Enter password"
+        android:background="#FFFFFF"
+        android:padding="10dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:padding="10dp"
+        android:background="#FFFFFF">
 
-</FrameLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="Log in"
+            android:textAllCaps="false"
+            android:id="@+id/btnLogLogin"
+            android:textColor="#FFFFFF"
+            android:background="?attr/colorPrimary" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,29 +1,28 @@
 package uk.co.ribot.Knacket.injection.module;
 
-import android.app.Activity;
-import android.content.Context;
-
+import android.support.v4.app.FragmentManager;
 import dagger.Module;
 import dagger.Provides;
-import uk.co.ribot.Knacket.injection.ActivityContext;
+import uk.co.ribot.Knacket.injection.scope.PerActivity;
+import uk.co.ribot.Knacket.ui.base.BaseActivity;
 
 @Module
 public class ActivityModule {
+    private final BaseActivity activity;
 
-    private Activity mActivity;
-
-    public ActivityModule(Activity activity) {
-        mActivity = activity;
+    public ActivityModule(BaseActivity activity) {
+        this.activity = activity;
     }
 
     @Provides
-    Activity provideActivity() {
-        return mActivity;
+    @PerActivity
+    public BaseActivity provideActivity() {
+        return activity;
     }
 
     @Provides
-    @ActivityContext
-    Context providesContext() {
-        return mActivity;
+    @PerActivity
+    public FragmentManager provideFragmentManager() {
+        return activity.getSupportFragmentManager();
     }
 }

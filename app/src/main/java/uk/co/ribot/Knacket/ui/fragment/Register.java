@@ -1,109 +1,113 @@
 package uk.co.ribot.Knacket.ui.fragment;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.annotation.Nullable;
+import android.text.Html;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import uk.co.ribot.androidboilerplate.R;
+import org.greenrobot.eventbus.EventBus;
+import javax.inject.Inject;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link Register.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link Register#newInstance} factory method to
- * create an instance of this fragment.
- *
- */
-public class Register extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnTextChanged;
+import uk.co.ribot.Knacket.R;
+import uk.co.ribot.Knacket.presenter.RegisterPresenter;
+import uk.co.ribot.Knacket.ui.fragment.base.BasePresenterFragment;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class Register extends BasePresenterFragment<RegisterPresenter> {
+    @Inject RegisterPresenter presenter;
 
-    private OnFragmentInteractionListener mListener;
+    @Bind(R.id.etRegName) EditText regName;
+    @Bind(R.id.etRegMail) EditText regMail;
+    @Bind(R.id.etRegPass) EditText regPass;
+    @Bind(R.id.etRegRepPass) EditText regRepPass;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Register.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Register newInstance(String param1, String param2) {
-        Register fragment = new Register();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-    public Register() {
-        // Required empty public constructor
+    private String name, email, pass, repeatPass;
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_register,container,false);
+        ButterKnife.bind(this, rootView);
+        //EventBus.getDefault().register(this);
+        return rootView;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @OnClick(R.id.btnRegRegister) void register(){
+        if(TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(repeatPass))
+            Toast.makeText(getContext(), "Fill fields correctly", Toast.LENGTH_SHORT).show();
+        else if(!pass.equals(repeatPass))
+            Toast.makeText(getContext(), "Password doesn't match", Toast.LENGTH_SHORT).show();
+        else {
+            showLoadingDialog(R.string.loading, R.string.registering);
+            //getPresenter().register(name, email, pass);
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false);
+    @OnTextChanged(R.id.etRegName) void regName(){
+        if(!TextUtils.isEmpty(regName.getText().toString())){
+            name = regName.getText().toString();
+        } else name = "";
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    @OnTextChanged(R.id.etRegMail) void regMail(){
+        if(!TextUtils.isEmpty(regMail.getText().toString()) && (!isEmailValid(regMail.getText().toString()))){
+            regMail.setError(Html.fromHtml("<font color='#FFFFFF'>Invalid email</font>"));
+            email = "";
+        } else email = regMail.getText().toString();
+    }
+
+    private boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    @OnTextChanged(R.id.etRegPass) void regPass(){
+        if (!TextUtils.isEmpty(regPass.getText().toString())) {
+            if (regPass.getText().toString().length() < 8) {
+                regPass.setError(Html.fromHtml("<font color='#FFFFFF'>Min 8 chars</font>"));
+                pass = "";
+            } else pass = regPass.getText().toString();
         }
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+    @OnTextChanged(R.id.etRegRepPass) void regRepPass(){
+        if (!TextUtils.isEmpty(regRepPass.getText().toString())) {
+            if (regRepPass.getText().toString().length() < 8) {
+                regRepPass.setError(Html.fromHtml("<font color='#FFFFFF'>Min 8 chars</font>"));
+                repeatPass = "";
+            } else repeatPass = regRepPass.getText().toString();
         }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
     }
 
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
+     * to the activity and potentially other fragments contained in that activity.
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    protected RegisterPresenter getPresenter() { return presenter; }
+
+    @Override
+    protected void inject() {
+        getComponent().inject(this);
     }
 }

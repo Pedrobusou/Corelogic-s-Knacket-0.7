@@ -2,10 +2,9 @@ package uk.co.ribot.Knacket.injection.module;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-
 import dagger.Module;
 import dagger.Provides;
-import de.toliart.babbler.injection.scope.PerFragment;
+import uk.co.ribot.Knacket.injection.scope.PerFragment;
 
 @Module
 public class FragmentModule {

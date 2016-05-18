@@ -1,6 +1,5 @@
 package uk.co.ribot.Knacket;
 
-import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
@@ -10,16 +9,15 @@ import java.util.NoSuchElementException;
 
 import javax.inject.Inject;
 
-import de.toliart.babbler.data.DataManager;
-import de.toliart.babbler.exception.NoInternetException;
-import de.toliart.babbler.injection.scope.PerActivity;
-import de.toliart.babbler.ui.activity.BaseActivity;
+import uk.co.ribot.Knacket.data.DataManager;
+import uk.co.ribot.Knacket.injection.scope.PerActivity;
+import uk.co.ribot.Knacket.ui.base.BaseActivity;
 import timber.log.Timber;
 
 @PerActivity
 public class ExceptionHandler {
-    BaseActivity activity;
-    DataManager dataManager;
+    private BaseActivity activity;
+    private DataManager dataManager;
 
     @Inject
     public ExceptionHandler(BaseActivity activity, DataManager dataManager) {
@@ -32,9 +30,9 @@ public class ExceptionHandler {
      *
      * @param throwable exception.
      */
-    public void onException(final Throwable throwable) {
+   /* public void onException(final Throwable throwable) {
         onException(throwable, false);
-    }
+    }*/
 
     /**
      * Shows user message on exception using Snackbar. If current activity for some reason
@@ -43,10 +41,10 @@ public class ExceptionHandler {
      * @param throwable   exception
      * @param useSnackbar if true will use Snackbar to show error message.
      */
-    public void onException(final Throwable throwable, boolean useSnackbar) {
+    /*public void onException(final Throwable throwable, boolean useSnackbar) {
         Handler handler = new Handler(activity.getMainLooper());
         handler.post(() -> handleException(throwable, useSnackbar));
-    }
+    }*/
 
     private void handleException(Throwable throwable, boolean useSnackbar) {
         String errorMessage = activity.getString(pickMessageForException(throwable));
@@ -64,7 +62,7 @@ public class ExceptionHandler {
     private int pickMessageForException(Throwable throwable) {
         if (throwable instanceof NoSuchElementException)
             return R.string.no_record_error;
-        else if (throwable instanceof NoInternetException || throwable instanceof UnknownHostException)
+        else if ( throwable instanceof UnknownHostException)
             return R.string.no_internet_error;
         else if (throwable instanceof SQLException)
             return R.string.sql_error;

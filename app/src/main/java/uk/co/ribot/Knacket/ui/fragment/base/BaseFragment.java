@@ -9,30 +9,28 @@ import android.os.Build;
 import android.support.v4.app.Fragment;
 
 import butterknife.ButterKnife;
-import de.toliart.babbler.injection.component.DaggerFragmentComponent;
-import de.toliart.babbler.injection.component.FragmentComponent;
-import de.toliart.babbler.injection.module.FragmentModule;
-import de.toliart.babbler.ui.activity.BaseActivity;
+import uk.co.ribot.Knacket.injection.component.DaggerFragmentComponent;
+import uk.co.ribot.Knacket.injection.component.FragmentComponent;
+import uk.co.ribot.Knacket.injection.module.FragmentModule;
+import uk.co.ribot.Knacket.ui.base.BaseActivity;
 
 public abstract class BaseFragment extends Fragment {
     private FragmentComponent fragmentComponent;
-
-    AlertDialog alertDialog;
+    private AlertDialog alertDialog;
 
     @TargetApi(23)
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        onAttachToContext(context);
+        onAttachToContext();
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            onAttachToContext(activity);
-        }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+            onAttachToContext();
     }
 
     @Override
@@ -42,9 +40,7 @@ public abstract class BaseFragment extends Fragment {
         ButterKnife.unbind(this);
     }
 
-    protected void inject() {
-        //no injection by default
-    }
+    protected void inject() {}
 
     private void initDagger() {
         fragmentComponent = DaggerFragmentComponent.builder()
@@ -57,7 +53,7 @@ public abstract class BaseFragment extends Fragment {
         return fragmentComponent;
     }
 
-    protected void onAttachToContext(Context context) {
+    protected void onAttachToContext() {
         initDagger();
         inject();
     }
@@ -66,7 +62,7 @@ public abstract class BaseFragment extends Fragment {
         showLoadingDialog(getString(titleResId), getString(messageResId));
     }
 
-    public void showLoadingDialog(String title, String message) {
+    private void showLoadingDialog(String title, String message) {
         dismissLoadingDialog();
 
         alertDialog = new ProgressDialog.Builder(getContext())
@@ -74,16 +70,9 @@ public abstract class BaseFragment extends Fragment {
                 .setTitle(title)
                 .setMessage(message)
                 .show();
-
-//        alertDialog = new AlertDialog.Builder(getContext())
-//                .setCancelable(false)
-//                .setTitle(title)
-//                .setMessage(message)
-//                .setView(R.layout.alert_loading_content)
-//                .show();
     }
 
-    public void dismissLoadingDialog() {
+    private void dismissLoadingDialog() {
         if (alertDialog != null) {
             alertDialog.dismiss();
             alertDialog = null;

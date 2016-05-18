@@ -1,7 +1,6 @@
 package uk.co.ribot.Knacket.ui.main;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -15,10 +14,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.Collections;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -26,20 +21,16 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import uk.co.ribot.Knacket.R;
-import uk.co.ribot.Knacket.data.SyncService;
-import uk.co.ribot.Knacket.data.model.Ad;
+import uk.co.ribot.Knacket.presenter.activity.MainActivityPresenter;
 import uk.co.ribot.Knacket.ui.adapter.AdAdapter;
-import uk.co.ribot.Knacket.ui.base.BaseActivity;
-import uk.co.ribot.Knacket.ui.fragment.AdList;
+import uk.co.ribot.Knacket.ui.base.BasePresenterActivity;
+import uk.co.ribot.Knacket.ui.fragment.ListAds;
 import uk.co.ribot.Knacket.ui.fragment.FragmentFilter;
 import uk.co.ribot.Knacket.ui.fragment.FragmentNavigationButtons;
-import uk.co.ribot.Knacket.ui.fragment.SellerList;
-import uk.co.ribot.Knacket.util.DialogFactory;
+import uk.co.ribot.Knacket.ui.fragment.ListSellers;
 
-public class MainActivity extends BaseActivity implements MainMvpView, FragmentNavigationButtons.OnFragmentInteractionListener, FragmentFilter.OnFragmentInteractionListener {
-    private static final String EXTRA_TRIGGER_SYNC_FLAG = "uk.co.ribot.androidboilerplate.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
-
-    @Inject MainPresenter mMainPresenter;
+public class MainActivity extends BasePresenterActivity<MainActivityPresenter>
+        implements FragmentNavigationButtons.OnFragmentInteractionListener, FragmentFilter.OnFragmentInteractionListener {
     @Inject AdAdapter mAdAdapter;
 
     @Bind(R.id.container) ViewPager mViewPager;
@@ -48,36 +39,25 @@ public class MainActivity extends BaseActivity implements MainMvpView, FragmentN
     @Bind(R.id.drawer_layout) DrawerLayout drawer;
     @Bind(R.id.toolbar_title) TextView toolbar_title;
 
-    /**
-     * Return an Intent to start this Activity.
-     * triggerDataSyncOnCreate allows disabling the background sync service onCreate. Should
-     * only be set to false during testing.
-     */
-    public static Intent getStartIntent(Context context, boolean triggerDataSyncOnCreate) {
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra(EXTRA_TRIGGER_SYNC_FLAG, triggerDataSyncOnCreate);
-        return intent;
-    }
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivityComponent().inject(this);
+       // getActivityComponent().inject(this);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        if (getIntent().getBooleanExtra(EXTRA_TRIGGER_SYNC_FLAG, true)) {
-            startService(SyncService.getStartIntent(this));
-        }
 
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         setUpTabs();
     }
 
-    public void setUpTabs(){
+    @Override
+    protected MainActivityPresenter getPresenter() {
+        return null;
+    }
+
+    private void setUpTabs(){
         setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
+
         TabsAdapter tabsAdapter = new TabsAdapter(getSupportFragmentManager(), this);
 
         mViewPager.setAdapter(tabsAdapter);
@@ -111,6 +91,11 @@ public class MainActivity extends BaseActivity implements MainMvpView, FragmentN
     }
 
     @Override
+    protected void inject() {
+        getComponent().inject(this);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds FILTER ICON, which pops up FILTER MENU (navigationDrawer).
         getMenuInflater().inflate(R.menu.menu_filter, menu);
@@ -124,37 +109,11 @@ public class MainActivity extends BaseActivity implements MainMvpView, FragmentN
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mMainPresenter.detachView();
-    }
-
-    /***** MVP View methods implementation *****/
-
-    @Override
-    public void showBuyers(List<Ad> ads) {
-        mAdAdapter.setBuyers(ads);
-        mAdAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void showError() {
-        DialogFactory.createGenericErrorDialog(this, getString(R.string.error_loading_buyers)).show();
-    }
-
-    @Override
-    public void showBuyersEmpty() {
-        mAdAdapter.setBuyers(Collections.<Ad>emptyList());
-        mAdAdapter.notifyDataSetChanged();
-        Toast.makeText(this, R.string.empty_buyers, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
     public void onFragmentInteraction(Uri uri) {}
 
     public class TabsAdapter extends FragmentPagerAdapter {
-        String[] tabTitles = new String[] { "Ads", "Sellers"};
-        Context context;
+        final String[] tabTitles = new String[] { "Ads", "Sellers"};
+        final Context context;
 
         public TabsAdapter(FragmentManager fm, Context context) {
             super(fm);
@@ -166,9 +125,9 @@ public class MainActivity extends BaseActivity implements MainMvpView, FragmentN
 
             switch (position) {
                 case 0:
-                    return new AdList();
+                    return new ListAds();
                 case 1:
-                    return new SellerList();
+                    return new ListSellers();
             }
             return null;
         }

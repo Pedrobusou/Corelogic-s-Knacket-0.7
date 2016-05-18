@@ -1,13 +1,110 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uk.co.ribot.Knacket.ui.fragment.Register">
+    android:orientation="vertical"
+    tools:context=".ui.fragment.Register">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:padding="5dp"
+        android:paddingStart="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="NAME"
+        android:id="@+id/tvRegName"
+        android:paddingLeft="5dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/etRegName"
+        android:hint="Enter name"
+        android:background="#FFFFFF"
+        android:padding="10dp" />
+
+    <TextView
+        android:padding="5dp"
+        android:paddingStart="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="EMAIL"
+        android:id="@+id/tvRegMail"
+        android:paddingLeft="5dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:id="@+id/etRegMail"
+        android:hint="Enter email"
+        android:background="#FFFFFF"
+        android:padding="10dp" />
+
+    <TextView
+        android:padding="5dp"
+        android:paddingStart="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="PASSWORD"
+        android:id="@+id/tvRegPassword"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="5dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/etRegPass"
+        android:hint="Enter password"
+        android:background="#FFFFFF"
+        android:padding="10dp" />
+
+    <TextView
+        android:padding="5dp"
+        android:paddingStart="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="REPEAT PASSWORD"
+        android:id="@+id/tvRegRepPass"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="5dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/etRegRepPass"
+        android:hint="Enter password repeat"
+        android:background="#FFFFFF"
+        android:padding="10dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:padding="10dp"
+        android:background="#FFFFFF">
 
-</FrameLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="Register user"
+            android:textAllCaps="false"
+            android:id="@+id/btnRegRegister"
+            android:textColor="#FFFFFF"
+            android:background="?attr/colorPrimary" />
+    </LinearLayout>
+</LinearLayout>

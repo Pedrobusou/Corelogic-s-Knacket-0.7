@@ -1,33 +1,23 @@
 package uk.co.ribot.Knacket.injection.component;
 
-import android.app.Application;
 import android.content.Context;
-
-import com.squareup.otto.Bus;
-
-import javax.inject.Singleton;
-
 import dagger.Component;
+import uk.co.ribot.Knacket.BoilerplateApplication;
 import uk.co.ribot.Knacket.data.DataManager;
-import uk.co.ribot.Knacket.data.SyncService;
-import uk.co.ribot.Knacket.data.local.DatabaseHelper;
-import uk.co.ribot.Knacket.data.local.PreferencesHelper;
-import uk.co.ribot.Knacket.data.remote.BuyersService;
-import uk.co.ribot.Knacket.injection.ApplicationContext;
+import uk.co.ribot.Knacket.data.DatabaseFacade;
 import uk.co.ribot.Knacket.injection.module.ApplicationModule;
+import uk.co.ribot.Knacket.injection.scope.PerApplication;
 
-@Singleton
+@PerApplication
 @Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {
+    void inject(BoilerplateApplication app);
 
-    void inject(SyncService syncService);
+    BoilerplateApplication app();
 
-    @ApplicationContext Context context();
-    Application application();
-    BuyersService ribotsService();
-    PreferencesHelper preferencesHelper();
-    DatabaseHelper databaseHelper();
+    Context applicationContext();
+
     DataManager dataManager();
-    Bus eventBus();
 
+    DatabaseFacade databaseFacade();
 }

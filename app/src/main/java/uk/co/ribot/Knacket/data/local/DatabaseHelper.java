@@ -1,88 +1,46 @@
 package uk.co.ribot.Knacket.data.local;
 
-import android.database.Cursor;
-
-import com.squareup.sqlbrite.BriteDatabase;
-import com.squareup.sqlbrite.SqlBrite;
-
-import java.util.Collection;
-import java.util.List;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
-import rx.Observable;
-import rx.Subscriber;
-import rx.functions.Func1;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
+import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.TableUtils;
+import java.sql.SQLException;
 import uk.co.ribot.Knacket.data.model.Ad;
+import uk.co.ribot.Knacket.data.model.Booking;
+import uk.co.ribot.Knacket.data.model.Seller;
+import timber.log.Timber;
 
-@Singleton
-public class DatabaseHelper {
+public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
+    private static final String DATABASE_NAME = "knacket";
+    private static final int DATABASE_VERSION = 1;
 
-    private final BriteDatabase mDb;
-
-    @Inject
-    public DatabaseHelper(DbOpenHelper dbOpenHelper) {
-        mDb = SqlBrite.create().wrapDatabaseHelper(dbOpenHelper);
+    public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public BriteDatabase getBriteDb() {
-        return mDb;
+    @Override
+    public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
+        Timber.d("Creating database.");
+        createTables(connectionSource);
     }
 
-    /**
-     * Remove all the data from all the tables in the database.
-     */
-    public Observable<Void> clearTables() {
-        return Observable.create(new Observable.OnSubscribe<Void>() {
-            @Override
-            public void call(Subscriber<? super Void> subscriber) {
-                if (subscriber.isUnsubscribed()) return;
-                BriteDatabase.Transaction transaction = mDb.newTransaction();
-                try {
-                    Cursor cursor = mDb.query("SELECT name FROM sqlite_master WHERE type='table'");
-                    while (cursor.moveToNext()) {
-                        mDb.delete(cursor.getString(cursor.getColumnIndex("name")), null);
-                    }
-                    cursor.close();
-                    transaction.markSuccessful();
-                    subscriber.onCompleted();
-                } finally {
-                    transaction.end();
-                }
-            }
-        });
+    @Override
+    public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
+        Timber.d("Upgrading database from version " + oldVersion + " to " + newVersion + ".");
     }
 
-    public Observable<Ad> setBuyers(final Collection<Ad> newAds) {
-        return Observable.create(new Observable.OnSubscribe<Ad>() {
-            @Override
-            public void call(Subscriber<? super Ad> subscriber) {
-                if (subscriber.isUnsubscribed()) return;
-                BriteDatabase.Transaction transaction = mDb.newTransaction();
-                try {
-                    mDb.delete(Db.BuyerTable.TABLE_NAME, null);
-                    for (Ad ad : newAds) { //INSERT DATA IN DATABASE
-                        //long result = mDb.insert(Db.BuyerTable.TABLE_NAME, Db.BuyerTable.toContentValues(ad), SQLiteDatabase.CONFLICT_REPLACE);
-                        //if (result >= 0) subscriber.onNext(ad);
-                    }
-                    transaction.markSuccessful();
-                    subscriber.onCompleted();
-                } finally {
-                    transaction.end();
-                }
-            }
-        });
+    public void clearTable(Class clazz) throws SQLException {
+        TableUtils.clearTable(getConnectionSource(), clazz);
     }
 
-    public Observable<List<Ad>> getBuyers() {
-        return mDb.createQuery(Db.BuyerTable.TABLE_NAME,
-                "SELECT * FROM " + Db.BuyerTable.TABLE_NAME)
-                .mapToList(new Func1<Cursor, Ad>() {
-                    @Override
-                    public Ad call(Cursor cursor) {
-                        return new Ad(Db.BuyerTable.parseCursor(cursor));
-                    }
-                });
+    private void createTables(ConnectionSource connectionSource) {
+        try {
+            TableUtils.createTable(connectionSource, Ad.class);
+            TableUtils.createTable(connectionSource, Booking.class);
+            TableUtils.createTable(connectionSource, Seller.class);
+        } catch (SQLException e) {
+            //Timber.e("Fatal error, cannot create database!", e);
+        }
     }
 }

@@ -17,7 +17,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <android.support.design.widget.CoordinatorLayout
                 android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/border_white_background"
-                app:tabTextAppearance="@style/Customtab2"
+                app:tabTextAppearance="@style/Customtab"
                 app:tabSelectedTextColor="#000000"
                 app:tabTextColor="#ff5a595b" />
 

@@ -1,16 +1,13 @@
 package uk.co.ribot.Knacket.ui.fragment.base;
 
-import android.content.Context;
 import android.os.Bundle;
-
-import de.toliart.babbler.presenter.fragment.BasePresenter;
-import de.toliart.babbler.ui.fragment.base.BaseFragment;
+import uk.co.ribot.Knacket.presenter.fragment.BasePresenter;
 
 public abstract class BasePresenterFragment<PRESENTER extends BasePresenter> extends BaseFragment {
 
     @Override
-    protected void onAttachToContext(Context context) {
-        super.onAttachToContext(context);
+    protected void onAttachToContext() {
+        super.onAttachToContext();
         getPresenter().onAttach(this);
     }
 

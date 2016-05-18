@@ -11,6 +11,7 @@
         android:layout_height="wrap_content" >
 
         <ImageView
+            android:contentDescription="icLocation"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:id="@+id/imageView3"
@@ -26,7 +27,8 @@
             android:enabled="false"
             android:text="Example location"
             android:textColor="#6E6E6E"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:inputType="text"/>
     </LinearLayout>
 
     <LinearLayout
@@ -37,6 +39,7 @@
         android:gravity="center_horizontal">
 
         <ImageView
+            android:contentDescription="icRating"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:id="@+id/imageView2"
@@ -52,7 +55,8 @@
             android:text="Example rating"
             android:textColor="#6E6E6E"
             android:gravity="center_vertical"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:inputType="text"/>
     </LinearLayout>
 
     <LinearLayout
@@ -61,11 +65,11 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:contentDescription="icAvailability"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:id="@+id/imageView"
             android:src="@drawable/ic_directions_run_white_48dp"
-            android:nestedScrollingEnabled="true"
             android:tint="#736E6E6E"
             android:layout_gravity="center_vertical" />
 
@@ -76,7 +80,8 @@
             android:enabled="false"
             android:text="Example availability"
             android:textColor="#6E6E6E"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:inputType="text"/>
     </LinearLayout>
 
     <TextView

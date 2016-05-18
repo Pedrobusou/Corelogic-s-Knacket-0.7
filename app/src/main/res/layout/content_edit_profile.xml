@@ -17,7 +17,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -127,12 +127,13 @@
                     android:text="Select new profile pic"
                     android:id="@+id/tvProfilePic"
                     android:padding="15dp"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true" />
 
                 <ImageView
+                    android:contentDescription="icDeploy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView6"
@@ -157,12 +158,13 @@
                     android:text="Select new profile vid"
                     android:id="@+id/tvProfileVid"
                     android:padding="15dp"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true" />
 
                 <ImageView
+                    android:contentDescription="icDeploy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView7"
@@ -184,6 +186,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
+                    android:textAllCaps="false"
                     android:text="Done"
                     android:id="@+id/btnDone"
                     android:textColor="#FFFFFF"

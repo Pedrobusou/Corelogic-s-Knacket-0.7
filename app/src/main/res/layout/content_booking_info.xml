@@ -17,10 +17,11 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="#FFFFFF">
 
             <ImageView
+                android:contentDescription="headerBackground"
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:background="@drawable/blured_background" />
@@ -54,6 +55,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:layout_toEndOf="@+id/civUserPic"
                         android:layout_toRightOf="@+id/civUserPic"
                         android:layout_centerVertical="true">
@@ -70,12 +72,11 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/rbUserRate"
                             style="@android:style/Widget.DeviceDefault.RatingBar.Small"
-                            android:rating="5"
-                            android:layout_alignParentBottom="true"
-                            android:layout_centerHorizontal="true" />
+                            android:rating="5" />
                     </LinearLayout>
 
                     <ImageView
+                        android:contentDescription="icToProfile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/imageView4"
@@ -94,6 +95,7 @@
                 android:layout_height="wrap_content" >
 
                 <ImageView
+                    android:contentDescription="icLocation"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:id="@+id/imageView3"
@@ -109,7 +111,8 @@
                     android:enabled="false"
                     android:text="Example Location"
                     android:textColor="#6E6E6E"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:inputType="text"/>
             </LinearLayout>
 
             <LinearLayout
@@ -120,6 +123,7 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
+                    android:contentDescription="icClock"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:id="@+id/imageView2"
@@ -135,7 +139,8 @@
                     android:text="Example DateTime"
                     android:textColor="#6E6E6E"
                     android:gravity="center_vertical"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:inputType="date"/>
             </LinearLayout>
 
             <LinearLayout
@@ -144,11 +149,11 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:contentDescription="icPrice"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:id="@+id/imageView"
                     android:src="@drawable/ic_attach_money_white_48dp"
-                    android:nestedScrollingEnabled="true"
                     android:tint="#736E6E6E"
                     android:layout_gravity="center_vertical" />
 
@@ -159,7 +164,8 @@
                     android:enabled="false"
                     android:text="Example Price"
                     android:textColor="#6E6E6E"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:inputType="text"/>
             </LinearLayout>
 
             <TextView
