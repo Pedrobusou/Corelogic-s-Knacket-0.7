@@ -1,13 +1,12 @@
 package uk.co.ribot.Knacket.data.api.model.request;
 
-public class RegisterRequest { //MAYBE ADD TOKEN
-    String name;
-    String email;
-    String pass;
+public class RegisterRequest {
+    public String name, email, password, password_confirmation;
 
-    public RegisterRequest(String name, String email, String pass) {
+    public RegisterRequest(String name, String email, String password, String password_confirmation) {
         this.name = name;
         this.email = email;
-        this.pass = pass;
+        this.password = password;
+        this.password_confirmation = password_confirmation;
     }
 }

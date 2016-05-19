@@ -72,7 +72,7 @@ public abstract class BaseFragment extends Fragment {
                 .show();
     }
 
-    private void dismissLoadingDialog() {
+    public void dismissLoadingDialog() {
         if (alertDialog != null) {
             alertDialog.dismiss();
             alertDialog = null;

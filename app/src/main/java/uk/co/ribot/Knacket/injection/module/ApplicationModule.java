@@ -39,16 +39,4 @@ public class ApplicationModule {
         Retrofit retrofit = RestAdapterFactory.create(app.getApplicationContext());
         return retrofit.create(RestService.class);
     }
-
-   /* @Provides
-    @PerApplication
-    DataManager provideDataManager() {
-        DataManager dm = new DataManager(new PreferencesManager(app.getApplicationContext()), new DatabaseHelper(new DbOpenHelper(app.getApplicationContext())), new EventPosterHelper(new Bus()), new RestService() {
-            @Override
-            public Observable<RegisterRequest> register(@Body RegisterRequest request) {
-                return null;
-            }
-        });
-        return dm;
-    }*/
 }

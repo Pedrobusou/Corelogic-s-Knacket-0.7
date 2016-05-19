@@ -10,11 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/border"
-        android:baselineAligned="false"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentLeft="false"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:orientation="vertical"

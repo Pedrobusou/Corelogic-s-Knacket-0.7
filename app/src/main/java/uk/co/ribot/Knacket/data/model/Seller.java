@@ -3,8 +3,8 @@ package uk.co.ribot.Knacket.data.model;
 import java.util.ArrayList;
 
 public class Seller {
-    String name, description, price;
-    int id, rating;
+    private String name, description, price;
+    private int id, rating;
 
     public Seller(){}
 
@@ -18,11 +18,11 @@ public class Seller {
     public ArrayList<Seller> add6Seller(){
         ArrayList<Seller> sellers = new ArrayList<>();
         sellers.add(new Seller("Andreas", "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "300kr/h", 3));
-        sellers.add(new Seller("Pedro", "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "3000kr/h", 10));
-        sellers.add(new Seller("Marcos", "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "300kr/h", 2));
+        sellers.add(new Seller("Pedro",   "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "3000kr/h", 10));
+        sellers.add(new Seller("Marcos",  "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "300kr/h", 2));
         sellers.add(new Seller("Andreas", "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "300kr/h", 3));
-        sellers.add(new Seller("Pedro", "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "3000kr/h", 10));
-        sellers.add(new Seller("Marcos", "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "300kr/h", 2));
+        sellers.add(new Seller("Pedro",   "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "3000kr/h", 10));
+        sellers.add(new Seller("Marcos",  "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "300kr/h", 2));
         return sellers;
     }
 

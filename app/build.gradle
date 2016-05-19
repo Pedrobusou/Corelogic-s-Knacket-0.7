@@ -9,7 +9,7 @@ android {
 
     productFlavors {
         dev {
-            buildConfigField 'String', 'ENDPOINT', '"https://www.h2498016.stratoserver.net/bablapp-rest/"'
+            buildConfigField 'String', 'ENDPOINT', '"http://37.139.26.18:80/api/v1/"'
         }
     }
 

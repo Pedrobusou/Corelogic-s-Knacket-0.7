@@ -7,25 +7,27 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
+import uk.co.ribot.Knacket.data.api.model.request.AdRequest;
+import uk.co.ribot.Knacket.data.api.model.request.LoginRequest;
 import uk.co.ribot.Knacket.data.api.model.request.RegisterRequest;
-
-/**
- * RestAPI for the BablApp service.
- *
- * @see <a href="https://redmine.corelogic.pl/projects/bablapp/wiki/API_REST_-_docs">Api documentation</a>
- */
+import uk.co.ribot.Knacket.data.api.model.request.UserRequest;
+import uk.co.ribot.Knacket.data.model.Ad;
 
 public interface RestService {
 
     @POST("activation/register")
-    Observable<RegisterRequest> register(@Body RegisterRequest request);
+    Observable<RegisterRequest> register(@Body RegisterRequest registerRequest);
 
-    /*@POST("contacts")
-    Observable<ContactsResponse> postContacts(@Body ContactsRequest request);
+    @POST("activation/login")
+    Observable<LoginRequest> login(@Body LoginRequest loginRequest);
 
-    @POST("voice-messages")
-    Observable<Void> postVoiceMessage(@Body VoiceMessage voiceMessage);
+    @POST("create ad")
+    Observable<AdRequest> createAd(@Body AdRequest adRequest);
 
+    @POST("create user profile")
+    Observable<UserRequest> createUser(@Body UserRequest userRequest);
+
+    /*
     @GET("contacts/get-avatar")
     Observable<UserAvatarResponse> getUserAvatar(@Query("app-id") String appHash, @Query("msisdn") String msisdn);
 

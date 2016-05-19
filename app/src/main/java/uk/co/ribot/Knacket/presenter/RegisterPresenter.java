@@ -1,22 +1,28 @@
 package uk.co.ribot.Knacket.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.telephony.TelephonyManager;
 import javax.inject.Inject;
 
+import rx.Subscriber;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 import uk.co.ribot.Knacket.ExceptionHandler;
 import uk.co.ribot.Knacket.data.DataManager;
+import uk.co.ribot.Knacket.data.api.model.request.RegisterRequest;
+import uk.co.ribot.Knacket.data.api.model.response.RegisterResponse;
 import uk.co.ribot.Knacket.injection.scope.PerFragment;
 import uk.co.ribot.Knacket.presenter.fragment.BasePresenter;
 import uk.co.ribot.Knacket.ui.fragment.Register;
 
 @PerFragment
 public class RegisterPresenter extends BasePresenter<Register> {
-    ExceptionHandler exceptionHandler;
-    Subscription subscription;
-    DataManager dataManager;
-    Context context;
+    private final ExceptionHandler exceptionHandler;
+    private final DataManager dataManager;
+    private final Context context;
+    private Subscription subscription;
 
     @Inject
     public RegisterPresenter(DataManager dataManager, ExceptionHandler exceptionHandler, Context context) {
@@ -25,8 +31,8 @@ public class RegisterPresenter extends BasePresenter<Register> {
         this.context = context;
     }
 
-    /*public void register(String name, String email, String pass) {
-        subscription = dataManager.api().register(new RegisterRequest(name, email, pass))
+    /*public void register(String name, String email, String password) {
+        subscription = dataManager.api().register(new RegisterRequest(name, email, password))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<RegisterResponse>() {
@@ -56,15 +62,5 @@ public class RegisterPresenter extends BasePresenter<Register> {
         super.onDetach();
         if (subscription != null && !subscription.isUnsubscribed())
             subscription.unsubscribe();
-    }
-
-
-    private String getDeviceId() {
-        String androidId = android.provider.Settings.Secure.getString(context.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
-        if (androidId != null)
-            return androidId;
-
-        TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        return telephonyManager.getDeviceId();
     }
 }

@@ -39,20 +39,20 @@ public class FragmentNavigationButtons extends Fragment {
         PreferencesManager preferences = new PreferencesManager(getContext());
         token = preferences.getToken();
 
-        if(TextUtils.isEmpty(token))
+        /*if(TextUtils.isEmpty(token))
             fragment.setBackgroundColor(Color.parseColor("#BABABA"));
         else
-            Toast.makeText(getContext(), "there's token", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "there's token", Toast.LENGTH_SHORT).show();*/
 
         return view;
     }
 
     @OnClick(R.id.btnExplore) void clickExplore(){
-        if(TextUtils.isEmpty(token)){
+        /*if(TextUtils.isEmpty(token)){
             Intent intent = new Intent(getContext(), LoginRegister.class);
             startActivity(intent);
         }
-        else if(!getActivity().getLocalClassName().contains("MainActivity")){
+        else */if(!getActivity().getLocalClassName().contains("MainActivity")){
             intent = new Intent(getContext(), MainActivity.class);
             startActivity(intent);
             getActivity().finish();
