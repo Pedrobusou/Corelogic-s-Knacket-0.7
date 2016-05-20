@@ -137,9 +137,10 @@
                 android:layout_height="wrap_content"
                 android:padding="15dp"
                 android:background="#FFFFFF"
-                android:hint="Max 300 chars"
+                android:hint="Price"
                 android:maxLines="1"
-                android:id="@+id/etPrice" />
+                android:id="@+id/etPrice"
+                android:inputType="numberDecimal" />
 
             <TextView
                 android:layout_width="match_parent"

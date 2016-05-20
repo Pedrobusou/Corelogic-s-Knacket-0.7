@@ -1,5 +1,7 @@
 package uk.co.ribot.Knacket.data.api;
 
+import java.util.List;
+
 import uk.co.ribot.Knacket.data.PreferencesManager;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -22,10 +24,16 @@ public interface RestService {
     Observable<LoginRequest> login(@Body LoginRequest loginRequest);
 
     @POST("create ad")
-    Observable<AdRequest> createAd(@Body AdRequest adRequest);
+    Observable<Void> createAd(@Body AdRequest adRequest);
 
     @POST("create user profile")
     Observable<UserRequest> createUser(@Body UserRequest userRequest);
+
+    @GET("ads")
+    Observable<List<Ad>> getAds(@Query("app-id") String appHash);
+
+    @GET("ads")
+    Observable<List<Ad>> getAdsWithId(@Query("app-id") String appHash, @Query("id") String id);
 
     /*
     @GET("contacts/get-avatar")

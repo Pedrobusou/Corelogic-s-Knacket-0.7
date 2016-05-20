@@ -52,7 +52,7 @@ public class RegisterPresenter extends BasePresenter<Register> {
 
                     @Override
                     public void onNext(RegisterResponse registerResponse) {
-                        dataManager.getPreferences().setToken(registerResponse.getApplicationHash());
+                        dataManager.getPreferences().setAppHash(registerResponse.getApplicationHash());
                     }
                 });
     }*/
@@ -60,7 +60,6 @@ public class RegisterPresenter extends BasePresenter<Register> {
     @Override
     public void onDetach() {
         super.onDetach();
-        if (subscription != null && !subscription.isUnsubscribed())
-            subscription.unsubscribe();
+        if (subscription != null && !subscription.isUnsubscribed()) subscription.unsubscribe();
     }
 }

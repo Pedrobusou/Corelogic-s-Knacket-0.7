@@ -1,7 +1,11 @@
 package uk.co.ribot.Knacket.data;
 
 import android.content.Context;
+
+import com.j256.ormlite.dao.Dao;
+
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import uk.co.ribot.Knacket.data.local.DatabaseHelper;
@@ -48,23 +52,41 @@ public class DatabaseFacade {
     }
 
 
-    public void saveAd (Ad ad) throws SQLException {
-        Ad mAd = new Ad (ad);
-        helper.getDao(Ad.class).createOrUpdate(mAd);
+    public void saveAd(Ad ad) throws SQLException {
+        helper.getDao(Ad.class).createOrUpdate(ad);
     }
 
-    public void saveSeller (Seller seller) throws SQLException {
-        Seller mSeller = new Seller(seller);
-        helper.getDao(Seller.class).createOrUpdate(mSeller);
+    public void saveSeller(Seller seller) throws SQLException {
+        helper.getDao(Seller.class).createOrUpdate(seller);
     }
 
-    public void saveBooking (Booking booking) throws SQLException {
-        Booking mBooking = new Booking (booking);
-        helper.getDao(Booking.class).createOrUpdate(mBooking);
+    public void saveBooking(Booking booking) throws SQLException {
+        helper.getDao(Booking.class).createOrUpdate(booking);
     }
 
 
     public void clearTable(Class clazz) throws SQLException {
         helper.clearTable(clazz);
+    }
+
+    public void updateAd(List<Ad> ads, int id) throws SQLException {
+        Dao<Ad, ?> dao = helper.getDao(Ad.class);
+        List<Ad> currentAds = dao.queryForAll();
+
+        List<Ad> adsToBeDeleted = new ArrayList<>();
+        List<Ad> adsToBeAdded = new ArrayList<>();
+
+        for (Ad currentAd : currentAds)
+            if (!ads.contains(currentAd))
+                adsToBeDeleted.add(currentAd);
+
+
+        for (Ad ad : ads) {
+            if (!currentAds.contains(ad))
+                if (!(ad.getId() == id)) adsToBeAdded.add(ad);
+        }
+
+        dao.delete(adsToBeDeleted);
+        for (Ad ad : adsToBeAdded) dao.create(ad);
     }
 }
