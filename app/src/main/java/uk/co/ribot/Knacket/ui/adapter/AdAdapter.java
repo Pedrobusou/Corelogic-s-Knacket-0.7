@@ -46,11 +46,11 @@ public class AdAdapter extends RecyclerView.Adapter<AdAdapter.BuyerViewHolder> {
         holder.touchArea.setTag(ad.getId());
 
         //holder.ivProfilePic.setImageBitmap(ad.setProfilePic);
-        holder.tvBuyerName.setText(ad.getName());
-        holder.tvAdCategory.setText(ad.getCategory());
+        //holder.tvBuyerName.setText(ad.getName());
+        //holder.tvAdCategory.setText(ad.getCategory());
         holder.tvAdDate.setText(ad.getTime());
         holder.tvAdDesc.setText(ad.getText());
-        holder.rbAdRating.setProgress(ad.getRating());
+        //holder.rbAdRating.setProgress(ad.getRating());
         holder.tvAdPrice.setText(ad.getPrice());
 
         holder.touchArea.setOnClickListener(new View.OnClickListener() {

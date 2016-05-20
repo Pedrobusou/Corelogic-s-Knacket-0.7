@@ -83,7 +83,7 @@ public class DatabaseFacade {
 
         for (Ad ad : ads) {
             if (!currentAds.contains(ad))
-                if (!(ad.getId() == id)) adsToBeAdded.add(ad);
+                if (!(ad.getId().equals(id))) adsToBeAdded.add(ad);
         }
 
         dao.delete(adsToBeDeleted);

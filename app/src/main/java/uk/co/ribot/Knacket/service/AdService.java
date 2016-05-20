@@ -58,7 +58,7 @@ public class AdService extends IntentService {
 
                     @Override
                     public void onError(Throwable e) {
-                        Timber.i("onerror");
+                        Timber.i("onerror"+e.getMessage());
                       //  exceptionHandler.onException(e, true);
                     }
 
@@ -67,11 +67,11 @@ public class AdService extends IntentService {
                         Timber.i("onNext");
                         for(Ad ad : ads.getBuyerAds()){
                             Timber.i("ad: "+ad.toString());
-                            try {
+                         /*   try {
                                 dataManager.db().saveAd(ad);
                             } catch (SQLException e) {
                                 e.printStackTrace();
-                            }
+                            }*/
                         }
                     }
                 });

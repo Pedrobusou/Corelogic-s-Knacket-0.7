@@ -46,10 +46,10 @@ public class MyAdAdapter extends RecyclerView.Adapter<MyAdAdapter.BuyerViewHolde
         holder.touchArea.setTag(ad.getId());
 
         holder.rlProfilePic.setVisibility(View.GONE);
-        holder.tvAdCategory.setText(ad.getCategory());
+        //holder.tvAdCategory.setText(ad.getCategory());
         holder.tvAdDate.setText(ad.getTime());
         holder.tvAdDesc.setText(ad.getText());
-        holder.rbAdRating.setProgress(ad.getRating());
+        //holder.rbAdRating.setProgress(ad.getRating());
         holder.tvAdPrice.setText(ad.getPrice());
 
         holder.touchArea.setOnClickListener(new View.OnClickListener() {
