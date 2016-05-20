@@ -140,7 +140,7 @@
                     android:textColor="#6E6E6E"
                     android:gravity="center_vertical"
                     android:textSize="15sp"
-                    android:inputType="date"/>
+                    android:inputType="time"/>
             </LinearLayout>
 
             <LinearLayout

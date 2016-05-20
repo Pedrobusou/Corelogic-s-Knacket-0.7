@@ -11,7 +11,7 @@ import uk.co.ribot.Knacket.injection.scope.PerApplication;
 public class PreferencesManager {
     private final static String PREFERENCES_FILE_NAME = "app_preferences";
 
-    private final static String FIELD_APP_HASH = "app_hash";
+    private final static String TOKEN = "token";
 
     private SharedPreferences preferences;
 
@@ -21,11 +21,11 @@ public class PreferencesManager {
     }
 
     @Nullable
-    public String getAppHash() {
-        return preferences.getString(FIELD_APP_HASH, null);
+    public String getToken() {
+        return preferences.getString(TOKEN, null);
     }
 
-    public void setAppHash(@Nullable String app_hash) {
-        preferences.edit().putString(FIELD_APP_HASH, app_hash).apply();
+    public void setToken(@Nullable String token) {
+        preferences.edit().putString(TOKEN, "Bearer " + token).apply();
     }
 }

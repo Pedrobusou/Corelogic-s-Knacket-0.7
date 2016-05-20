@@ -1,5 +1,6 @@
 package uk.co.ribot.Knacket.ui.fragment;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
@@ -20,6 +21,7 @@ import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.presenter.LoginPresenter;
 import uk.co.ribot.Knacket.presenter.RegisterPresenter;
 import uk.co.ribot.Knacket.ui.fragment.base.BasePresenterFragment;
+import uk.co.ribot.Knacket.ui.main.MainActivity;
 
 public class Login extends BasePresenterFragment<LoginPresenter> {
     @Inject LoginPresenter presenter;

@@ -27,6 +27,7 @@ import uk.co.ribot.Knacket.ui.main.NewAd;
 public class FragmentNavigationButtons extends Fragment {
     @Bind(R.id.llAll) LinearLayout fragment;
 
+    private PreferencesManager preferences;
     private Intent intent;
     private String token;
 
@@ -36,13 +37,8 @@ public class FragmentNavigationButtons extends Fragment {
         ButterKnife.bind(this, view);
 
 
-        PreferencesManager preferences = new PreferencesManager(getContext());
-        token = preferences.getAppHash();
-
-        if(TextUtils.isEmpty(token))
-            fragment.setBackgroundColor(Color.parseColor("#BABABA"));
-        else
-            Toast.makeText(getContext(), "there's token", Toast.LENGTH_SHORT).show();
+        preferences = new PreferencesManager(getContext());
+        token = preferences.getToken();
 
         return view;
     }
@@ -97,6 +93,17 @@ public class FragmentNavigationButtons extends Fragment {
             startActivity(intent);
             getActivity().finish();
         }
+    }
+
+    @Override
+    public void onResume() {
+        token = preferences.getToken();
+        if(TextUtils.isEmpty(token))
+            fragment.setBackgroundColor(Color.parseColor("#BABABA"));
+        else{
+            fragment.setBackgroundColor(Color.parseColor("#E9E9E9"));
+        }
+        super.onResume();
     }
 
     /**

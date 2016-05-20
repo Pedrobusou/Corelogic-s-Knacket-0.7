@@ -3,16 +3,16 @@ package uk.co.ribot.Knacket.data.model;
 import java.util.ArrayList;
 
 public class Ad {
-    String name, category, date, description, price;
-    int id, rating;
+    String name, category, time, text, price, media_url, duration, location, location_latitude, location_longitude, deleted_at, created_at, updated_at, distance;
+    int id, tag_id, user_id, rating, buyer_brings_gear;
 
     public Ad(){}
 
     public Ad(Ad ad){
         this.name = ad.getName();
         this.category = ad.getCategory();
-        this.date = ad.getDate();
-        this.description = ad.getDescription();
+        this.time = ad.getTime();
+        this.text = ad.getText();
         this.price = ad.getPrice();
         this.rating = ad.getRating();
     }
@@ -28,20 +28,20 @@ public class Ad {
         return ads;
     }
 
-    public Ad(String name, String category, String date, String description, String price, int rating){
+    public Ad(String name, String category, String time, String text, String price, int rating){
         this.name = name;
         this.category = category;
-        this.date = date;
-        this.description = description;
+        this.time = time;
+        this.text = text;
         this.price = price;
         this.rating = rating;
     }
 
-    public Ad(String name, String category, String date, String description, String price, int rating, int id){
+    public Ad(String name, String category, String time, String text, String price, int rating, int id){
         this.name = name;
         this.category = category;
-        this.date = date;
-        this.description = description;
+        this.time = time;
+        this.text = text;
         this.price = price;
         this.rating = rating;
         this.id = id;
@@ -63,20 +63,20 @@ public class Ad {
         this.category = category;
     }
 
-    public String getDate() {
-        return date;
+    public String getTime() {
+        return time;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public String getDescription() {
-        return description;
+    public String getText() {
+        return text;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getPrice() {

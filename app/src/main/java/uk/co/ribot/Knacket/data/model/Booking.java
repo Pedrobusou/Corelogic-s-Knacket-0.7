@@ -16,12 +16,12 @@ public class Booking {
 
     public ArrayList<Booking> add6Bookings(){
         ArrayList<Booking> bookings = new ArrayList<>();
-        bookings.add(new Booking("Booking 1", "3-mar 17:05", "Booking description"));
-        bookings.add(new Booking("Booking 2", "3-mar 17:05", "Booking description"));
-        bookings.add(new Booking("Booking 3", "3-mar 17:05", "Booking description"));
-        bookings.add(new Booking("Booking 4", "3-mar 17:05", "Booking description"));
-        bookings.add(new Booking("Booking 5", "3-mar 17:05", "Booking description"));
-        bookings.add(new Booking("Booking 6", "3-mar 17:05", "Booking description"));
+        bookings.add(new Booking("Booking 1", "3-mar 17:05", "Booking text"));
+        bookings.add(new Booking("Booking 2", "3-mar 17:05", "Booking text"));
+        bookings.add(new Booking("Booking 3", "3-mar 17:05", "Booking text"));
+        bookings.add(new Booking("Booking 4", "3-mar 17:05", "Booking text"));
+        bookings.add(new Booking("Booking 5", "3-mar 17:05", "Booking text"));
+        bookings.add(new Booking("Booking 6", "3-mar 17:05", "Booking text"));
         return bookings;
     }
 

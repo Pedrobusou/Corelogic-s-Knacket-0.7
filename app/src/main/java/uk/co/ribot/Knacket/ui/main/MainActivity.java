@@ -1,6 +1,7 @@
 package uk.co.ribot.Knacket.ui.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -11,9 +12,11 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -21,7 +24,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import uk.co.ribot.Knacket.R;
+import uk.co.ribot.Knacket.data.PreferencesManager;
 import uk.co.ribot.Knacket.presenter.activity.MainActivityPresenter;
+import uk.co.ribot.Knacket.service.AdService;
 import uk.co.ribot.Knacket.ui.adapter.AdAdapter;
 import uk.co.ribot.Knacket.ui.base.BasePresenterActivity;
 import uk.co.ribot.Knacket.ui.fragment.ListAds;
@@ -46,8 +51,26 @@ public class MainActivity extends BasePresenterActivity<MainActivityPresenter>
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        PreferencesManager preferences = new PreferencesManager(this);
+        String token = preferences.getToken();
+        if(!TextUtils.isEmpty(token)){
+            startService(new Intent(this, AdService.class));
+            Toast.makeText(this, "service ok", Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(this, "service not ok", Toast.LENGTH_SHORT).show();
+
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         setUpTabs();
+    }
+
+    @Override
+    protected void onResume() {
+        PreferencesManager preferences = new PreferencesManager(this);
+        String token = preferences.getToken();
+        if(!TextUtils.isEmpty(token)){
+            startService(new Intent(this, AdService.class));
+            Toast.makeText(this, "service ok", Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(this, "service not ok", Toast.LENGTH_SHORT).show();
+        super.onResume();
     }
 
     @Override

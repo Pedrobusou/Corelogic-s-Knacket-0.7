@@ -47,8 +47,8 @@ public class MyAdAdapter extends RecyclerView.Adapter<MyAdAdapter.BuyerViewHolde
 
         holder.rlProfilePic.setVisibility(View.GONE);
         holder.tvAdCategory.setText(ad.getCategory());
-        holder.tvAdDate.setText(ad.getDate());
-        holder.tvAdDesc.setText(ad.getDescription());
+        holder.tvAdDate.setText(ad.getTime());
+        holder.tvAdDesc.setText(ad.getText());
         holder.rbAdRating.setProgress(ad.getRating());
         holder.tvAdPrice.setText(ad.getPrice());
 
