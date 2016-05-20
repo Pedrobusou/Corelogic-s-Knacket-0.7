@@ -1,9 +1,11 @@
 package uk.co.ribot.Knacket.ui.fragment;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 import butterknife.Bind;
 import uk.co.ribot.Knacket.R;
 import uk.co.ribot.Knacket.data.PreferencesManager;
+import uk.co.ribot.Knacket.ui.main.LoginRegister;
 import uk.co.ribot.Knacket.ui.main.MainActivity;
 
 import butterknife.ButterKnife;
@@ -36,20 +39,20 @@ public class FragmentNavigationButtons extends Fragment {
         PreferencesManager preferences = new PreferencesManager(getContext());
         token = preferences.getAppHash();
 
-        /*if(TextUtils.isEmpty(token))
+        if(TextUtils.isEmpty(token))
             fragment.setBackgroundColor(Color.parseColor("#BABABA"));
         else
-            Toast.makeText(getContext(), "there's token", Toast.LENGTH_SHORT).show();*/
+            Toast.makeText(getContext(), "there's token", Toast.LENGTH_SHORT).show();
 
         return view;
     }
 
     @OnClick(R.id.btnExplore) void clickExplore(){
-        /*if(TextUtils.isEmpty(token)){
+        if(TextUtils.isEmpty(token)){
             Intent intent = new Intent(getContext(), LoginRegister.class);
             startActivity(intent);
         }
-        else */if(!getActivity().getLocalClassName().contains("MainActivity")){
+        else if(!getActivity().getLocalClassName().contains("MainActivity")){
             intent = new Intent(getContext(), MainActivity.class);
             startActivity(intent);
             getActivity().finish();

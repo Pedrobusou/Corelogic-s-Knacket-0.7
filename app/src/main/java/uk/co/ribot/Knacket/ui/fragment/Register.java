@@ -54,7 +54,7 @@ public class Register extends BasePresenterFragment<RegisterPresenter> {
             Toast.makeText(getContext(), "Password doesn't match", Toast.LENGTH_SHORT).show();
         else {
             showLoadingDialog(R.string.loading, R.string.registering);
-            //getPresenter().register(name, email, password);
+            getPresenter().register(name, email, pass,repeatPass);
         }
     }
 

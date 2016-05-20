@@ -42,10 +42,15 @@ public class ExceptionHandler {
      * @param throwable   exception
      * @param useSnackbar if true will use Snackbar to show error message.
      */
-    /*public void onException(final Throwable throwable, boolean useSnackbar) {
+    public void onException(final Throwable throwable, final boolean useSnackbar) {
         Handler handler = new Handler(activity.getMainLooper());
-        handler.post(() -> handleException(throwable, useSnackbar));
-    }*/
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                handleException(throwable, useSnackbar);
+            }
+        });
+    }
 
     private void handleException(Throwable throwable, boolean useSnackbar) {
         String errorMessage = activity.getString(pickMessageForException(throwable));

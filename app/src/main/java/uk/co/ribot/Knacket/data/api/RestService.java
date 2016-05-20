@@ -17,11 +17,11 @@ import uk.co.ribot.Knacket.data.model.Ad;
 
 public interface RestService {
 
-    @POST("activation/register")
-    Observable<RegisterRequest> register(@Body RegisterRequest registerRequest);
+    @POST("register")
+    Observable<Void> register(@Body RegisterRequest registerRequest);
 
-    @POST("activation/login")
-    Observable<LoginRequest> login(@Body LoginRequest loginRequest);
+    @POST("login")
+    Observable<Void> login(@Body LoginRequest loginRequest);
 
     @POST("create ad")
     Observable<Void> createAd(@Body AdRequest adRequest);

@@ -56,7 +56,7 @@ public class AdService extends IntentService {
 
                     @Override
                     public void onError(Throwable e) {
-                        //exceptionHandler.onException(e, true);
+                        exceptionHandler.onException(e, true);
                     }
 
                     @Override
