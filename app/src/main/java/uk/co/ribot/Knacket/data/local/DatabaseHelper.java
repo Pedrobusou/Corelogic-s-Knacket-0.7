@@ -6,6 +6,11 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
+
+import uk.co.ribot.Knacket.data.local.model.AdDatabase;
+import uk.co.ribot.Knacket.data.local.model.TagDatabase;
+import uk.co.ribot.Knacket.data.local.model.UserDatabase;
+import uk.co.ribot.Knacket.data.local.model.UserProfileDatabase;
 import uk.co.ribot.Knacket.data.model.Ad;
 import uk.co.ribot.Knacket.data.model.Booking;
 import uk.co.ribot.Knacket.data.model.Seller;
@@ -36,9 +41,12 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
 
     private void createTables(ConnectionSource connectionSource) {
         try {
-            TableUtils.createTable(connectionSource, Ad.class);
-            TableUtils.createTable(connectionSource, Booking.class);
-            TableUtils.createTable(connectionSource, Seller.class);
+            TableUtils.createTable(connectionSource, AdDatabase.class);
+            TableUtils.createTable(connectionSource, TagDatabase.class);
+            TableUtils.createTable(connectionSource, UserDatabase.class);
+            TableUtils.createTable(connectionSource, UserProfileDatabase.class);
+         //   TableUtils.createTable(connectionSource, Booking.class);
+         //   TableUtils.createTable(connectionSource, Seller.class);
         } catch (SQLException e) {
             //Timber.e("Fatal error, cannot create database!", e);
         }

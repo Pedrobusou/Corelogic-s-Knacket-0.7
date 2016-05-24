@@ -2,6 +2,7 @@ package uk.co.ribot.Knacket.ui.adapter;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,18 +19,19 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import uk.co.ribot.Knacket.R;
+import uk.co.ribot.Knacket.data.local.model.AdDatabase;
 import uk.co.ribot.Knacket.data.model.Ad;
 import uk.co.ribot.Knacket.ui.main.AdInfo;
 
 public class AdAdapter extends RecyclerView.Adapter<AdAdapter.BuyerViewHolder> {
-    private List<Ad> mAd;
+    private List<AdDatabase> mAd;
 
     @Inject
     public AdAdapter() {
         mAd = new ArrayList<>();
     }
 
-    public void setBuyers(List<Ad> ads) {
+    public void setBuyers(List<AdDatabase> ads) {
         mAd = ads;
     }
 
@@ -41,17 +43,20 @@ public class AdAdapter extends RecyclerView.Adapter<AdAdapter.BuyerViewHolder> {
 
     @Override
     public void onBindViewHolder(BuyerViewHolder holder, int position) {
-        Ad ad = mAd.get(position);
-
+        AdDatabase ad = mAd.get(position);
         holder.touchArea.setTag(ad.getId());
 
-        //holder.ivProfilePic.setImageBitmap(ad.setProfilePic);
-        //holder.tvBuyerName.setText(ad.getName());
-        //holder.tvAdCategory.setText(ad.getCategory());
+        //holder.ivProfilePic.setImageBitmap(ad.getUserProfile().getPicture_url());
+        holder.tvBuyerName.setText(ad.getUser().getName());
+        holder.tvAdCategory.setText(ad.getTag().getName());
         holder.tvAdDate.setText(ad.getTime());
         holder.tvAdDesc.setText(ad.getText());
-        //holder.rbAdRating.setProgress(ad.getRating());
-        holder.tvAdPrice.setText(ad.getPrice());
+
+        if(!TextUtils.isEmpty(ad.getPrice()))
+            holder.tvAdPrice.setText(ad.getPrice());
+
+        if(!TextUtils.isEmpty(ad.getUser().getRating()))
+            holder.rbAdRating.setProgress(Integer.parseInt(ad.getUser().getRating()));
 
         holder.touchArea.setOnClickListener(new View.OnClickListener() {
             @Override

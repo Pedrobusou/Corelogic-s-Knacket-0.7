@@ -56,7 +56,7 @@ public class MainActivity extends BasePresenterActivity<MainActivityPresenter>
         if(!TextUtils.isEmpty(token)){
             startService(new Intent(this, AdService.class));
             Toast.makeText(this, "service ok", Toast.LENGTH_SHORT).show();
-        } else Toast.makeText(this, "service not ok", Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(this, "service not ok", Toast.LENGTH_SHORT).show(); //WHY I CANT COMMENT THIS?
 
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         setUpTabs();

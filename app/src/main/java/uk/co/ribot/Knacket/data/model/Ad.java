@@ -6,16 +6,40 @@ public class Ad {
     String time, text, price, media_url, duration, location, location_latitude, location_longitude, deleted_at, created_at, updated_at, distance;
     String id, tag_id, user_id, buyer_brings_gear;
 
-    UserProfile userProfile;
+    UserProfile user_profile;
     User user;
     Tag tag;
 
     public Ad(){}
 
+
+
     public Ad(Ad ad){
         this.time = ad.getTime();
         this.text = ad.getText();
         this.price = ad.getPrice();
+    }
+
+    public Ad(String time, String text, String price, String media_url, String duration, String location, String location_latitude, String location_longitude, String deleted_at, String created_at, String updated_at, String distance, String id, String tag_id, String user_id, String buyer_brings_gear, UserProfile userProfile, User user, Tag tag) {
+        this.time = time;
+        this.text = text;
+        this.price = price;
+        this.media_url = media_url;
+        this.duration = duration;
+        this.location = location;
+        this.location_latitude = location_latitude;
+        this.location_longitude = location_longitude;
+        this.deleted_at = deleted_at;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
+        this.distance = distance;
+        this.id = id;
+        this.tag_id = tag_id;
+        this.user_id = user_id;
+        this.buyer_brings_gear = buyer_brings_gear;
+        this.user_profile = userProfile;
+        this.user = user;
+        this.tag = tag;
     }
 
     public ArrayList<Ad> add6Ads(){
@@ -133,12 +157,12 @@ public class Ad {
 
 
 
-    public UserProfile getUserProfile() {
-        return userProfile;
+    public UserProfile getUser_profile() {
+        return user_profile;
     }
 
-    public void setUserProfile(UserProfile userProfile) {
-        this.userProfile = userProfile;
+    public void setUser_profile(UserProfile user_profile) {
+        this.user_profile = user_profile;
     }
 
     public User getUser() {

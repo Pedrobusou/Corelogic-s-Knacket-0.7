@@ -1,7 +1,6 @@
 package uk.co.ribot.Knacket.data;
 
 import android.content.Context;
-
 import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
@@ -9,8 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import uk.co.ribot.Knacket.data.local.DatabaseHelper;
+import uk.co.ribot.Knacket.data.local.model.TagDatabase;
+import uk.co.ribot.Knacket.data.local.model.UserDatabase;
+import uk.co.ribot.Knacket.data.local.model.UserProfileDatabase;
 import uk.co.ribot.Knacket.injection.scope.PerApplication;
 
+import uk.co.ribot.Knacket.data.local.model.AdDatabase;
 import uk.co.ribot.Knacket.data.model.Ad;
 import uk.co.ribot.Knacket.data.model.Seller;
 import uk.co.ribot.Knacket.data.model.Booking;
@@ -39,8 +42,8 @@ public class DatabaseFacade {
     }
 
 
-    public List<Ad> getAdList() throws SQLException {
-        return helper.getDao(Ad.class).queryForAll();
+    public List<AdDatabase> getAdList() throws SQLException {
+        return helper.getDao(AdDatabase.class).queryForAll();
     }
 
     public List<Seller> getSellerList() throws SQLException {
@@ -52,8 +55,20 @@ public class DatabaseFacade {
     }
 
 
-    public void saveAd(Ad ad) throws SQLException {
-        helper.getDao(Ad.class).createOrUpdate(ad);
+    public void saveAd(AdDatabase ad) throws SQLException {
+        helper.getDao(AdDatabase.class).createOrUpdate(ad);
+    }
+
+    public void saveTagDatabase(TagDatabase ad) throws SQLException {
+        helper.getDao(TagDatabase.class).createOrUpdate(ad);
+    }
+
+    public void saveUserProfileDatabase(UserProfileDatabase ad) throws SQLException {
+        helper.getDao(UserProfileDatabase.class).createOrUpdate(ad);
+    }
+
+    public void saveUserDatabase(UserDatabase ad) throws SQLException {
+        helper.getDao(UserDatabase.class).createOrUpdate(ad);
     }
 
     public void saveSeller(Seller seller) throws SQLException {
@@ -83,7 +98,7 @@ public class DatabaseFacade {
 
         for (Ad ad : ads) {
             if (!currentAds.contains(ad))
-                if (!(ad.getId().equals(id))) adsToBeAdded.add(ad);
+                if (!(Integer.parseInt(ad.getId()) == id)) adsToBeAdded.add(ad);
         }
 
         dao.delete(adsToBeDeleted);
