@@ -12,8 +12,6 @@ public class Ad {
 
     public Ad(){}
 
-
-
     public Ad(Ad ad){
         this.time = ad.getTime();
         this.text = ad.getText();
@@ -154,8 +152,6 @@ public class Ad {
     public void setDistance(String distance) {
         this.distance = distance;
     }
-
-
 
     public UserProfile getUser_profile() {
         return user_profile;

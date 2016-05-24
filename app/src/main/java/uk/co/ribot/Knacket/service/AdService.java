@@ -25,7 +25,7 @@ import uk.co.ribot.Knacket.event.AdSyncFinishedEvent;
 public class AdService extends IntentService {
     @Inject
     DataManager dataManager;
-    Subscription subscription;
+    private Subscription subscription;
 
     public AdService() {
         super("AdService");
@@ -48,57 +48,41 @@ public class AdService extends IntentService {
                     public void onCompleted() {
                         Timber.i("onCompleted");
                         EventBus.getDefault().post(new AdSyncFinishedEvent());
-                     /*   try {
-                            List<Ad> ads = dataManager.db().getAdList();
-                            for(Ad ad : ads) dataManager.db().saveAd(ad); //SHOULD THIS DELETE ADS?
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        }
-                        EventBus.getDefault().post(new AdSavedEvent(AdSavedEvent.PARAM_DELETE));*/
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Timber.i("!onError "+e.getMessage());
+                        Timber.i("onError "+e.getMessage());
                         Timber.i("onError "+e.getCause());
                     }
 
                     @Override
                     public void onNext(AdsResponse ads) {
                         Timber.i("onNext"+ads.toString());
-                        int i=0;
+                        int i = 0;
                         for(Ad ad : ads.getBuyerAds()){
                             Timber.i("i: "+i);
                             i++;
-                            TagDatabase tagDatabase=new TagDatabase(ad.getTag());
+
+                            TagDatabase tagDatabase = new TagDatabase(ad.getTag());
                             try {
-                                dataManager.db().saveTagDatabase(tagDatabase);  //Save ads on Phone database, right?
-                            } catch (java.sql.SQLException e) {
-                                e.printStackTrace();
-                            }
-                            UserDatabase userDatabase=new UserDatabase(ad.getUser());
+                                dataManager.db().saveTagDatabase(tagDatabase);
+                            } catch (java.sql.SQLException e) { e.printStackTrace(); }
+
+                            UserDatabase userDatabase = new UserDatabase(ad.getUser());
                             try {
-                                dataManager.db().saveUserDatabase(userDatabase);  //Save ads on Phone database, right?
-                            } catch (java.sql.SQLException e) {
-                                e.printStackTrace();
-                            }
-                            UserProfileDatabase userProfileDatabase=new UserProfileDatabase(ad.getUser_profile());
+                                dataManager.db().saveUserDatabase(userDatabase);
+                            } catch (java.sql.SQLException e) { e.printStackTrace(); }
+
+                            UserProfileDatabase userProfileDatabase = new UserProfileDatabase(ad.getUser_profile());
                             try {
-                                dataManager.db().saveUserProfileDatabase(userProfileDatabase);  //Save ads on Phone database, right?
-                            } catch (java.sql.SQLException e) {
-                                e.printStackTrace();
-                            }
+                                dataManager.db().saveUserProfileDatabase(userProfileDatabase);
+                            } catch (java.sql.SQLException e) { e.printStackTrace(); }
 
-
-                            AdDatabase adDatabase = new AdDatabase(ad,userDatabase,userProfileDatabase,tagDatabase);
-
-
-                           // Timber.i("ad: "+ad.toString());
-                           try {
-                                dataManager.db().saveAd(adDatabase);  //Save ads on Phone database, right?
-                            } catch (java.sql.SQLException e) {
-                                e.printStackTrace();
-                            }
+                             try {
+                                 AdDatabase adDatabase = new AdDatabase(ad, userDatabase, userProfileDatabase, dataManager.db().getTagByServerId(tagDatabase.getServerId()));
+                                 dataManager.db().saveAd(adDatabase);
+                            } catch (java.sql.SQLException e) { e.printStackTrace(); }
                         }
                     }
                 });

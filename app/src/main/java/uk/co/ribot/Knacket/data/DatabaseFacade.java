@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
+
+import timber.log.Timber;
 import uk.co.ribot.Knacket.data.local.DatabaseHelper;
 import uk.co.ribot.Knacket.data.local.model.TagDatabase;
 import uk.co.ribot.Knacket.data.local.model.UserDatabase;
@@ -56,19 +58,39 @@ public class DatabaseFacade {
 
 
     public void saveAd(AdDatabase ad) throws SQLException {
-        helper.getDao(AdDatabase.class).createOrUpdate(ad);
+        Dao<AdDatabase, String> dao = helper.getDao(AdDatabase.class);
+
+        List<AdDatabase> query = dao.queryBuilder().where().eq(AdDatabase.COLUMN_SERVER_ID, ad.getServerId()).query();
+        if (query.size() == 0) {
+            dao.create(ad); //create group only if there is no one with the same ServerId
+        }
     }
 
-    public void saveTagDatabase(TagDatabase ad) throws SQLException {
-        helper.getDao(TagDatabase.class).createOrUpdate(ad);
+    public void saveTagDatabase(TagDatabase tag) throws SQLException {
+        Dao<TagDatabase, String> dao = helper.getDao(TagDatabase.class);
+
+        List<TagDatabase> query = dao.queryBuilder().where().eq(TagDatabase.COLUMN_SERVER_ID, tag.getServerId()).query();
+        if (query.size() == 0) {
+            dao.create(tag); //create group only if there is no one with the same ServerId
+        }
     }
 
-    public void saveUserProfileDatabase(UserProfileDatabase ad) throws SQLException {
-        helper.getDao(UserProfileDatabase.class).createOrUpdate(ad);
+    public void saveUserProfileDatabase(UserProfileDatabase userP) throws SQLException {
+        Dao<UserProfileDatabase, String> dao = helper.getDao(UserProfileDatabase.class);
+
+        List<UserProfileDatabase> query = dao.queryBuilder().where().eq(UserProfileDatabase.COLUMN_SERVER_ID, userP.getServerId()).query();
+        if (query.size() == 0) {
+            dao.create(userP); //create group only if there is no one with the same ServerId
+        }
     }
 
-    public void saveUserDatabase(UserDatabase ad) throws SQLException {
-        helper.getDao(UserDatabase.class).createOrUpdate(ad);
+    public void saveUserDatabase(UserDatabase userDB) throws SQLException {
+        Dao<UserDatabase, String> dao = helper.getDao(UserDatabase.class);
+
+        List<UserDatabase> query = dao.queryBuilder().where().eq(UserDatabase.COLUMN_SERVER_ID, userDB.getServerId()).query();
+        if (query.size() == 0) {
+            dao.create(userDB); //create group only if there is no one with the same ServerId
+        }
     }
 
     public void saveSeller(Seller seller) throws SQLException {
@@ -103,5 +125,10 @@ public class DatabaseFacade {
 
         dao.delete(adsToBeDeleted);
         for (Ad ad : adsToBeAdded) dao.create(ad);
+    }
+
+    public TagDatabase getTagByServerId(String serverId) throws SQLException{
+        Dao<TagDatabase,String> dao =helper.getDao(TagDatabase.class);
+        return dao.queryBuilder().where().eq(TagDatabase.COLUMN_SERVER_ID,serverId).queryForFirst();
     }
 }

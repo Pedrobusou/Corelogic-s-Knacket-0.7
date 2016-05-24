@@ -26,21 +26,16 @@ public class ListAds extends BasePresenterFragment<ListAdsPresenter> {
     @Inject ListAdsPresenter presenter;
 
     public ListAds() {}
-    AdAdapter adapter;
+    private AdAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_blank, container, false);
 
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view);
         rv.setHasFixedSize(true);
-
         adapter = new AdAdapter();
-
-        //adapter.setBuyers(new Ad().add6Ads());
-
         rv.setAdapter(adapter);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());

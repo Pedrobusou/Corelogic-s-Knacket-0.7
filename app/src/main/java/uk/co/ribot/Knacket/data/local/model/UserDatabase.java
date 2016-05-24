@@ -2,12 +2,7 @@ package uk.co.ribot.Knacket.data.local.model;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-
 import uk.co.ribot.Knacket.data.model.User;
-
-/**
- * Created by pedroramos on 23.05.16.
- */
 
 @DatabaseTable(tableName = "user")
 public class UserDatabase extends BaseTable{

@@ -30,31 +30,6 @@ public class ListAdsPresenter extends BasePresenter<ListAds> {
         this.context = context;
     }
 
-    /*public void login(String email, String password) {
-        subscription = dataManager.api().login(new LoginRequest(email, password))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<TokenResponse>() {
-                    @Override
-                    public void onCompleted() {
-                        getFragment().dismissLoadingDialog();
-                        Toast.makeText(context, "Logged in", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        getFragment().dismissLoadingDialog();
-                        exceptionHandler.onException(e, true);
-                    }
-
-                    @Override
-                    public void onNext(TokenResponse token) {
-                        dataManager.getPreferences().setToken(token.getToken());
-                        getFragment().getActivity().finish();
-                    }
-                });
-    }*/
-
     public DataManager getDataManager(){
         return dataManager;
     }

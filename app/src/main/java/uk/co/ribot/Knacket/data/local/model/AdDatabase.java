@@ -10,7 +10,7 @@ import uk.co.ribot.Knacket.data.model.User;
 
 @DatabaseTable(tableName = "ad")
 public class AdDatabase extends BaseTable{
-    private final String COLUMN_SERVER_ID = "server_id";
+    public static final String COLUMN_SERVER_ID = "server_id";
     private final String COLUMN_TAG_ID = "tag_id";
     private final String COLUMN_USER_IS = "user_id";
     private final String COLUMN_TIME = "time";
@@ -78,13 +78,13 @@ public class AdDatabase extends BaseTable{
     @DatabaseField(columnName = COLUMN_BUYER_BRINGS_GEAR)
     private String buyer_brings_gear;
 
-    @DatabaseField(columnName = COLUMN_USER_PROFILE,foreign = true)
+    @DatabaseField(columnName = COLUMN_USER_PROFILE,foreign = true,foreignAutoRefresh = true)
     private UserProfileDatabase userProfile;
 
-    @DatabaseField(columnName = COLUMN_USER,foreign = true)
+    @DatabaseField(columnName = COLUMN_USER,foreign = true,foreignAutoRefresh = true)
     private UserDatabase user;
 
-    @DatabaseField(columnName = COLUMN_TAG,foreign = true)
+    @DatabaseField(columnName = COLUMN_TAG,foreign = true,foreignAutoRefresh = true)
     private TagDatabase tag;
 
     public AdDatabase(){}
@@ -109,17 +109,6 @@ public class AdDatabase extends BaseTable{
         this.userProfile = userProfileDatabase;
         this.user = userDatabase;
         this.tag = tagDatabase;
-    }
-
-    public ArrayList<Ad> add6Ads(){
-        ArrayList<Ad> ads = new ArrayList<>();
-        ads.add(new Ad("3-mar 17:05", "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "300kr"));
-        ads.add(new Ad("3-mar 17:05", "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "3000kr"));
-        ads.add(new Ad("3-mar 17:05", "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "300kr"));
-        ads.add(new Ad("3-mar 17:05", "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "300kr"));
-        ads.add(new Ad("3-mar 17:05", "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "3000kr"));
-        ads.add(new Ad("3-mar 17:05", "Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh", "300kr"));
-        return ads;
     }
 
     public AdDatabase(String time, String text, String price){

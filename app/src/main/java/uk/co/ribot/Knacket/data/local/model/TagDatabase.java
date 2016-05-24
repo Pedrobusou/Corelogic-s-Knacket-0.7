@@ -5,18 +5,14 @@ import com.j256.ormlite.table.DatabaseTable;
 
 import uk.co.ribot.Knacket.data.model.Tag;
 
-/**
- * Created by pedroramos on 23.05.16.
- */
-
 @DatabaseTable(tableName = "tag")
 public class TagDatabase extends BaseTable{
     public static final String COLUMN_SERVER_ID = "server_id";
-    public static final String COLUMN_NAME = "name";
-    public static final String COLUMN_DESCRIPTION = "description";
-    public static final String COLUMN_CRETED_AT = "created_at";
-    public static final String COLUMN_UPDATED_AT = "updated_at";
-    public static final String COLUMN_COUNTRY_ID = "country_id";
+    private final String COLUMN_NAME = "name";
+    private final String COLUMN_DESCRIPTION = "description";
+    private final String COLUMN_CREATED_AT = "created_at";
+    private final String COLUMN_UPDATED_AT = "updated_at";
+    private final String COLUMN_COUNTRY_ID = "country_id";
 
     @DatabaseField(columnName = COLUMN_SERVER_ID)
     String serverId;
@@ -27,7 +23,7 @@ public class TagDatabase extends BaseTable{
     @DatabaseField(columnName = COLUMN_DESCRIPTION)
     String description;
 
-    @DatabaseField(columnName = COLUMN_CRETED_AT)
+    @DatabaseField(columnName = COLUMN_CREATED_AT)
     String created_at;
 
     @DatabaseField(columnName = COLUMN_UPDATED_AT)
