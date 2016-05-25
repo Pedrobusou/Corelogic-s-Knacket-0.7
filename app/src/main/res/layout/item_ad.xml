@@ -31,8 +31,8 @@
             android:paddingLeft="5dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:id="@+id/ivProfilePic"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_centerHorizontal="true" />
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textStyle="bold"
-                android:text="Andreas Furst"
+                android:text="- - -"
                 android:layout_alignParentBottom="true"
                 android:textSize="13sp"
                 android:gravity="center_horizontal"/>
@@ -60,7 +60,7 @@
                 android:id="@+id/tvAdCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hundpassning"
+                android:text="- - -"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#000000"
                 android:textSize="15sp" />
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="3-mar 17:05"
+                android:text="- - -"
                 android:id="@+id/tvAdDate"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
@@ -80,7 +80,7 @@
                 android:textColor="#6E6E6E"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Soffa fatolj och sjrivbord skal slangas i grovsopor, bor pa 3tr grovosporna ligger isuefhisuhfiusehifuhseifuhseiufhseiufhiseuh"
+                android:text="- - -"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_centerVertical="true"
                 android:maxLines="2"
@@ -93,7 +93,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
                 style="@android:style/Widget.DeviceDefault.RatingBar.Small"
-                android:rating="5"
+                android:rating="0"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -101,7 +101,7 @@
                 android:textColor="#6E6E6E"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="300kr"
+                android:text="- - -"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
