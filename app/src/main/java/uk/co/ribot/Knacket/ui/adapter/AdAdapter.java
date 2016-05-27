@@ -3,6 +3,9 @@ package uk.co.ribot.Knacket.ui.adapter;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -29,9 +32,11 @@ import uk.co.ribot.Knacket.data.local.model.AdDatabase;
 import uk.co.ribot.Knacket.ui.main.AdInfo;
 
 public class AdAdapter extends RecyclerView.Adapter<AdAdapter.BuyerViewHolder> {
+    @Bind(R.id.rbAdRating) RatingBar ratingBar;
     private List<AdDatabase> mAd;
     private ImageView imageView;
     private Bitmap bitmap;
+    private String url;
 
     @Inject
     public AdAdapter() {
@@ -45,19 +50,26 @@ public class AdAdapter extends RecyclerView.Adapter<AdAdapter.BuyerViewHolder> {
     @Override
     public BuyerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ad, parent, false);
+        ButterKnife.bind(this, itemView);
+
+        LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(Color.parseColor("#FACC2E"), PorterDuff.Mode.SRC_ATOP);
+
+
         return new BuyerViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(BuyerViewHolder holder, int position) {
-        AdDatabase ad = mAd.get(position);
+    public void onBindViewHolder(final BuyerViewHolder holder, final int position) {  //Check that there isn't empty fields before filling the UI
+        final AdDatabase ad = mAd.get(position);
         holder.touchArea.setTag(ad.getId());
         imageView = holder.ivProfilePic;
 
         if (!TextUtils.isEmpty(ad.getUserProfile().getPicture_url())) {
             String SERVER_URL = "http://37.139.26.18:12347/uploads/";
-            String url = (SERVER_URL + ad.getUserProfile().getPicture_url());
+            url = (SERVER_URL + ad.getUserProfile().getPicture_url());
             new LoadImage().execute(url);
+            bitmap = null;
         }
 
         if (!TextUtils.isEmpty(ad.getUser().getName()))
@@ -75,8 +87,17 @@ public class AdAdapter extends RecyclerView.Adapter<AdAdapter.BuyerViewHolder> {
 
         holder.touchArea.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {  //Saves and send the info got from server to the next activity, so it doesn't have to connect also to server
                 Intent intent = new Intent(v.getContext(), AdInfo.class);
+                intent.putExtra("profilePicURL", url);
+                intent.putExtra("userName", holder.tvBuyerName.getText().toString());
+                intent.putExtra("rating", holder.rbAdRating.getRating());
+                intent.putExtra("category", holder.tvAdCategory.getText().toString());
+                intent.putExtra("description", holder.tvAdDesc.getText().toString());
+                intent.putExtra("price", "Price: " + holder.tvAdPrice.getText().toString());
+                intent.putExtra("adId", ad.getId());
+
+                intent.putExtra("position", position);
                 v.getContext().startActivity(intent);
             }
         });
@@ -104,6 +125,8 @@ public class AdAdapter extends RecyclerView.Adapter<AdAdapter.BuyerViewHolder> {
     }
 
     private class LoadImage extends AsyncTask<String, String, Bitmap> {
+        //Loads the bitmap for the user's profile picture in new thread. If there isn't image, default one will be showed
+
         @Override
         protected Bitmap doInBackground(String... args) {
             try {

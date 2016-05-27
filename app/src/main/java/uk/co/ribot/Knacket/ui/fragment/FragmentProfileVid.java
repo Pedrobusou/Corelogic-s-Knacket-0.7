@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import uk.co.ribot.Knacket.R;
 
-public class FragmentProfileVid extends Fragment {
+public class FragmentProfileVid extends Fragment {  //Simple fragment for showing header's profileVid at BuyerProfile and MyProfile
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

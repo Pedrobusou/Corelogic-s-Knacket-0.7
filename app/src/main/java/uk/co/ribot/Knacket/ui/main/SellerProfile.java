@@ -66,7 +66,7 @@ public class SellerProfile extends AppCompatActivity implements FragmentNavigati
         tabLayout.setupWithViewPager(footerView);
     }
 
-    @OnClick(R.id.btnSendRequest) void sendRequest(){
+    @OnClick(R.id.btnSendRequest) void sendRequest(){ //Shows Request activity
         Intent intent = new Intent(this, Request.class);
         startActivity(intent);
     }

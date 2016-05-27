@@ -8,12 +8,16 @@ import uk.co.ribot.Knacket.data.DataManager;
 import uk.co.ribot.Knacket.injection.scope.PerActivity;
 import uk.co.ribot.Knacket.injection.module.ActivityModule;
 import uk.co.ribot.Knacket.ui.base.BaseActivity;
+import uk.co.ribot.Knacket.ui.main.BuyerProfile;
 import uk.co.ribot.Knacket.ui.main.MainActivity;
 
 @PerActivity
 @Component(modules = ActivityModule.class, dependencies = ApplicationComponent.class)
 public interface ActivityComponent {
     void inject(MainActivity mainActivity);
+
+    void inject(BuyerProfile bPActivity);
+
     BaseActivity activity();
 
     Context context();

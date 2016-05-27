@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import uk.co.ribot.Knacket.R;
-import uk.co.ribot.Knacket.presenter.RegisterPresenter;
+import uk.co.ribot.Knacket.presenter.fragment.RegisterPresenter;
 import uk.co.ribot.Knacket.ui.fragment.base.BasePresenterFragment;
 
 public class Register extends BasePresenterFragment<RegisterPresenter> {

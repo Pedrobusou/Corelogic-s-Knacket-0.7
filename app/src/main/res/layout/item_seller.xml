@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/rbSellerRating"
                     style="@android:style/Widget.DeviceDefault.RatingBar.Small"
-                    android:rating="5"
+                    android:rating="0"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true" />
 

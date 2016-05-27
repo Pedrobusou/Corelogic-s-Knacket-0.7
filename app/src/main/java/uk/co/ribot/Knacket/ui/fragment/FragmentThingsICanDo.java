@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import uk.co.ribot.Knacket.R;
 
-public class FragmentThingsICanDo extends Fragment {
+public class FragmentThingsICanDo extends Fragment { //Simple fragment for demo. Unfinished
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

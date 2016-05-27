@@ -1,6 +1,5 @@
 package uk.co.ribot.Knacket.ui.main;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -19,10 +18,12 @@ import uk.co.ribot.Knacket.ui.fragment.ListBookings;
 import uk.co.ribot.Knacket.ui.fragment.FragmentNavigationButtons;
 
 public class MyJobs extends BaseActivity implements FragmentNavigationButtons.OnFragmentInteractionListener{
-    @Bind(R.id.container) ViewPager mViewPager;
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.tabs) TabLayout tabLayout;
+    //Simple three-tabbed activity
+    //Doesn't get data from server yet
     @Bind(R.id.toolbar_title) TextView toolbar_title;
+    @Bind(R.id.container) ViewPager mViewPager;
+    @Bind(R.id.tabs) TabLayout tabLayout;
+    @Bind(R.id.toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +36,8 @@ public class MyJobs extends BaseActivity implements FragmentNavigationButtons.On
 
     private void setUpTabs(){
         setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        TabsAdapter tabsAdapter = new TabsAdapter(getSupportFragmentManager(), this);
+        // Create the adapter that will return a fragment for each of the three primary sections of the activity.
+        TabsAdapter tabsAdapter = new TabsAdapter(getSupportFragmentManager());
 
         mViewPager.setAdapter(tabsAdapter);
         tabLayout.setupWithViewPager(mViewPager);
@@ -50,11 +50,9 @@ public class MyJobs extends BaseActivity implements FragmentNavigationButtons.On
 
     public class TabsAdapter extends FragmentPagerAdapter {
         final String[] tabTitles = new String[] {"Bookings", "Requests", "Historic"};
-        final Context context;
 
-        public TabsAdapter(FragmentManager fm, Context context) {
+        public TabsAdapter(FragmentManager fm) {
             super(fm);
-            this.context = context;
         }
 
         @Override

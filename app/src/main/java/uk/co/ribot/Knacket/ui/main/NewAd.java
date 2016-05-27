@@ -43,6 +43,8 @@ public class NewAd extends AppCompatActivity implements FragmentNavigationButton
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Should avoid using onTouchListener, it will be called, for example, when touching screen just to scroll
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_ad);
         ButterKnife.bind(this);
@@ -52,7 +54,7 @@ public class NewAd extends AppCompatActivity implements FragmentNavigationButton
 
         rlProfilePic.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public boolean onTouch(View v, MotionEvent event) { //Takes picture and save its path
                 takePic();
                 return false;
             }
@@ -60,7 +62,7 @@ public class NewAd extends AppCompatActivity implements FragmentNavigationButton
 
         rlProfileVid.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public boolean onTouch(View v, MotionEvent event) { //Takes vid and save its path
                 takeVid();
                 return false;
             }

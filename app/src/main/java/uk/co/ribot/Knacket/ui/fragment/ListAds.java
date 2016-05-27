@@ -24,18 +24,19 @@ import uk.co.ribot.Knacket.ui.fragment.base.BasePresenterFragment;
 
 public class ListAds extends BasePresenterFragment<ListAdsPresenter> {
     @Inject ListAdsPresenter presenter;
+    private AdAdapter adapter = new AdAdapter();
 
     public ListAds() {}
-    private AdAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Creates recycleView and fills it with the server data at AdInfo, using the AdItem template
+
         View rootView = inflater.inflate(R.layout.fragment_blank, container, false);
 
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view);
         rv.setHasFixedSize(true);
-        adapter = new AdAdapter();
         rv.setAdapter(adapter);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -59,9 +60,9 @@ public class ListAds extends BasePresenterFragment<ListAdsPresenter> {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onContactSyncFinished(AdSyncFinishedEvent event) {
         try {
-            Timber.i("size"+presenter.getDataManager().db().getAdList().size());
-            adapter.setBuyers(presenter.getDataManager().db().getAdList());  //NOW USE PRESENTER
-            adapter.notifyDataSetChanged();
+            Timber.i("Size: " + presenter.getDataManager().db().getAdList().size());
+            adapter.setBuyers(presenter.getDataManager().db().getAdList()); //Load adapter with data from server
+            adapter.notifyDataSetChanged(); //Refresh adapter
         } catch (SQLException e) {
             e.printStackTrace();
         }

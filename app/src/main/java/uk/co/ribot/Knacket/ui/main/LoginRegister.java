@@ -1,7 +1,6 @@
 package uk.co.ribot.Knacket.ui.main;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -78,7 +77,6 @@ public class LoginRegister extends BasePresenterActivity<LoginRegisterPresenter>
 
         @Override
         public Fragment getItem(int position) {
-
             switch (position) {
                 case 0:
                     return new Login();

@@ -1,10 +1,7 @@
-package uk.co.ribot.Knacket.presenter;
+package uk.co.ribot.Knacket.presenter.fragment;
 
 import android.content.Context;
-import android.content.Intent;
-import android.media.session.MediaSession;
 import android.widget.Toast;
-
 import javax.inject.Inject;
 
 import rx.Subscriber;
@@ -18,7 +15,6 @@ import uk.co.ribot.Knacket.data.api.model.response.TokenResponse;
 import uk.co.ribot.Knacket.injection.scope.PerFragment;
 import uk.co.ribot.Knacket.presenter.fragment.BasePresenter;
 import uk.co.ribot.Knacket.ui.fragment.Login;
-import uk.co.ribot.Knacket.ui.main.MainActivity;
 
 @PerFragment
 public class LoginPresenter extends BasePresenter<Login> {

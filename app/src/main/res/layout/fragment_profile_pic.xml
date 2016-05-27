@@ -9,7 +9,7 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:id="@+id/view"
+        android:id="@+id/civUserPicFrag"
         android:src="@drawable/placeholder_hi"
         android:layout_gravity="center" />
 </LinearLayout>

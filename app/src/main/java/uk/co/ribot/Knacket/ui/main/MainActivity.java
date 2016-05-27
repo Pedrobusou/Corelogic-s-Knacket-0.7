@@ -1,6 +1,5 @@
 package uk.co.ribot.Knacket.ui.main;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -44,15 +43,33 @@ public class MainActivity extends BasePresenterActivity<MainActivityPresenter>
     @Bind(R.id.drawer_layout) DrawerLayout drawer;
     @Bind(R.id.toolbar_title) TextView toolbar_title;
 
+    private PreferencesManager preferences;
+    private String token;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // getActivityComponent().inject(this);
+       // getActivityComponent().inject(this);  commented due to problems
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        PreferencesManager preferences = new PreferencesManager(this);
-        String token = preferences.getToken();
+        preferences = new PreferencesManager(this); //Save user token on sharedPrefs. If there isn't, app will understand that user hasn't login
+        token = preferences.getToken();
+
+        if(!TextUtils.isEmpty(token)){
+            startService(new Intent(this, AdService.class)); //If there's token/user is logged, it app will load info from server
+            Toast.makeText(this, "service ok", Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(this, "service not ok", Toast.LENGTH_SHORT).show(); //WHY I CANT COMMENT THIS?
+
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED); //prevent keyboard from default showing
+        setUpTabs();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        preferences = new PreferencesManager(this);
+        token = preferences.getToken();
         if(!TextUtils.isEmpty(token)){
             startService(new Intent(this, AdService.class));
             Toast.makeText(this, "service ok", Toast.LENGTH_SHORT).show();
@@ -63,17 +80,6 @@ public class MainActivity extends BasePresenterActivity<MainActivityPresenter>
     }
 
     @Override
-    protected void onResume() {
-        PreferencesManager preferences = new PreferencesManager(this);
-        String token = preferences.getToken();
-        if(!TextUtils.isEmpty(token)){
-            startService(new Intent(this, AdService.class));
-            Toast.makeText(this, "service ok", Toast.LENGTH_SHORT).show();
-        } else Toast.makeText(this, "service not ok", Toast.LENGTH_SHORT).show();
-        super.onResume();
-    }
-
-    @Override
     protected MainActivityPresenter getPresenter() {
         return null;
     }
@@ -81,13 +87,13 @@ public class MainActivity extends BasePresenterActivity<MainActivityPresenter>
     private void setUpTabs(){
         setSupportActionBar(toolbar);
 
-        TabsAdapter tabsAdapter = new TabsAdapter(getSupportFragmentManager(), this);
+        TabsAdapter tabsAdapter = new TabsAdapter(getSupportFragmentManager());
 
         mViewPager.setAdapter(tabsAdapter);
         tabLayout.setupWithViewPager(mViewPager);
 
         toolbar_title.setText("Ads");
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() { //Changes page title depending on tab
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 mViewPager.setCurrentItem(tab.getPosition());
@@ -102,13 +108,12 @@ public class MainActivity extends BasePresenterActivity<MainActivityPresenter>
         });
     }
 
-    @OnClick(R.id.btnDone) void doneClicked(){
+    @OnClick(R.id.btnDone) void doneClicked(){ //Close navDrawer, must refresh list
         drawer.closeDrawer(GravityCompat.END);
-        //REFRESH LIST
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() { //Will close navDrawer if its open. If not, will work normally
         if(drawer.isDrawerOpen(GravityCompat.END)) drawer.closeDrawer(GravityCompat.END);
         else moveTaskToBack(true);
     }
@@ -126,7 +131,7 @@ public class MainActivity extends BasePresenterActivity<MainActivityPresenter>
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) { //Shows navDrawer when clicking on the menu
         drawer.openDrawer(GravityCompat.END);
         return super.onOptionsItemSelected(item);
     }
@@ -134,13 +139,11 @@ public class MainActivity extends BasePresenterActivity<MainActivityPresenter>
     @Override
     public void onFragmentInteraction(Uri uri) {}
 
-    public class TabsAdapter extends FragmentPagerAdapter {
+    public class TabsAdapter extends FragmentPagerAdapter { //Load lists on the tabs
         final String[] tabTitles = new String[] { "Ads", "Sellers"};
-        final Context context;
 
-        public TabsAdapter(FragmentManager fm, Context context) {
+        public TabsAdapter(FragmentManager fm) {
             super(fm);
-            this.context = context;
         }
 
         @Override

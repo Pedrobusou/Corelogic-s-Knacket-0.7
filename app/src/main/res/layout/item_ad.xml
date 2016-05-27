@@ -94,7 +94,7 @@
                 android:layout_alignParentBottom="true"
                 style="@android:style/Widget.DeviceDefault.RatingBar.Small"
                 android:rating="0"
-                android:layout_alignParentLeft="true" />
+                android:layout_alignParentLeft="true"/>
 
             <TextView
                 android:id="@+id/tvAdPrice"

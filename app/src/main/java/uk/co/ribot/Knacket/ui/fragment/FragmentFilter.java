@@ -12,7 +12,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import uk.co.ribot.Knacket.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,19 +20,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
-/**
- * Activities that contain this fragment must implement the
- * {@link FragmentFilter.OnFragmentInteractionListener} interface
- * to handle interaction events.
- */
-public class FragmentFilter extends Fragment {
-    @Bind((R.id.tvMaxKm)) TextView tvMaxKm;
-    @Bind(R.id.seekBar) SeekBar seekBar;
+public class FragmentFilter extends Fragment { //It works, but it isn't implemented yet
     @Bind(R.id.spinnerCategory) Spinner spinnerCategory;
     @Bind(R.id.spinnerTime) Spinner spinnerTime;
+    @Bind((R.id.tvMaxKm)) TextView tvMaxKm;
+    @Bind(R.id.seekBar) SeekBar seekBar;
 
-    private int distance;
     private String category, time;
+    private int distance;
 
     public FragmentFilter() {}
 
@@ -47,20 +41,21 @@ public class FragmentFilter extends Fragment {
         return view;
     }
 
-    @OnClick(R.id.btnReset) void resetClicked(){
+    @OnClick(R.id.btnReset) void resetClicked(){ //Set ui with default values
         setUpSpinners();
         setUpSeekBar();
     }
 
-    @OnItemSelected(R.id.spinnerTime) void setTime(){
+    @OnItemSelected(R.id.spinnerTime) void setTime(){ //saves daytime
         time = spinnerTime.getSelectedItem().toString();
     }
 
-    @OnItemSelected(R.id.spinnerCategory) void setCategory(){
+    @OnItemSelected(R.id.spinnerCategory) void setCategory(){ //saves category
         category = spinnerCategory.getSelectedItem().toString();
     }
 
     private void setUpSpinners(){
+        //Fill spinner with three-day-times adapter
         List<String> spinnerArray = new ArrayList<String>() {{
             add("Evening");
             add("Weekday");
@@ -69,7 +64,7 @@ public class FragmentFilter extends Fragment {
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, spinnerArray);
         spinnerTime.setAdapter(spinnerArrayAdapter);
 
-        spinnerArray = new ArrayList<String>() {{
+        spinnerArray = new ArrayList<String>() {{ //this one should get categories from server
             add("To Get From Server");
         }};
         spinnerArrayAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, spinnerArray);
@@ -78,14 +73,14 @@ public class FragmentFilter extends Fragment {
     }
 
     private void setUpSeekBar(){
-        seekBar.setProgress(seekBar.getMax() / 2);
+        seekBar.setProgress(seekBar.getMax() / 2); //Sets default progress to half of total
 
         tvMaxKm.setText(seekBar.getProgress() + "km");
         distance = seekBar.getProgress();
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) { //Will show current progress in real time
                 tvMaxKm.setText(seekBar.getProgress() + "km");
             }
 

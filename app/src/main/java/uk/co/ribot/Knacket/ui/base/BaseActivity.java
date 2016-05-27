@@ -22,16 +22,6 @@ public class BaseActivity extends AppCompatActivity {
         inject();
     }
 
-    public ActivityComponent getActivityComponent() {
-     /*   if (mActivityComponent == null) {
-            mActivityComponent = DaggerActivityComponent.builder()
-                    .activityModule(new ActivityModule(this))
-                    .applicationComponent(BoilerplateApplication.get(this).getComponent())
-                    .build();
-        }*/
-        return mActivityComponent;
-    }
-
     public void showUserMessage(String msg, int color) {
         if (getCurrentFocus() != null) {
             Snackbar snackbar = Snackbar.make(getCurrentFocus(), msg, Snackbar.LENGTH_LONG);

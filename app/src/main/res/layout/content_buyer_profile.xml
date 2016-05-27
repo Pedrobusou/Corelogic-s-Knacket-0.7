@@ -68,7 +68,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/editText3"
+                        android:id="@+id/etLocation"
                         android:enabled="false"
                         android:text="Example location"
                         android:textColor="#6E6E6E"
@@ -95,7 +95,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/editText2"
+                        android:id="@+id/etRating"
                         android:enabled="false"
                         android:text="Example rating"
                         android:textColor="#6E6E6E"
@@ -118,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description "
-                    android:id="@+id/textView2"
+                    android:id="@+id/tvProfileDescription"
                     android:maxLines="3"
                     android:lineSpacingExtra="5dp"
                     android:ellipsize="end"

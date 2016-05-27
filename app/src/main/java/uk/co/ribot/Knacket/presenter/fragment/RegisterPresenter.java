@@ -1,4 +1,4 @@
-package uk.co.ribot.Knacket.presenter;
+package uk.co.ribot.Knacket.presenter.fragment;
 
 import android.content.Context;
 import android.widget.Toast;

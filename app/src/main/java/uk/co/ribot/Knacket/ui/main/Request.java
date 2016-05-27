@@ -29,15 +29,15 @@ public class Request extends AppCompatActivity implements FragmentNavigationButt
         ButterKnife.bind(this);
 
         toolbar_title.setText(R.string.title_activity_request);
-        setUpContent();
+        setUpToolbar();
     }
 
-    private void setUpContent() {
+    private void setUpToolbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() { //Toolbar's back button
             @Override
             public void onClick(View v) {
                 finish();
@@ -49,7 +49,7 @@ public class Request extends AppCompatActivity implements FragmentNavigationButt
         Toast.makeText(this, "work in progress", Toast.LENGTH_SHORT).show();
     }
 
-    @OnClick(R.id.rlDateTime) void dateTimePicker() {
+    @OnClick(R.id.rlDateTime) void dateTimePicker() { //Shows AlertDialog to select date
         final View dialogView = View.inflate(this, R.layout.dialog_date_time_picker, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
@@ -69,6 +69,5 @@ public class Request extends AppCompatActivity implements FragmentNavigationButt
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-    }
+    public void onFragmentInteraction(Uri uri) {}
 }

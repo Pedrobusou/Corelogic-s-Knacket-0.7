@@ -36,9 +36,12 @@ public class FragmentNavigationButtons extends Fragment {
         View view = inflater.inflate(R.layout.fragment_navigation_buttons, container);
         ButterKnife.bind(this, view);
 
-
         preferences = new PreferencesManager(getContext());
         token = preferences.getToken();
+        //Gets token from preferences.
+        //At every button, will check if token is empty, if it is, app will show the login/register screen
+        //Also they will check the current activity isn't the one you are calling for,
+        //in order to prevent re-opening the current activity and showing the animation
 
         return view;
     }
@@ -96,13 +99,13 @@ public class FragmentNavigationButtons extends Fragment {
     }
 
     @Override
-    public void onResume() {
+    public void onResume() { //If there's no token/user isn't logged, the buttons will be darker (as they were disabled)
         token = preferences.getToken();
         if(TextUtils.isEmpty(token))
             fragment.setBackgroundColor(Color.parseColor("#BABABA"));
-        else{
+        else
             fragment.setBackgroundColor(Color.parseColor("#E9E9E9"));
-        }
+
         super.onResume();
     }
 

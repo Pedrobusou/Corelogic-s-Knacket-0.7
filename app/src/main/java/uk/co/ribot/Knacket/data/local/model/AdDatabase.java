@@ -2,11 +2,7 @@ package uk.co.ribot.Knacket.data.local.model;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-
-import java.util.ArrayList;
-
 import uk.co.ribot.Knacket.data.model.Ad;
-import uk.co.ribot.Knacket.data.model.User;
 
 @DatabaseTable(tableName = "ad")
 public class AdDatabase extends BaseTable{

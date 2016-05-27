@@ -1,6 +1,9 @@
 package uk.co.ribot.Knacket.ui.adapter;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +25,7 @@ import uk.co.ribot.Knacket.data.model.Seller;
 import uk.co.ribot.Knacket.ui.main.SellerProfile;
 
 public class SellersAdapter extends RecyclerView.Adapter<SellersAdapter.SellerViewHolder> {
+    @Bind(R.id.rbSellerRating) RatingBar ratingBar;
     private List<Seller> mSeller;
 
     @Inject
@@ -36,6 +40,11 @@ public class SellersAdapter extends RecyclerView.Adapter<SellersAdapter.SellerVi
     @Override
     public SellerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_seller, parent, false);
+        ButterKnife.bind(this, itemView);
+
+        LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(Color.parseColor("#FACC2E"), PorterDuff.Mode.SRC_ATOP);
+
         return new SellerViewHolder(itemView);
     }
 
